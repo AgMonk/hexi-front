@@ -1,6 +1,6 @@
 import {transfer} from './request';
 
-//登录
+//登录*
 export function UserLogin( username, password ) {
     return transfer({
         url: '/api/user/login',
@@ -13,7 +13,7 @@ export  function UserStatus() {
 //获取用户信息
 export  function UserInfo() {
     return transfer({ url: '/api/user/info', }) }
-//注册
+//注册*
 export  function UserReg(username, password, phone, name) {
     return transfer({
         method: 'post',
@@ -21,7 +21,7 @@ export  function UserReg(username, password, phone, name) {
         url: '/api/user/reg',
     })
 }
-//修改当前用户信息
+//修改当前用户信息*
 export function EditUserInfo(phone,name) {
     return transfer({
         method: 'post',
@@ -29,7 +29,7 @@ export function EditUserInfo(phone,name) {
         url: '/api/user/editUserInfo',
     })
 }
-//修改密码
+//修改密码*
 export function EditPassword(oldPass,newPass) {
     return transfer({
         method: 'post',
