@@ -1,14 +1,14 @@
 <template>
 <div>
-  <user-reg />
+  <user-login />
 </div>
 </template>
 
 <script>
-import UserReg from "../temporary/UserReg";
+import UserLogin from '../temporary/UserLogin'
 export default {
   components: {
-    UserReg,
+    UserLogin,
   }
 }
 </script>

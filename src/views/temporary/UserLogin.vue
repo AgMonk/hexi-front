@@ -1,9 +1,14 @@
 <template>
 <div>
-<!--登录-->
-  <el-input v-model="username" placeholder="请输入用户名"></el-input>
+  <h2>智慧园区系统登录页</h2>
+  <div class="login-box">
+  <h4>输入用户名密码登录</h4>
+  <el-input v-model="username" placeholder="请输入用户名" id="input"></el-input>
+  <br /><br />
   <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
-  <el-button @click="Login" type="primary">注册</el-button>
+  <el-button @click="Login" type="primary" >登录</el-button>
+  <a href="#">注册</a>
+  </div>
 </div>
 </template>
 <script>
@@ -27,5 +32,28 @@ export default {
 </script>
 
 <style scoped>
+.login-box {
+  height: 300px;
+  width: 400px;
+  background: #ffffff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%);
+  border-radius: 5px;
+  border: #bebebe 1px solid;
+}
+.el-button, .el-input {
+  position: relative;
+  left: 7.5%;
+  width: 340px;
+}
+.el-button {
+  position: relative;
+  top: 15%;
+}
+h4 {
+  text-align: center;
+}
 
 </style>
