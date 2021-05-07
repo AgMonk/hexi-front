@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import UserLogin from '../temporary/UserLogin'
+import UserLogin from '../User/UserLogin'
 export default {
   components: {
     UserLogin,

@@ -2,12 +2,11 @@
 <div>
   <h2>智慧园区系统登录页</h2>
   <div class="login-box">
-  <h4>输入用户名密码登录</h4>
-  <el-input v-model="username" placeholder="请输入用户名" id="input"></el-input>
-  <br /><br />
-  <el-input placeholder="请输入密码" v-model="password" show-password></el-input>
+  <h4>用户名密码登录</h4>
+  <el-input v-model="username" placeholder="用户名" id="input"></el-input>
+  <el-input placeholder="密码" v-model="password" show-password></el-input>
   <el-button @click="Login" type="primary" >登录</el-button>
-  <a href="#">注册</a>
+    <router-link to="/UserReg">点此注册</router-link>
   </div>
 </div>
 </template>
@@ -17,14 +16,28 @@ export default {
   name: "UserLogin",
   data() {
     return {
-      username: "",
-      password: "",
+      username: "admin_lzbx",
+      password: "123456",
     }
   },
   methods: {
     Login() {
       UserLogin(this.username, this.password).then(res => {
         console.log(res)
+        switch (res.code) {
+          case 2000 :
+            this.$message({
+              message: res.message,
+              type: 'success'
+            })
+            this.$router.push({path: '/Navigation-main'})
+            break;
+          default:
+            this.$message.error({
+              message: res.message,
+            })
+            break;
+        }
       })
     }
 }
@@ -47,13 +60,23 @@ export default {
   position: relative;
   left: 7.5%;
   width: 340px;
+  display: block;
+  margin-top: 20px;
 }
 .el-button {
   position: relative;
-  top: 15%;
+  top: 5%;
 }
 h4 {
   text-align: center;
+}
+a {
+  text-decoration: none;
+  position: relative;
+  top: 7%;
+  left: 7.5%;
+  font-size: 12px;
+  color: #409EFF;
 }
 
 </style>
