@@ -1,12 +1,11 @@
 <template>
-  <div>
     <div class="login-box">
       <h4>修改密码</h4>
-      <el-input v-model="oldPass" placeholder="旧密码" id="input"></el-input>
+      <el-input v-model="oldPass" placeholder="旧密码"></el-input>
       <el-input placeholder="新密码" v-model="newPass" show-password></el-input>
       <el-button @click="edit" type="primary" >修改</el-button>
     </div>
-  </div>
+
 </template>
 
 <script>
@@ -15,8 +14,8 @@ export default {
   name: "EditPassword",
   data() {
     return {
-      oldPass: "",
-      newPass: "",
+      oldPass: "123456",
+      newPass: "1234567",
     }
   },
   methods: {

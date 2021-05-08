@@ -11,9 +11,11 @@ const routes = [
     //首页
   { path: "/Home", name: "Home", component: () => import('../views/Home/home.vue') },
     //用户信息
-
+  {path: "/UserInfo", name: "UserInfo", component: () => import('../views/User/UserInfo')},
     //修改密码
   { path: "/EditPassword", name: "EditPassword", component: () => import("../views/EditUser/EditPassword") },
+    //修改当前用户信息
+  { path: "/EditUserInfo", name: "EditUserInfo", component: () => import("../views/EditUser/EditUserInfo")},
 ]
 
 const router = new VueRouter({
