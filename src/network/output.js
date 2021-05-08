@@ -37,7 +37,7 @@ export function EditPassword(oldPass,newPass) {
         url: '/api/user/editPassword',
     })
 }
-//登出
+//登出*
 export function UserLogout() {
     return transfer({url: '/api/user/logout'}) }
 //查询用户列表（分页）

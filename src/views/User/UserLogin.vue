@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h2>智慧园区系统登录页</h2>
+  <h2>柳州天步科技创业园智慧园区管理系统登录页</h2>
   <div class="login-box">
   <h4>用户名密码登录</h4>
   <el-input v-model="username" placeholder="用户名" id="input"></el-input>
@@ -18,6 +18,7 @@ export default {
     return {
       username: "admin_lzbx",
       password: "123456",
+
     }
   },
   methods: {
@@ -30,7 +31,7 @@ export default {
               message: res.message,
               type: 'success'
             })
-            this.$router.push({path: '/Navigation-main'})
+            this.$router.push({path: '/Home'})
             break;
           default:
             this.$message.error({
@@ -40,7 +41,8 @@ export default {
         }
       })
     }
-}
+},
+
 }
 </script>
 
