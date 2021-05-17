@@ -1,10 +1,19 @@
 <template>
-$END$
+<div>
+  <top-nav />
+  <left-nav />
+</div>
 </template>
 
 <script>
+import leftNav from "./leftNav";
+import topNav from "./topNav";
 export default {
-name: "index.vue"
+  name: "index.vue",
+
+  components: {
+    leftNav, topNav
+  }
 }
 </script>
 

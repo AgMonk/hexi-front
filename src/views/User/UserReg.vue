@@ -13,7 +13,7 @@
       <el-input v-model="phone" placeholder="电话/非必填"></el-input>
       <el-input v-model="name" placeholder="姓名/非必填"></el-input>
       <el-button @click="Reg" type="primary">注册</el-button>
-       <span class="reg-login">已有账号？<router-link to="/">点此登录</router-link></span>
+       <span class="reg-login">已有账号？<router-link to="/login">点此登录</router-link></span>
      </div>
   </div>
 </template>
@@ -32,7 +32,7 @@ export default {
   methods: {
     Reg() {
       UserReg(this.username, this.password, this.phone, this.name).then(res => {
-        console.log(res)
+        // console.log(res)
         switch (res.code) {
           case 2000 :
             this.$message({

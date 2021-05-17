@@ -2,7 +2,9 @@
     <div class="login-box">
       <h4>修改密码</h4>
       <el-input v-model="oldPass" placeholder="旧密码"></el-input>
+      <el-tooltip content="新密码最短为6位数，中英文均可,不允许有中文空格" placement="top">
       <el-input placeholder="新密码" v-model="newPass" show-password></el-input>
+      </el-tooltip>
       <el-button @click="edit" type="primary" >修改</el-button>
     </div>
 
@@ -14,14 +16,33 @@ export default {
   name: "EditPassword",
   data() {
     return {
-      oldPass: "123456",
-      newPass: "1234567",
+      oldPass: "",
+      newPass: "",
     }
   },
   methods: {
     edit() {
       EditPassword(this.oldPass, this.newPass).then(res => {
-        console.log(res)
+        // console.log(res);
+        if(this.oldPass.length === 0 || this.newPass.length === 0) {
+          this.$message.error({
+            message: "旧密码与新密码均不能为空",
+          })
+        } else {
+          switch (res.code) {
+            case 2000 :
+              this.$message({
+                message: res.message,
+                type: 'success'
+              })
+              break;
+            default:
+              this.$message.error({
+                message: res.message,
+              })
+              break;
+          }
+        }
       })
     }
   }

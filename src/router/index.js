@@ -1,27 +1,15 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-
+import staticRoute from './staticRoute'
 Vue.use(VueRouter)
-
-const routes = [
-    //默认页 登录页
-  { path: "/", name: "centre", component: () => import('@/views/centre/centre'), meta: {showleftNav: true} },
-    //注册页
-  { path: "/UserReg", name: "UserReg", component: () => import('../views/User/UserReg'), meta: {showleftNav: true}},
-    //首页
-  { path: "/Home", name: "Home", component: () => import('../views/Home/home.vue') },
-    //用户信息
-  {path: "/UserInfo", name: "UserInfo", component: () => import('../views/User/UserInfo')},
-    //修改密码
-  { path: "/EditPassword", name: "EditPassword", component: () => import("../views/EditUser/EditPassword") },
-    //修改当前用户信息
-  { path: "/EditUserInfo", name: "EditUserInfo", component: () => import("../views/EditUser/EditUserInfo")},
-]
 
 const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes
-})
+  routes: staticRoute,
+});
+// router.beforeEach((to, from, next) => {
+//   const nextRoute = []
+// })
 
 export default router

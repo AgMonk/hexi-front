@@ -10,6 +10,7 @@
       active-text-color="#ffd04b">
     <el-menu-item index="">消息中心</el-menu-item>
   </el-menu>
+
 </div>
 </template>
 

@@ -1,67 +1,39 @@
 <template>
 <div>
-  <el-card class="box-card">
-    <div class="text item" >
-      姓名： {{names}}
-    </div><hr>
-    <div class="text item" >
-      电话： {{phones}}
-    </div><hr>
-    <div class="text item" >
-      用户账号：{{usernames}}
-    </div><hr>
-    <div class="text item" >
-      注册时间：{{timeStrings}}
-    </div>
-  </el-card>
+    <el-table :data="userLists" class="list">
+      <el-table-column label="ID" prop="id"></el-table-column>
+      <el-table-column prop="username" label="用户名"></el-table-column>
+      <el-table-column label="姓名" prop="name"></el-table-column>
+      <el-table-column label="电话号码" prop="phone"></el-table-column>
+    </el-table>
 </div>
 </template>
 
 <script>
-import  {UserInfo} from "../../network/output";
-
+import {UserPage} from "../../network/output";
 export default {
   name: "UserInfo",
   data() {
     return {
-      timeStrings: null,
-      names: null,
-      phones: null,
-      usernames: null,
+      userLists: [],
+      page: 0,
+      size: 0,
     }
   },
   created() {
-    UserInfo().then(res => {
-      this.timeStrings = res.data.createdAt.timeString;
-      this.names = res.data.name;
-      this.phones = res.data.phone;
-      this.usernames = res.data.username;
-      if(res.code === 2000) {
-        this.$message({
-          message: res.message,
-          type: 'success'
-        })
-      }
+    UserPage(this.page, this.size).then(res => {
+      this.userLists = res.data.records;
+      console.log(this.userLists)
     })
   }
 }
 </script>
 
 <style scoped>
-.text {
-  font-size: 22px;
-  font-weight: 1000;
-}
-
-.item {
-  padding: 18px 0;
-}
-
-.box-card {
-  width: 480px;
+.list {
+  width: 800px;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%,-50%);
+  left: 30%;
+  top: 10%;
 }
 </style>

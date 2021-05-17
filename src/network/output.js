@@ -10,7 +10,7 @@ export function UserLogin( username, password ) {
 //获取当前登录状态
 export  function UserStatus() {
     return transfer({ url: '/api/user/status', }) }
-//获取用户信息
+//获取用户信息*
 export  function UserInfo() {
     return transfer({ url: '/api/user/info', }) }
 //注册*
@@ -32,15 +32,14 @@ export function EditUserInfo(phone,name) {
 //修改密码*
 export function EditPassword(oldPass,newPass) {
     return transfer({
-        method: 'post',
-        data: {oldPass,newPass},
+        params: {oldPass,newPass},
         url: '/api/user/editPassword',
     })
 }
 //登出*
 export function UserLogout() {
     return transfer({url: '/api/user/logout'}) }
-//查询用户列表（分页）
+//查询用户列表（分页）*
 export function UserPage({page, size, condition}) {
     return transfer({
         method: 'post',
@@ -48,7 +47,7 @@ export function UserPage({page, size, condition}) {
         url: '/api/user/a/page',
     })
 }
-//修改用户可用状态
+//修改用户可用状态*
 export function GetUserAvailable(userId) {
     return transfer({
         params: {userId},
@@ -57,16 +56,16 @@ export function GetUserAvailable(userId) {
 }
 
 //权限
-//添加/修改
-export function AddUserSave(remark, namespace, action, target, id) {
+//添加/修改*
+export function AddUserSave({ remark, namespace, action, target, id }) {
     return transfer({
         method: 'post',
         data: { remark, namespace, action, target, id },
         url: '/api/permission/save',
     })
 }
-//查询
-export function Page(page, size, condition) {
+//查询*
+export function Page({page, size, condition}) {
     return transfer({
         method: 'post',
         data: { page, size, condition },
@@ -76,21 +75,26 @@ export function Page(page, size, condition) {
 //删除
 export function UserDel(id) {
     return transfer({
-        params: (id),
+        params: {id},
         url: '/api/permission/del',
     })
 }
-//角色
-export function GetRole() {
-    return transfer({ url: '/api/permission/role',}) }
-//添加/修改2
-// export function getTwoSave({ name, nickname, permissions,   id}) {
-//     return transfer({
-//         method: 'post',
-//         data: { name, nickname, permissions, id },
-//         url: 'api/permission/save',
-//     })
-// }
+// 添加
+export function RoleSave({name, nickname, permissions, id}) {
+    return transfer({
+        method: 'post',
+        data: {name, nickname, permissions, id},
+        url: '/api/role/save',
+    })
+}
+//查询role
+export function QueryRole({page, size, condition}) {
+    return transfer({
+        method: 'post',
+        data: {page, size, condition},
+        url: '/api/role/page',
+    })
+}
 
 //查询所有
 export function FindAll() {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="left">
-      <el-button style="position: fixed; right: 18%; top: 7.5%" @click="dialogVisible = true">添加角色</el-button>
+      <el-button style="position: absolute; right: 18%; top: 7.5%" @click="dialogVisible = true">添加角色</el-button>
       <el-dialog
           title="添加角色"
           :visible.sync="dialogVisible"
@@ -17,14 +17,17 @@
       </el-dialog>
     </div>
     <h2 style="position: absolute; top: 10%">查询角色列表</h2>
+    <role-list />
   </div>
 </template>
 
 <script>
-import { RoleSave } from "../../../network/output";
+import { RoleSave } from "../../../../network/output";
+import RoleList from "./roleList";
 export default {
   name: "Permission",
   components: {
+    RoleList,
   },
   data() {
     return  {
