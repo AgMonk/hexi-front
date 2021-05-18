@@ -5,17 +5,14 @@
       <el-table-column label="英文名字" prop="name"></el-table-column>
       <el-table-column label="中文名字" prop="nickname"></el-table-column>
       <el-table-column label="列表" prop="permissions"></el-table-column>
-      <template slot-scope="del">
       <el-table-column><el-button>修改</el-button></el-table-column>
-      <el-table-column><el-button @click="delete(del.row.id)">删除</el-button></el-table-column>
-      </template>
+      <el-table-column><template slot-scope="del"><el-button @click="dele(del.row.id)">删除</el-button></template></el-table-column>
     </el-table>
-
   </div>
 </template>
 
 <script>
-import { QueryRole } from "../../../../network/output";
+import {QueryRole, UserDel} from "../../../../network/output";
 
 export default {
   name: "inquire",
@@ -23,7 +20,7 @@ export default {
     return {
       param: {
         page: "1",
-        size: "1",
+        size: "10",
       },
       userLists: [],
 
@@ -35,6 +32,27 @@ export default {
       console.log(this.userLists);
     })
   },
+  methods: {
+    dele(id) {
+      this.$confirm("确定删除？").then(() => {
+        UserDel(id).then((res) => {
+          switch (res.code) {
+            case 2000 :
+              this.page();
+              this.$message({
+                message: res.message,
+                type: 'success'
+              })
+              break;
+            default :
+              this.$message.error({
+                message: res.message,
+              })
+          }
+        })
+      }).catch(() => {})
+    }
+  }
 }
 </script>
 

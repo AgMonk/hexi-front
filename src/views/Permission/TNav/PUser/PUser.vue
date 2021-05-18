@@ -1,6 +1,6 @@
 <template>
 <div>
-  <h2>查询juese列表</h2>
+  <h2>查询角色列表</h2>
  <user-list />
 </div>
 </template>
