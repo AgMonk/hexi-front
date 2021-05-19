@@ -1,9 +1,19 @@
 <template>
     <el-form >
-      <el-form-item label="ID"><el-input  v-model="param.id"/></el-form-item>
+      <el-form-item label="ID" v-show="hidden"><el-input  v-model="param.id"/></el-form-item>
       <el-form-item label="中文名称:"><el-input v-model="param.nickname" clearable/></el-form-item>
       <el-form-item label="英文名称:"><el-input v-model="param.name" clearable/></el-form-item>
-<!--      <el-form-item label="权限ID列表:"><el-input v-model="param.permissions" clearable/></el-form-item>-->
+      <el-form-item label="权限">
+        <el-table :data="permissions" ref="multipleTable" @selection-change="param.permissions = $event">
+          <el-table-column type="selection" width="55"/>
+          <el-table-column label="备注" prop="remark"/>
+          <el-table-column label="权限字符串">
+            <template slot-scope="scope">
+              {{ scope.row.namespace }}:{{ scope.row.action }}:{{ scope.row.target }}
+            </template>
+          </el-table-column>
+        </el-table>
+      </el-form-item>
     <el-form-item style="text-align: right">
     <el-button @click="empty">清空</el-button>
     <el-button type="primary" @click="Submit">确定</el-button>
@@ -12,7 +22,7 @@
 </template>
 
 <script>
-import {RoleSave} from "../../network/output";
+import {FindAll, RoleSave} from "../../network/output";
 import {copyObj} from "../../common/utils";
 
 export default {
@@ -24,23 +34,33 @@ export default {
         id: undefined,
         nickname: undefined,
         name: undefined,
-        permissions: [
-          // {
-          //   "id": 1
-          // },
-          // {
-          //   "id": 2
-          // },
-          // {
-          //   "id": 3
-          // }
-        ],
+        permissions: [],
       },
+      permissions: [],
     }
+  },
+  created() {
+    this.findAll();
   },
   methods: {
     clear() {
       this.param = {};
+    },
+    findAll(){
+      let permId = this.param.permissions.map(p=>p.id);
+
+      FindAll().then(res => {
+        this.permissions = res.data;
+        // console.log(this.permissions)
+
+        setTimeout(()=>{
+          this.permissions.forEach(perm=>{
+            if (permId.includes(perm.id)){
+              this.$refs.multipleTable.toggleRowSelection(perm)
+            }
+          },1000)
+        })
+      })
     },
     empty() {
       this.$confirm('确认清空？')
@@ -54,44 +74,44 @@ export default {
       })
     },
     Submit() {
-      if(this.param.nickname.length === 0 || this.param.name.length ===0
-          || this.param.permissions.length === 0) {
-        this.$message.error({
-          message: "表单均不能为空"
-        })
-      } else {
+      // if(this.param.nickname.length === 0 || this.param.name.length ===0
+      //     || this.param.permissions.length === 0) {
+      //   this.$message.error({
+      //     message: "表单均不能为空"
+      //   })
+      // } else {
         RoleSave(this.param).then(res => {
-          // console.log(res);
           switch (res.code) {
             case 2000 :
               this.$message({
                 message: res.message,
                 type: 'success'
               });
-              this.dialogVisible = false;
-              this.clear();
+              this.$emit("success");
               break;
-            default:
-              this.$message.error({
-                message: res.message,
-              });
-              break;
+            // default:
+            //   this.$message.error({
+            //     message: res.message,
+            //   });
+            //   break;
           }
         })
-      }
+      // }
     }
   },
   mounted() {
     this.param = copyObj(this.data);
+    this.param.permissions = this.param.permissions ? this.param.permissions : [];
 
+    this.findAll();
   },
   watch: {
     "data": {
       handler: function (e) {
-        this.param = copyObj(e)
-        // this.role.permissions = this.role.permissions ? this.role.permissions : [];
-        //
-        // this.findAll();
+        this.param = copyObj(e);
+        this.param.permissions = this.param.permissions ? this.param.permissions : [];
+
+        this.findAll();
       }
     }
   },
