@@ -42,7 +42,7 @@ const staticRoute = [
           children: [
               { path: "Permission", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/TNav/mission/Permission") },
               { path: "PRole", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/TNav/Role/PRole") },
-              { path: "PUser", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/TNav/PUser/PUser")},
+              { path: "UserList", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/TNav/PUser/UserList")},
           ],
           }
       ]

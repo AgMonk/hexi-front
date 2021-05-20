@@ -41,7 +41,7 @@
               <el-menu-item index="/user/EditUserAvailable">修改用户可用状态</el-menu-item>
               <el-submenu index="/user/UserSave">
                 <template slot="title">权限</template>
-                <el-menu-item index="/user/UserSave/PUser">用户</el-menu-item>
+                <el-menu-item index="/user/UserSave/UserList">用户</el-menu-item>
                 <el-menu-item index="/user/UserSave/PRole">角色</el-menu-item>
                 <el-menu-item index="/user/UserSave/Permission">权限</el-menu-item>
               </el-submenu>

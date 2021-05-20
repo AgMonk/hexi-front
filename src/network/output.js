@@ -101,7 +101,7 @@ export function FindAll() {
     return transfer({ url: '/api/permission/findAll',}) }
 //查询当前用户拥有的角色和权限
 export function HasRoles() {
-    return transfer({ url: '/api/permission/hasRoles',}) }
+    return transfer({ url: '/api/user_role/hasRoles',}) }
 
 //用户-角色 关联
 //查询指定用户拥有的角色和权限

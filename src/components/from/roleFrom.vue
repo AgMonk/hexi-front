@@ -51,8 +51,6 @@ export default {
 
       FindAll().then(res => {
         this.permissions = res.data;
-        // console.log(this.permissions)
-
         setTimeout(()=>{
           this.permissions.forEach(perm=>{
             if (permId.includes(perm.id)){
@@ -74,12 +72,12 @@ export default {
       })
     },
     Submit() {
-      // if(this.param.nickname.length === 0 || this.param.name.length ===0
-      //     || this.param.permissions.length === 0) {
-      //   this.$message.error({
-      //     message: "表单均不能为空"
-      //   })
-      // } else {
+      if(this.param.nickname.length === 0 || this.param.name.length ===0
+          || this.param.permissions.length === 0) {
+        this.$message.error({
+          message: "表单均不能为空"
+        })
+      } else {
         RoleSave(this.param).then(res => {
           switch (res.code) {
             case 2000 :
@@ -89,14 +87,14 @@ export default {
               });
               this.$emit("success");
               break;
-            // default:
-            //   this.$message.error({
-            //     message: res.message,
-            //   });
-            //   break;
+            default:
+              this.$message.error({
+                message: res.message,
+              });
+              break;
           }
         })
-      // }
+      }
     }
   },
   mounted() {

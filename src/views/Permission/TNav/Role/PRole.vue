@@ -1,16 +1,11 @@
 <template>
   <div>
-    <el-button style="position: absolute; right: 18%; top: 7.5%" @click="dialogVisible.add = true; roleFromData  = {} ">添加角色</el-button>
-    <el-dialog title="添加角色" :visible.sync="dialogVisible.add" width="40%">
-    <role-from :data="roleFromData" @success="dialogVisible.add = false; queryRole()"/>
-    </el-dialog>
-    <el-dialog title="修改角色" :visible.sync="dialogVisible.edit" width="40%">
-      <role-from :data="roleFromData" @success="dialogVisible.edit = false; queryRole()"/>
-    </el-dialog>
-    <h2>查询角色列表</h2>
-
-    <el-table :data="userLists" style="width: 800px; position: absolute; left: 30%; top: 20%">
-
+    <el-container direction="vertical" class="center">
+      <el-header>
+       <h2>查询角色列表</h2>
+      </el-header>
+    <el-main>
+    <el-table :data="userLists" style="width: 800px;" >
 <!-- 下拉框 -->
       <el-table-column type="expand" label="权限">
         <template slot-scope="scope">
@@ -31,6 +26,25 @@
       <el-table-column><template slot-scope="del"><el-button @click="roleFromData = del.row; dialogVisible.edit = true; ">修改</el-button></template></el-table-column>
       <el-table-column><template slot-scope="del"><el-button @click="dele(del.row.id);">删除</el-button></template></el-table-column>
     </el-table>
+    </el-main>
+    <el-footer>
+    <el-pagination
+        :current-page.sync="param.page"
+        :page-size.sync="param.size"
+        :total="total"
+        layout="prev, pager, next, jumper"
+        @current-change="queryRole">
+    </el-pagination>
+    </el-footer>
+    </el-container>
+
+    <el-button style="position: absolute; right: 18%; top: 7.5%" @click="dialogVisible.add = true; roleFromData  = {} ">添加角色</el-button>
+    <el-dialog title="添加角色" :visible.sync="dialogVisible.add" width="40%">
+      <role-from :data="roleFromData" @success="dialogVisible.add = false; queryRole()"/>
+    </el-dialog>
+    <el-dialog title="修改角色" :visible.sync="dialogVisible.edit" width="40%">
+      <role-from :data="roleFromData" @success="dialogVisible.edit = false; queryRole()"/>
+    </el-dialog>
   </div>
 </template>
 
@@ -46,8 +60,8 @@ export default {
   data() {
     return {
       param: {
-        page: "1",
-        size: "10",
+        page: 1,
+        size: 10,
       },
       userLists: [],
       dialogVisible: {
@@ -55,13 +69,13 @@ export default {
         edit: false,
       },
       roleFromData: {},
+      total: 50,
     }
   },
   methods: {
     queryRole() {
       QueryRole(this.param).then(res => {
         this.userLists = res.data.records;
-        // console.log(this.userLists)
       })
     },
     dele(id) {
@@ -84,7 +98,6 @@ export default {
       }).catch(() => {})
       .then(() => this.queryRole())
     },
-
   },
   mounted() {
     this.queryRole();
@@ -93,10 +106,8 @@ export default {
 </script>
 
 <style scoped>
-h2 {
+.center {
   position: absolute;
-  top: 10%;
-  left: 50%;
+  right: 30%;
 }
-
 </style>
