@@ -72,14 +72,14 @@ export function Page({page, size, condition}) {
         url: '/api/permission/page',
     })
 }
-//删除
+//删除*
 export function UserDel(id) {
     return transfer({
         params: {id},
         url: '/api/permission/del',
     })
 }
-// 添加
+// 添加*
 export function RoleSave({name, nickname, permissions, id}) {
     return transfer({
         method: 'post',
@@ -87,7 +87,7 @@ export function RoleSave({name, nickname, permissions, id}) {
         url: '/api/role/save',
     })
 }
-//查询role
+//查询role*
 export function QueryRole({page, size, condition}) {
     return transfer({
         method: 'post',
@@ -96,12 +96,14 @@ export function QueryRole({page, size, condition}) {
     })
 }
 
-//查询所有
+//查询所有*
 export function FindAll() {
     return transfer({ url: '/api/permission/findAll',}) }
-//查询当前用户拥有的角色和权限
-export function HasRoles() {
-    return transfer({ url: '/api/user_role/hasRoles',}) }
+//查询当前用户拥有的角色和权限*
+export function HasRoles(userId) {
+    return transfer({
+        params: { userId },
+        url: '/api/user_role/hasRoles',}) }
 
 //用户-角色 关联
 //查询指定用户拥有的角色和权限
@@ -111,21 +113,26 @@ export function HasRole(userId) {
         url: '/api/user_role/hasRoles',
     })
 }
-//添加/修改
-export function addSave(userId, roleId, uuid) {
+//添加/修改*
+export function addSave({ userId, roleId, }) {
     return transfer({
         method: 'post',
-        data: { userId, roleId, uuid },
-        url: 'api/user_role/save'
+        data: { userId, roleId},
+        url: '/api/user_role/save',
     })
 }
-//删除
-// export function Del(id) {
-//     return transfer({
-//         params: (id),
-//         url: '/api/user_role/del',
-//     })
-// }
+// 删除*
+export function Del(id) {
+    return transfer({
+        params: {id},
+        url: '/api/user_role/del',
+    })
+}
+//查找所有
+export function find() {
+    return transfer({ url: '/api/role/findAll'})
+}
+
 //孵化器模块
 //本模块有3种实体，名称和接口前缀为：企业Company
 //专利Patent，补贴Subsidy；接口名完全相同，仅在分页查询时的可选过滤条件有所不同

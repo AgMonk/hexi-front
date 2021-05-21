@@ -12,7 +12,7 @@
           <el-table :data="scope.row.permissions">
             <el-table-column label="备注" prop="remark"/>
             <el-table-column label="权限字符串">
-              <template slot-scope="scope">
+              <template slot-scope="">
                 {{ scope.row.namespace }}:{{ scope.row.action }}:{{ scope.row.target }}
               </template>
             </el-table-column>
