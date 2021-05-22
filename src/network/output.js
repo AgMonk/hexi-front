@@ -128,7 +128,7 @@ export function Del(id) {
         url: '/api/user_role/del',
     })
 }
-//查找所有
+//查找所有*
 export function find() {
     return transfer({ url: '/api/role/findAll'})
 }
@@ -188,12 +188,28 @@ export function UpdateSubsidy(uuid, name, price, companyUuid) {
 //删除
 
 //查询
-export function QueryPage({page, size, condition}) {
+export function QuerySubsidyPage({page, size, start, end,condition}) {
     return transfer({
         method: 'post',
-        data: {page, size, condition},
+        data: {page, size, start, end,condition},
         //condition条件
-        url: '/api/user_role/page',
+        url: '/api/Subsidy/page',
+    })
+}
+export function QueryPatentPage({page, size, start, end, condition}) {
+    return transfer({
+        method: 'post',
+        data: {page, size, start, end, condition},
+        //condition条件
+        url: '/api/Patent/page',
+    })
+}
+export function QueryCompanyPage({page, size, start, end,condition}) {
+    return transfer({
+        method: 'post',
+        data: {page, size, start, end, condition},
+        //condition条件
+        url: '/api/Company/page',
     })
 }
 //查询统计信息

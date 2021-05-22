@@ -14,7 +14,7 @@ const staticRoute = [
 
     //首页
     {
-        path: '/home', name: "",
+        path: '/home',
         component: Nav,
         children: [
             {
@@ -47,6 +47,13 @@ const staticRoute = [
           }
       ]
     },
+    {
+        path: '/hatch',
+        component: Nav,
+        children: [
+            { path: "hatchNav", component: () => import(/* webpackChunkName: 'hatch' */ "../views/firmManage/hatchNav/hatchNav")},
+        ]
+    }
 
 ]
 

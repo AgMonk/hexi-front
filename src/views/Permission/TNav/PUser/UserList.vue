@@ -1,8 +1,7 @@
 <template>
   <div>
-
   <el-container direction="vertical" class="center">
-    <el-header><h2>查询角色列表</h2></el-header>
+    <el-header><h2>查询用户列表</h2></el-header>
 <el-main>
   <el-table :data="userLists" style="width: 900px; " >
     <el-table-column label="用户名" prop="username"></el-table-column>

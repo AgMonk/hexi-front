@@ -17,9 +17,6 @@
             <span slot="title">车位道闸</span>
           </el-menu-item>
           <el-menu-item index=""><i class="el-icon-setting"></i>
-            <span slot="title">企业管理</span>
-          </el-menu-item>
-          <el-menu-item index=""><i class="el-icon-setting"></i>
             <span slot="title">火灾报警</span>
           </el-menu-item>
           <el-menu-item @click="logout"><i class="el-icon-error"></i>

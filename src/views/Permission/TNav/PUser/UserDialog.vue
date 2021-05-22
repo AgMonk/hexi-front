@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {HasRoles, addSave, Del, find} from "../../../../network/output";
+import {HasRoles, addSave, Del, find, } from "../../../../network/output";
 
 export default {
   name: "user-dialog",
@@ -38,6 +38,13 @@ export default {
     }
   },
   methods: {
+
+      // switch (res.code) {
+      //   case 2000 : this.$message({ message: res.message,  type: 'success'})
+      //     break;
+      //   default : this.$message.error({ message: res.message, })
+      // }
+
     hasRoles(){
       HasRoles(this.userId)
           .then(res => {
@@ -45,11 +52,21 @@ export default {
               let uuid = role.uuid;
               let ro = this.rolePool.filter(r => r.id === role.roleId)[0];
               return Object.assign({uuid}, ro)
-            })
+            });
+            switch (res.code) {
+              case 2000 : this.$message({ message: res.message,  type: 'success'})
+                break;
+              default : this.$message.error({ message: res.message, })
+            }
           })
     },
     find() {
       find().then(res => {
+        switch (res.code) {
+          case 2000 : this.$message({ message: res.message,  type: 'success'})
+            break;
+          default : this.$message.error({ message: res.message, })
+        }
         this.rolePool = res.data;
         this.hasRoles();
       })
@@ -57,14 +74,23 @@ export default {
     save(roleId) {
       let p = {userId: this.userId, roleId};
       addSave(p).then(res => {
-        console.log(res);
+        switch (res.code) {
+          case 2000 : this.$message({ message: res.message,  type: 'success'})
+            break;
+          default : this.$message.error({ message: res.message, })
+        }
         this.hasRoles();
         this.add = undefined;
       })
     },
 
     del(id) {
-        Del(id).then(() => {
+        Del(id).then(res => {
+          switch (res.code) {
+            case 2000 : this.$message({ message: res.message,  type: 'success'})
+              break;
+            default : this.$message.error({ message: res.message, })
+          }
           this.hasRoles();
         })
     },
