@@ -138,19 +138,19 @@ export function find() {
 //专利Patent，补贴Subsidy；接口名完全相同，仅在分页查询时的可选过滤条件有所不同
 
 //添加企业
-export function AddModule( name, address, phone, type, certificationType) {
+export function AddModule({name, address, phone, type, certificationType}) {
     return transfer({
         method: 'post',
         data: { name, address, phone, type, certificationType },
-        url: '/api/company/add',
+        url: '/api/Company/add',
     })
 }
 //修改企业
-export function Update(uuid, name, address, phone, type, certificationType) {
+export function updateCompony({uuid, name, address, phone, type, certificationType}) {
     return transfer({
         method: 'post',
         data: { uuid, name, address, phone, type, certificationType },
-        url: '/api/company/update',
+        url: '/api/Company/update',
     })
 }
 //添加专利

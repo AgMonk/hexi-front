@@ -12,7 +12,7 @@ let format = function (template, ...data) {
   let s = template;
   if (data.length === 1 && getTypeOf(d) === 'Object') {
     for (let key in d) {
-      if (d.hasOwnProperty(key)) {
+      if (d.hasOwnProperty[key]) {
         // s = s.replaceAll("{" + key + "}", d[key]);
         let re = "{" + key + "}";
         while (s.includes(re)){
