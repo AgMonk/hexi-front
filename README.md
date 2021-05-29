@@ -1,4 +1,4 @@
-# hexi-back
+# hexi-front
 
 ## Project setup
 ```
