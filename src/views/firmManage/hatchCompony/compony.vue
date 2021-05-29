@@ -1,5 +1,5 @@
 <template>
-  <el-tabs @tab-click="handleClick">
+  <el-tabs>
     <el-tab-pane label="专利" name="">
 
     </el-tab-pane>
@@ -43,9 +43,6 @@ export default {
         console.log(this.patentData)
       })
     },
-    handleClick(tab, event) {
-      console.log(tab, event);
-    }
   },
 
 }
