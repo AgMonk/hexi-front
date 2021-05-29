@@ -15,10 +15,11 @@ const staticRoute = [
     //首页
     {
         path: '/home',
+        name: 'home',
         component: Nav,
         children: [
             {
-                path: '',
+                path: 'home',
                 component: () => import(/* webpackChunkName: 'home' */ '../views/Home/home'),
             }
         ]
@@ -51,7 +52,23 @@ const staticRoute = [
         path: '/hatch',
         component: Nav,
         children: [
-            { path: "hatchNav", component: () => import(/* webpackChunkName: 'hatch' */ "../views/firmManage/hatchNav/hatchNav")},
+            {
+                path: "hatchCompony",
+                component: () => import(/* webpackChunkName: 'hatch' */ "../views/firmManage/hatchCompony/hatchCompony"),
+            },
+            {
+                path: "hatchPatent",
+                component: () => import(/* webpackChunkName: 'hatch' */ "../views/firmManage/hatchPatent/hatchPatent")
+            },
+            {
+                path: "hatchSubsidy",
+                component: () => import(/* webpackChunkName: 'hatch' */ "../views/firmManage/hatchSubsidy/hatchSubsidy")
+            },
+            {
+                path: "compony",
+                name: 'compony',
+                component: () => import(/* webpackChunkName: 'hatch' */ "../views/firmManage/hatchCompony/compony")
+            },
         ]
     }
 

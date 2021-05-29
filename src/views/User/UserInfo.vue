@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import  {UserInfo} from "../../network/output";
+import {UserInfo} from "../../network/output";
 
 export default {
   name: "UserInfo",
@@ -48,6 +48,7 @@ export default {
 </script>
 
 <style scoped>
+
 .text {
   font-size: 22px;
   font-weight: 1000;

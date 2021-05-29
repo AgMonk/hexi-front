@@ -19,6 +19,7 @@
     <el-button @click="addCompony">添加</el-button>
     <el-button @click="empty">取消</el-button>
     </el-form-item>
+
   </el-form>
 </template>
 
@@ -26,15 +27,15 @@
 import {AddModule} from "../../../network/output";
 
 export default {
-  name: "ComponyFrom",
+
   data() {
     return {
       componyData: {
-        name: "测试企地址h",
-        address: "测企业地址h",
-        phone: "1768742796",
-        type: "中小微业",
-        certificationType: "质量体认证",
+        name: undefined,
+        address: undefined,
+        phone: undefined,
+        type: undefined,
+        certificationType: undefined,
       },
     }
   },

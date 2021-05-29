@@ -1,5 +1,26 @@
 <template>
-$END$
+  <el-submenu index="3">
+    <template slot="title">
+      <span>用户管理</span>
+    </template>
+    <el-menu-item-group>
+      <template slot="title">用户</template>
+      <el-menu-item index="/user/UserInfo">用户信息</el-menu-item>
+      <el-menu-item index="/user/EditUserInfo">修改用户信息</el-menu-item>
+      <el-menu-item index="/user/EditPassword">修改密码</el-menu-item>
+    </el-menu-item-group>
+    <el-menu-item-group>
+      <template slot="title">用户权限</template>
+      <el-menu-item index="/user/QUser">查询用户</el-menu-item>
+      <el-menu-item index="/user/EditUserAvailable">修改用户可用状态</el-menu-item>
+      <el-submenu index="/user/UserSave">
+        <template slot="title">权限</template>
+        <el-menu-item index="/user/UserSave/UserList">用户</el-menu-item>
+        <el-menu-item index="/user/UserSave/PRole">角色</el-menu-item>
+        <el-menu-item index="/user/UserSave/Permission">权限</el-menu-item>
+      </el-submenu>
+    </el-menu-item-group>
+  </el-submenu>
 </template>
 
 <script>

@@ -1,4 +1,6 @@
 // 获取对象类型
+import Vue from "vue";
+
 let getTypeOf = function (obj) {
   let type = Object.prototype.toString.call(obj);
   return type.replace("[object ", "").replace("]", "");
@@ -85,3 +87,17 @@ export const getClientWidth = ()=>{
   }
   return 4
 }
+
+export let Event = new Vue();
+
+// export let backg = new Vue({
+//   mounted() {
+//     document.querySelector('body').setAttribute('style',
+//         "background-image: url("+require("../assets/img/login.png")+");background-size: cover;" +
+//         "background-repeat: no-repeat")
+//   },
+//   beforeDestroy() {
+//     document.querySelector('body').removeAttribute('style')
+//   },
+// });
+
