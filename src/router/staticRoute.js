@@ -1,5 +1,8 @@
 const nav = () => import('../components/Nav');
 
+import UserInfo from '../views/User/UserInfo';
+import EditPassword from '../views/EditUser/EditPassword';
+
 const staticRoute = [
     //重定向
     {
@@ -25,11 +28,15 @@ const staticRoute = [
         component: nav,
         children: [
             //用户信息
-            {path: "UserInfo", component: () => import(/* webpackChunkName: 'user' */'../views/User/UserInfo')},
+            // {path: "UserInfo", component: () => import(/* webpackChunkName: 'user' */'../views/User/UserInfo')},
+            {path: "UserInfo", component: UserInfo},
+
             //修改密码
+
             {
                 path: "EditPassword",
-                component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditPassword")
+                // component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditPassword")
+                component: EditPassword,
             },
             //修改当前用户信息
             {
