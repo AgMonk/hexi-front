@@ -1,4 +1,4 @@
-const Nav = () => import('../components/Nav');
+const nav = () => import('../components/Nav');
 
 const staticRoute = [
     //重定向
@@ -22,7 +22,7 @@ const staticRoute = [
 
     {
         path: '/user',
-        component: Nav,
+        component: nav,
         children: [
             //用户信息
             {path: "UserInfo", component: () => import(/* webpackChunkName: 'user' */'../views/User/UserInfo')},
@@ -32,7 +32,10 @@ const staticRoute = [
                 component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditPassword")
             },
             //修改当前用户信息
-          { path: "EditUserInfo", component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditUserInfo")},
+            {
+                path: "EditUserInfo",
+                component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditUserInfo")
+            },
           //查询用户
           {path: "QUser", component: () => import(/* webpackChunkName: 'user' */'../views/Query/QUser')},
 
@@ -49,7 +52,7 @@ const staticRoute = [
     },
     {
         path: '/hatch',
-        component: Nav,
+        component: nav,
         children: [
             {
                 path: "hatchCompony",

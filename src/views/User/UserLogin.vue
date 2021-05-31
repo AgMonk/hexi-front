@@ -1,6 +1,6 @@
 <template>
 <div class="demo">
-  <h2>柳州天步科技创业园智慧园区管理系统登录页</h2>
+  <h2 style="color: white">柳州天步科技创业园智慧园区管理系统</h2>
   <div class="login-box">
     <h4>用户名密码登录</h4>
     <el-input v-model="username" placeholder="用户名"></el-input>
