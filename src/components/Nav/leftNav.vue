@@ -1,16 +1,15 @@
 <template>
-  <div>
-  <el-col :span="12">
+  <div v-if="$route.meta.Nav !== false">
     <h3>柳州天步科技创业园智慧园区</h3>
-        <el-menu
-            :default-active="$route.path" class="el-menu-vertical" router>
-          <hatch-nav/>
-          <user-manage/>
-          <user-logout/>
+    <el-menu
+        :default-active="$route.path" class="el-menu-vertical" router>
+      <hatch-nav/>
+      <user-manage/>
+      <user-logout/>
 
-          <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
-          <!--            <span slot="title">视频监控</span>-->
-          <!--          </el-menu-item>-->
+      <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
+      <!--            <span slot="title">视频监控</span>-->
+      <!--          </el-menu-item>-->
           <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
           <!--            <span slot="title">智能水电</span>-->
           <!--          </el-menu-item>-->
@@ -22,8 +21,8 @@
           <!--          </el-menu-item>-->
 
         </el-menu>
-  </el-col>
-   <router-view></router-view>
+
+    <!--   <router-view></router-view>-->
   </div>
 </template>
 

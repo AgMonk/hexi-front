@@ -1,12 +1,29 @@
 <template>
   <div id="app">
-    <router-view></router-view>
+    <el-container>
+      <el-header>
+        <top-nav/>
+      </el-header>
+      <el-main>
+        <el-container>
+          <el-aside>
+            <left-nav/>
+          </el-aside>
+          <el-main>
+            <router-view></router-view>
+          </el-main>
+        </el-container>
+      </el-main>
+    </el-container>
   </div>
 </template>
 <script>
 
-export default {
+import LeftNav from "./components/Nav/leftNav";
+import TopNav from "./components/Nav/topNav";
 
+export default {
+  components: {TopNav, LeftNav}
 }
 </script>
 
