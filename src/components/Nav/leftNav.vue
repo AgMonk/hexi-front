@@ -2,10 +2,10 @@
   <div v-if="$route.meta.Nav !== false">
     <h3>柳州天步科技创业园智慧园区</h3>
     <el-menu
-        :default-active="$route.path" active-text-color="#1CAF9A" background-color="#1D2939"
+        :default-active="$route.path" active-text-color="#1CAF9A" background-color="#1D2939" text-color="#8F939E"
         class="el-menu-vertical"
         router
-        text-color="#8F939E">
+    >
       <hatch-nav/>
       <user-manage/>
       <user-logout/>
@@ -16,14 +16,14 @@
       <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
       <!--            <span slot="title">智能水电</span>-->
       <!--          </el-menu-item>-->
-          <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
-          <!--            <span slot="title">车位道闸</span>-->
-          <!--          </el-menu-item>-->
-          <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
-          <!--            <span slot="title">火灾报警</span>-->
-          <!--          </el-menu-item>-->
+      <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
+      <!--            <span slot="title">车位道闸</span>-->
+      <!--          </el-menu-item>-->
+      <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
+      <!--            <span slot="title">火灾报警</span>-->
+      <!--          </el-menu-item>-->
 
-        </el-menu>
+    </el-menu>
 
     <!--   <router-view></router-view>-->
   </div>

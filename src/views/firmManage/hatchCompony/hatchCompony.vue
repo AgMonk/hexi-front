@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header>
-      <el-button @click="visible = true;">添加企业</el-button>
+      <el-button type="goon" @click="visible = true;">添加企业</el-button>
       <el-dialog
           title="添加企业"
           :visible.sync="visible"
@@ -25,17 +25,17 @@
 
         <el-table-column label="专利&补贴">
           <template slot-scope="scope">
-            <el-button @click="compony = scope.row.uuid; toChild() ">查询</el-button>
+            <el-button type="goon" @click="compony = scope.row.uuid; toChild() ">查询</el-button>
           </template>
         </el-table-column>
         <el-table-column>
           <template slot-scope="scope">
-            <el-button @click=" updateCompony = scope.row; updateVisible = true;">修改</el-button>
+            <el-button type="edit" @click=" updateCompony = scope.row; updateVisible = true;">修改</el-button>
           </template>
         </el-table-column>
         <el-table-column>
           <template slot-scope="scope">
-            <el-button @click="del(scope.row.uuid)">删除</el-button>
+            <el-button type="delete" @click="del(scope.row.uuid)">删除</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -112,5 +112,35 @@ export default {
 </script>
 
 <style scoped>
+/*.el-button--goon.is-active,*/
+/*.el-button--goon:active {*/
+/*  background: #20B2AA;*/
+/*  border-color: #20B2AA;*/
+/*  color: #fff;*/
+/*}*/
 
+/*.el-button--goon:focus,*/
+/*.el-button--goon:hover {*/
+/*  background: #48D1CC;*/
+/*  border-color: #48D1CC;*/
+/*  color: #fff;*/
+/*}*/
+
+.el-button--goon {
+  color: #FFF;
+  background-color: #20B2AA;
+  border-color: #20B2AA;
+}
+
+.el-button--edit {
+  color: #FFF;
+  background-color: #428BCA;
+  border-color: #20B2AA;
+}
+
+.el-button--delete {
+  color: #FFF;
+  background-color: #D9534F;
+  /*border-color: #20B2AA;*/
+}
 </style>

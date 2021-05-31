@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <el-container>
-      <el-header>
+      <el-header style="padding: 0">
         <top-nav/>
       </el-header>
-      <el-main>
+      <el-main style="padding: 0">
         <el-container>
           <el-aside>
             <left-nav/>
@@ -34,4 +34,5 @@ export default {
 //  background-repeat:no-repeat;
 //  background-size:100%;
 //}
+
 </style>
