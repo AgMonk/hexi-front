@@ -1,4 +1,5 @@
 const Nav = () => import('../components/Nav');
+import home from '../views/Home/home'
 
 const staticRoute = [
     //重定向
@@ -20,7 +21,8 @@ const staticRoute = [
         children: [
             {
                 path: 'home',
-                component: () => import(/* webpackChunkName: 'home' */ '../views/Home/home'),
+                component: home,
+                // component: () => import(/* webpackChunkName: 'home' */ '../views/Home/home.vue'),
             }
         ]
     },
