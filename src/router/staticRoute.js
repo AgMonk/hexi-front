@@ -1,5 +1,4 @@
 const Nav = () => import('../components/Nav');
-import home from '../views/Home/home'
 
 const staticRoute = [
     //重定向
@@ -12,20 +11,6 @@ const staticRoute = [
     //注册页
     { path: "/UserReg", component: () => import(/* webpackChunkName: 'user' */'../views/User/UserReg') },
 
-
-    //首页
-    {
-        path: '/home',
-        name: 'home',
-        component: Nav,
-        children: [
-            {
-                path: 'home',
-                component: home,
-                // component: () => import(/* webpackChunkName: 'home' */ '../views/Home/home.vue'),
-            }
-        ]
-    },
     {
       path: '/user',
       component: Nav,

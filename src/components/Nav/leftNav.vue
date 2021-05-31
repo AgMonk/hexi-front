@@ -4,9 +4,6 @@
     <h3>柳州天步科技创业园智慧园区</h3>
         <el-menu
             :default-active="$route.path" class="el-menu-vertical" router>
-          <el-menu-item index="/home/home">
-            <span slot="title">首页</span>
-          </el-menu-item>
           <hatch-nav/>
           <user-manage/>
           <user-logout/>

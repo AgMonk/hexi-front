@@ -32,7 +32,7 @@ export default {
               message: res.message,
               type: 'success'
             })
-            this.$router.push({path: '/Home'})
+            this.$router.push({path: '/user'})
             break;
           default:
             this.$message.error({
