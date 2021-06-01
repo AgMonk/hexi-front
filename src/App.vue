@@ -1,38 +1,16 @@
 <template>
-  <div id="app">
-    <el-container>
-      <el-header style="padding: 0">
-        <top-nav/>
-      </el-header>
-      <el-main style="padding: 0">
-        <el-container>
-          <el-aside>
-            <left-nav/>
-          </el-aside>
-          <el-main>
-            <router-view></router-view>
-          </el-main>
-        </el-container>
-      </el-main>
-    </el-container>
-  </div>
+<app-main/>
 </template>
 <script>
-
-import LeftNav from "./components/Nav/leftNav";
-import TopNav from "./components/Nav/topNav";
+import appMain from '@/components/Nav/appMain.vue'
 
 export default {
-  components: {TopNav, LeftNav}
+  components: {
+    appMain
+  }
 }
 </script>
-
 <style lang="less">
 @import "./assets/css/base.css";
-//body {
-//  background-image: url('assets/img/login.png');
-//  background-repeat:no-repeat;
-//  background-size:100%;
-//}
 
 </style>

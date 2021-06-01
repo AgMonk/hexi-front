@@ -1,8 +1,7 @@
 <template>
   <div v-if="$route.meta.Nav !== false">
-    <h3>柳州天步科技创业园智慧园区</h3>
     <el-menu
-        :default-active="$route.path" active-text-color="#1CAF9A" background-color="#1D2939" text-color="#8F939E"
+        :default-active="$route.path"
         class="el-menu-vertical"
         router
     >
@@ -43,7 +42,7 @@ export default {
 
 <style scoped>
 .el-menu-vertical:not(.el-menu--collapse) {
-  width: 200px;
-  min-height: 400px;
+  /*width: 200px;*/
+  /*min-height: 400px;*/
 }
 </style>

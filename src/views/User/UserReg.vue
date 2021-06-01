@@ -1,7 +1,4 @@
 <template>
-  <div>
-    <div>
-      <h2 style="color: white">柳州天步科技创业园智慧园区管理系统</h2>
       <div class="reg-box">
         <!--  注册-->
         <h4>输入用户名/密码/手机号/姓名注册</h4>
@@ -16,9 +13,6 @@
         <el-button @click="Reg" type="primary">注册</el-button>
         <span class="reg-login">已有账号？<router-link to="/login">点此登录</router-link></span>
       </div>
-
-    </div>
-  </div>
 </template>
 <script>
 import {UserReg} from "../../network/output";
@@ -54,14 +48,14 @@ export default {
       })
     },
   },
-  mounted() {
-    document.querySelector('body').setAttribute('style',
-        "background-image: url(" + require("../../assets/img/login.png") + ");background-size: cover;" +
-        "background-repeat: no-repeat")
-  },
-  beforeDestroy() {
-    document.querySelector('body').removeAttribute('style')
-  },
+  // mounted() {
+  //   document.querySelector('body').setAttribute('style',
+  //       "background-image: url(" + require("../../assets/img/login.png") + ");background-size: cover;" +
+  //       "background-repeat: no-repeat")
+  // },
+  // beforeDestroy() {
+  //   document.querySelector('body').removeAttribute('style')
+  // },
 
 
 }

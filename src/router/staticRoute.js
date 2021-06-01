@@ -75,7 +75,9 @@ const staticRoute = [
                 component: () => import(/* webpackChunkName: 'hatch' */ "../views/firmManage/hatchCompony/compony")
             },
         ]
-    }
+    },
+
+    {path: "/home", component: () => import(/* webpackChunkName: 'home' */ "../views/home/home")},
 
 ]
 

@@ -1,6 +1,4 @@
 <template>
-<div class="demo">
-  <h2 style="color: white">柳州天步科技创业园智慧园区管理系统</h2>
   <div class="login-box">
     <h4>用户名密码登录</h4>
     <el-input v-model="username" placeholder="用户名"></el-input>
@@ -8,7 +6,6 @@
     <el-button @click="Login" type="primary">登录</el-button>
     <router-link to="/UserReg">点此注册</router-link>
   </div>
-</div>
 </template>
 <script>
 import {UserLogin} from "../../network/output";
@@ -32,7 +29,7 @@ export default {
               message: res.message,
               type: 'success'
             })
-            this.$router.push({path: '/user'})
+            this.$router.push({path: '/home'})
             break;
           default:
             this.$message.error({
@@ -43,14 +40,14 @@ export default {
       })
     }
   },
-  mounted() {
-    document.querySelector('body').setAttribute('style',
-        "background-image: url(" + require("../../assets/img/login.png") + ");background-size: cover;" +
-        "background-repeat: no-repeat")
-  },
-  beforeDestroy() {
-    document.querySelector('body').removeAttribute('style')
-  },
+  // mounted() {
+  //   document.querySelector('body').setAttribute('style',
+  //       "background-image: url(" + require("../../assets/img/login.png") + ");background-size: cover;" +
+  //       "background-repeat: no-repeat")
+  // },
+  // beforeDestroy() {
+  //   document.querySelector('body').removeAttribute('style')
+  // },
 
 }
 
