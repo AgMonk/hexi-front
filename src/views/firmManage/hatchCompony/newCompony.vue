@@ -24,7 +24,7 @@
               style="width:700px"
               @select="select"
               @select-all="selectAll"
-              @selection-change=" uuid = $event "
+              @selection-change=" componyDATA = $event"
           >
             <el-table-column type="selection"></el-table-column>
             <el-table-column label="科技型中小企业">
@@ -63,7 +63,8 @@ export default {
   },
   data() {
     return {
-      uuid: undefined,
+      componyDATA: undefined,
+      compony: undefined,
       paging: {
         page: 1,
         size: 5,
@@ -80,14 +81,14 @@ export default {
   },
   methods: {
     edit() {
-      console.log(this.uuid)
+      console.log(this.componyDATA[0].uuid)
     },
     toChild() {
+      let uuid = this.componyDATA[0].uuid;
       this.$router.push({
         path: '/hatch/compony',
-        // name: 'home',
         query: {
-          id: this.compony,
+          id: uuid,
         }
       })
     },
