@@ -2,64 +2,32 @@
   <el-container>
     <el-header>
       <div style="text-align: right">
-        <el-button plain type="success" @click="toChild">查询专利&补贴</el-button>
-        <el-button plain type="primary" @click="edit">修改企业</el-button>
+        <el-button plain type="success">查询专利&补贴</el-button>
+        <el-button plain type="primary">修改企业</el-button>
         <el-button plain type="danger">删除企业</el-button>
       </div>
-
     </el-header>
     <el-main>
       <el-row :gutter="20">
-        <big-table/>
-        <small-table/>
+        <company-table type="大规模企业"/>
+        <company-table type="中小微企业"/>
       </el-row>
-      <br/><br/>
+      <br><br>
       <el-row :gutter="20">
-
-        <new-table/>
-        <el-col :span="12">
-          <el-table
-              ref="multipleTable"
-              :data="SecondaryCompony"
-              style="width:700px"
-              @select="select"
-              @select-all="selectAll"
-              @selection-change=" componyDATA = $event"
-          >
-            <el-table-column type="selection"></el-table-column>
-            <el-table-column label="科技型中小企业">
-              <table-component/>
-            </el-table-column>
-          </el-table>
-          <el-pagination
-              :current-page.sync="paging.page"
-              :page-size.sync="paging.size"
-              :total="secondaryTotal"
-              background
-              layout="prev, pager, next,jumper"
-              @current-change="querySecondaryCompony"
-          >
-          </el-pagination>
-        </el-col>
+        <company-table type="高新技术企业"/>
+        <company-table type="科技型中小企业"/>
       </el-row>
     </el-main>
   </el-container>
 </template>
 
 <script>
-import {QueryCompanyPage} from "../../../network/output";
-import tableComponent from "./newcomponents/tableComponent";
-import SmallTable from "./newcomponents/smallTable";
-import BigTable from "./newcomponents/bigTable";
-import NewTable from "./newcomponents/newTable";
+import CompanyTable from "./newcomponents/company-table";
 
 export default {
   name: "newCompony",
   components: {
-    NewTable,
-    BigTable,
-    SmallTable,
-    tableComponent,
+    CompanyTable,
   },
   data() {
     return {
@@ -74,46 +42,22 @@ export default {
       },
       secondaryTotal: undefined,
       //公司类型数据
-
       SecondaryCompony: [],
-
     }
   },
   methods: {
-    edit() {
-      console.log(this.componyDATA[0].uuid)
-    },
-    toChild() {
-      let uuid = this.componyDATA[0].uuid;
-      this.$router.push({
-        path: '/hatch/compony',
-        query: {
-          id: uuid,
-        }
-      })
-    },
-    select(selection) {
-      if (selection.length > 1) {
-        let del_row = selection.shift()
-        this.$refs.multipleTable.toggleRowSelection(del_row, false)
-      }
-    },
-    selectAll(selection) {
-      if (selection.length > 1) {
-        selection.length = 1
-      }
-    },
-    querySecondaryCompony() {
-      this.paging.condition.type = "科技型中小企业";
-      QueryCompanyPage(this.paging).then(res => {
-        this.secondaryTotal = res.data.total;
-        this.SecondaryCompony = res.data.records;
-        console.log(this.SecondaryCompony)
-      })
-    },
-  },
-  mounted() {
-    this.querySecondaryCompony();
+
+    // toChild() {
+    //   let uuid = this.componyDATA[0].uuid;
+    //   this.$router.push({
+    //     path: '/hatch/compony',
+    //     query: {
+    //       id: uuid,
+    //     }
+    //   })
+    // },
+
+
   }
 }
 </script>

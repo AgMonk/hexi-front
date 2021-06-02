@@ -6,10 +6,12 @@
         style="width:700px"
         @select="select"
         @select-all="selectAll"
+        @selection-change=" smallDATA = $event "
     >
       <el-table-column type="selection"></el-table-column>
       <el-table-column label="中小微企业">
         <table-component/>
+        <!--        <el-table-column><el-button @click="aa"></el-button></el-table-column>-->
       </el-table-column>
     </el-table>
     <el-pagination
@@ -43,9 +45,13 @@ export default {
       },
       smallTotal: undefined,
       SmallCompony: [],
+      smallDATA: undefined,
     }
   },
   methods: {
+    aa() {
+      console.log(this.smallDATA[0].uuid)
+    },
     select(selection) {
       if (selection.length > 1) {
         let del_row = selection.shift()
@@ -62,7 +68,7 @@ export default {
       QueryCompanyPage(this.paging).then(res => {
         this.SmallCompony = res.data.records;
         this.smallTotal = res.data.total;
-        console.log(this.SmallCompony)
+        // console.log(this.SmallCompony)
       })
     },
   },
