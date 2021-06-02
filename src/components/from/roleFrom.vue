@@ -72,29 +72,30 @@ export default {
       })
     },
     Submit() {
-      if(this.param.nickname.length === 0 || this.param.name.length ===0
-          || this.param.permissions.length === 0) {
-        this.$message.error({
-          message: "表单均不能为空"
-        })
-      } else {
-        RoleSave(this.param).then(res => {
-          switch (res.code) {
-            case 2000 :
-              this.$message({
-                message: res.message,
-                type: 'success'
-              });
-              this.$emit("success");
-              break;
-            default:
+      // if(this.param.nickname.length === 0 || this.param.name.length ===0
+      //     || this.param.permissions.length === 0) {
+      //   this.$message.error({
+      //     message: "表单均不能为空"
+      //   })
+      // } else {
+      console.log(11)
+      RoleSave(this.param).then(res => {
+        switch (res.code) {
+          case 2000 :
+            this.$message({
+              message: res.message,
+              type: 'success'
+            });
+            this.$emit("success");
+            break;
+          default:
               this.$message.error({
                 message: res.message,
               });
               break;
           }
         })
-      }
+      // }
     }
   },
   mounted() {

@@ -40,14 +40,14 @@ export default {
       })
     }
   },
-  // mounted() {
-  //   document.querySelector('body').setAttribute('style',
-  //       "background-image: url(" + require("../../assets/img/login.png") + ");background-size: cover;" +
-  //       "background-repeat: no-repeat")
-  // },
-  // beforeDestroy() {
-  //   document.querySelector('body').removeAttribute('style')
-  // },
+  mounted() {
+    document.querySelector('body').setAttribute('style',
+        "background-image: url(" + require("../../assets/img/login.png") + ");background-size: cover;" +
+        "background-repeat: no-repeat")
+  },
+  beforeDestroy() {
+    document.querySelector('body').removeAttribute('style')
+  },
 
 }
 

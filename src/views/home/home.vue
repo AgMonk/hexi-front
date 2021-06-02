@@ -11,23 +11,18 @@
     </el-main>
   </el-container>
 </template>
+
 <script>
+
 import ComponyType from "./charts/componyType";
 
 export default {
   name: "home",
   components: {ComponyType},
-  data() {
-    return {}
-  },
 }
 
 </script>
 
 <style scoped>
-.grid-content {
-  width: 300px;
-  height: 300px;
-}
 
 </style>

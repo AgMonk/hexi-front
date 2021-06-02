@@ -8,7 +8,7 @@
         <el-aside>
           <left-nav/>
         </el-aside>
-        <el-main class="a">
+        <el-main>
           <router-view></router-view>
         </el-main>
       </el-container>

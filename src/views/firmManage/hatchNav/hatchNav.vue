@@ -6,6 +6,7 @@
     <el-menu-item index="/hatch/hatchCompony">企业查询</el-menu-item>
     <el-menu-item index="/hatch/hatchPatent">专利查询</el-menu-item>
     <el-menu-item index="/hatch/hatchSubsidy">补贴查询</el-menu-item>
+    <el-menu-item index="/newCompony">企业查询</el-menu-item>
   </el-submenu>
 </template>
 
