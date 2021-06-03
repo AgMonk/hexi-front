@@ -1,5 +1,4 @@
 <template>
-  <div>
     <el-col :span="12">
       <el-table
           ref="multipleTable"
@@ -7,12 +6,10 @@
           style="width:700px"
           @select="select"
           @select-all="selectAll"
-          @selection-change="smallDATA = $event"
+          @selection-change="$emit('selection-change', $event)"
       >
         <el-table-column type="selection"></el-table-column>
         <table-component/>
-
-
       </el-table>
       <el-pagination
           :current-page.sync="paging.page"
@@ -24,7 +21,6 @@
       >
       </el-pagination>
     </el-col>
-  </div>
 </template>
 
 <script>
@@ -47,12 +43,18 @@ export default {
       },
       data: [],
       total: 0,
+      // smallDATA: undefined,
+      componyDATA: undefined,
     }
   },
   methods: {
+
+    click() {
+      console.log(this.smallDATA)
+    },
     getData(page) {
       this.paging.page = page;
-      console.log(page)
+      // console.log(page)
       this.paging.condition.type = this.type;
       QueryCompanyPage(this.paging).then(res => {
         this.data = res.data.records;
@@ -75,7 +77,11 @@ export default {
   mounted() {
     this.getData(1)
   },
-  props: ["type"]
+  props: [
+    "type",
+    "aa"
+  ],
+
 }
 </script>
 

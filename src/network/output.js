@@ -201,10 +201,10 @@ export function deleteCompony(id) {
 }
 
 //查询
-export function QuerySubsidyPage({page, size}) {
+export function QuerySubsidyPage({page, size, start, end, condition}) {
     return transfer({
         method: 'post',
-        data: {page, size},
+        data: {page, size, start, end, condition},
         //condition条件
         url: '/Subsidy/page',
     })
