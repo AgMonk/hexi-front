@@ -16,8 +16,8 @@
       <el-input v-model="componyData.certificationType"/>
     </el-form-item>
     <el-form-item style="text-align: right">
-    <el-button @click="addCompony">添加</el-button>
-    <el-button @click="empty">取消</el-button>
+      <el-button type="primary" @click="addCompony">添加</el-button>
+      <el-button @click="empty">清空</el-button>
     </el-form-item>
 
   </el-form>
@@ -27,7 +27,6 @@
 import {AddModule} from "../../../network/output";
 
 export default {
-
   data() {
     return {
       componyData: {

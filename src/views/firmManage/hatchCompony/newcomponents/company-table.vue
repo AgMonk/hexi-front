@@ -79,16 +79,15 @@ export default {
   },
   props: [
     "type",
-    "aa"
   ],
 
 }
 </script>
 
 <style lang="less" scoped>
-.el-table__header-wrapper {
-  .el-checkbox__inner {
-    display: none;
-  }
-}
+//.el-table__header-wrapper {
+//  .el-checkbox__inner {
+//    display: none;
+//  }
+//}
 </style>

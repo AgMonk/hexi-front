@@ -168,7 +168,7 @@ export function AddPatent({name, description, status, type, companyUuid,}) {
     })
 }
 //修改专利
-export function UpdatePatent( uuid, name, description, status, type, companyUuid ) {
+export function UpdatePatent({uuid, name, description, status, type, companyUuid}) {
     return transfer({
         method: 'post',
         data: {uuid, name, description, status, type, companyUuid},
@@ -183,21 +183,38 @@ export function AddSubsidy({name, price, companyUuid}) {
         url: '/Subsidy/add',
     })
 }
+
 //修改补贴
-export function UpdateSubsidy(uuid, name, price, companyUuid) {
+export function UpdateSubsidy({uuid, name, price, companyUuid}) {
     return transfer({
         method: 'post',
         data: {uuid, name, price, companyUuid},
         url: '/Subsidy/update',
     })
 }
-//删除
+
+//删除公司
 export function deleteCompony(id) {
     return transfer({
         params: {id},
         url: '/Company/del'
     })
+}
 
+//删除补贴
+export function deleteSubsidy(id) {
+    return transfer({
+        params: {id},
+        url: '/Subsidy/del'
+    })
+}
+
+//删除专利
+export function deletePatent(id) {
+    return transfer({
+        params: {id},
+        url: '/Patent/del'
+    })
 }
 
 //查询
