@@ -18,7 +18,6 @@
     </el-form-item>
     <el-form-item style="text-align: right">
       <el-button @click="update">添加</el-button>
-      <el-button>取消</el-button>
     </el-form-item>
   </el-form>
 </template>

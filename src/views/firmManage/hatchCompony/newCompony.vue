@@ -5,7 +5,7 @@
         <el-button plain type="success" @click="toChild">查询专利&补贴</el-button>
         <el-button plain type="success" @click="visible.visible = true">添加企业</el-button>
         <el-button plain type="primary" @click="editCompony">修改企业</el-button>
-        <el-button plain type="danger">删除企业</el-button>
+        <el-button plain type="danger" @click="dele">删除企业</el-button>
       </div>
       <!--      添加企业弹窗-->
       <el-dialog
@@ -38,6 +38,7 @@
 import CompanyTable from "./newcomponents/company-table";
 import ComponyFrom from "./ComponyFrom";
 import NewComponyForm from "./newcomponents/compony/newComponyForm";
+import {deleteCompony} from "../../../network/output";
 
 export default {
   name: "newCompony",
@@ -57,6 +58,12 @@ export default {
     }
   },
   methods: {
+    dele() {
+      let id = this.selection.uuid;
+      deleteCompony(id).then(res => {
+        console.log(res)
+      })
+    },
     choice(e) {
       this.choose = e[0].uuid
       this.selection = e[0];

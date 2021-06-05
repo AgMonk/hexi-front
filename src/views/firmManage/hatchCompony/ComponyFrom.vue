@@ -10,10 +10,19 @@
       <el-input v-model="componyData.phone"/>
     </el-form-item>
     <el-form-item label="企业类型">
-      <el-input v-model="componyData.type"/>
+      <el-select v-model="componyData.type" style="width: 100%">
+        <el-option value="大规模企业"></el-option>
+        <el-option value="高新技术企业"></el-option>
+        <el-option value="科技型中小企业"></el-option>
+        <el-option value="中小微企业"></el-option>
+      </el-select>
     </el-form-item>
     <el-form-item label="认证类型">
-      <el-input v-model="componyData.certificationType"/>
+      <el-select v-model="componyData.certificationType" style="width: 100%">
+        <el-option value="知识产权贯标"></el-option>
+        <el-option value="质量体系认证"></el-option>
+        <el-option value="CNSA认证"></el-option>
+      </el-select>
     </el-form-item>
     <el-form-item style="text-align: right">
       <el-button type="primary" @click="addCompony">添加</el-button>

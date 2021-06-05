@@ -88,7 +88,7 @@ export const getClientWidth = ()=>{
   return 4
 }
 
-export let Event = new Vue();
+export let Unicom = new Vue();
 
 // export let backg = new Vue({
 //   mounted() {

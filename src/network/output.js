@@ -272,3 +272,8 @@ export function BarrierLogPage({page, size, start, end}) {
         data: {page, size, start, end},
     })
 }
+
+//缴费账单模块
+
+//添加缴费记录
+// export function PaymentAdd({})

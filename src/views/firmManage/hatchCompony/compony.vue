@@ -71,17 +71,22 @@
                 <el-input v-model="patent.name"/>
               </el-form-item>
               <el-form-item label="专利状态">
-                <el-autocomplete
-                    v-model="patent.status"
-                    :fetch-suggestions="querySearch"
-                    style="width: 100%"
-                />
+
+                <el-select v-model="patent.status" style="width: 100%">
+                  <el-option value="申请"></el-option>
+                  <el-option value="待续费"></el-option>
+                  <el-option value="实审"></el-option>
+                  <el-option value="有效"></el-option>
+                </el-select>
               </el-form-item>
               <el-form-item label="专利类型">
-                <el-autocomplete
-                    v-model="patent.type"
-                    :fetch-suggestions="querySearch1"
-                    style="width: 100%"/>
+                <el-select v-model="patent.type" style="width: 100%">
+                  <el-option value="著作权"></el-option>
+                  <el-option value="外观结构专利"></el-option>
+                  <el-option value="发明专利"></el-option>
+                  <el-option value="实用新型专利"></el-option>
+
+                </el-select>
               </el-form-item>
               <el-form-item label="专利内容">
                 <el-input v-model="patent.description" autosize type="textarea"/>
@@ -206,40 +211,10 @@ export default {
   mounted() {
     this.queryPatent();
     this.querySubsidy();
-    this.restaurants = this.loadAll();
-    this.restaurants1 = this.loadAll1();
   },
   methods: {
-    querySearch1(queryString, cb) {
-      let restaurants = this.restaurants1;
-      let results = queryString ? restaurants.filter(this.createFilter1(queryString)) : restaurants;
-      // 调用 callback 返回建议列表的数据
-      cb(results);
-    },
-    createFilter1(queryString) {
-      return (restaurant) => {
-        return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-      };
-    },
-    loadAll1() {
-      return [
-        {"value": "外观结构专利"},
-        {"value": "著作权"},
-        {"value": "发明专利"},
-        {"value": "实用新型专利"},
-      ];
-    },
-    querySearch(queryString, cb) {
-      let restaurants = this.restaurants;
-      let results = queryString ? restaurants.filter(this.createFilter(queryString)) : restaurants;
-      // 调用 callback 返回建议列表的数据
-      cb(results);
-    },
-    createFilter(queryString) {
-      return (restaurant) => {
-        return (restaurant.value.toLowerCase().indexOf(queryString.toLowerCase()) === 0);
-      };
-    },
+
+
     loadAll() {
       return [
         {"value": "申请"},

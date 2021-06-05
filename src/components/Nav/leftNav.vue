@@ -7,11 +7,11 @@
     >
       <hatch-nav/>
       <user-manage/>
+      <hydropowernav/>
       <user-logout/>
-
-      <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
-      <!--            <span slot="title">视频监控</span>-->
-      <!--          </el-menu-item>-->
+      <!--                <el-menu-item index=""><i class="el-icon-setting"></i>-->
+      <!--                  <span slot="title">视频监控</span>-->
+      <!--                </el-menu-item>-->
       <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
       <!--            <span slot="title">智能水电</span>-->
       <!--          </el-menu-item>-->
@@ -33,9 +33,10 @@
 import UserLogout from "../../views/User/userLogout";
 import UserManage from "../../views/User/userManage";
 import HatchNav from "../../views/firmManage/hatchNav/hatchNav";
+import Hydropowernav from "../../views/hydropower/hydropowerNav/hydropowernav";
 
 export default {
-  components: {HatchNav, UserManage, UserLogout},
+  components: {Hydropowernav, HatchNav, UserManage, UserLogout},
   methods: {}
 }
 </script>
