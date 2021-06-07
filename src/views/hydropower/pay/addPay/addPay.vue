@@ -17,7 +17,14 @@
       </el-form>
     </el-header>
     <el-main>
-      <pay-card/>
+      <el-row>
+        <el-col :span="12">
+          <pay-card/>
+        </el-col>
+        <el-col :span="12">
+          <hydropower-query/>
+        </el-col>
+      </el-row>
     </el-main>
   </el-container>
 </template>
@@ -26,17 +33,18 @@
 import {QueryCompanyPage} from "../../../../network/output";
 import PayCard from "./payCard";
 import {Unicom} from "../../../../common/utils";
+import HydropowerQuery from "./hydropowerQuery";
 
 export default {
   name: "addPay",
-  components: {PayCard},
+  components: {HydropowerQuery, PayCard},
   data() {
     return {
       companyPage: {
         page: 1,
-        size: 5,
+        size: 500,
         condition: {
-          name: undefined,
+          name: "",
           address: undefined,
           type: undefined,
           certificationType: undefined,
@@ -50,12 +58,17 @@ export default {
   },
   methods: {
     queryCompanyPage() {
-      QueryCompanyPage(this.companyPage).then(res => {
-        console.log(res);
-        this.componyData = res;
-        Unicom.$emit('data', res)
-      });
-
+      if (this.companyPage.condition.name.length === 0) {
+        this.$message.error({
+          message: "企业名称不能为空",
+        })
+      } else {
+        QueryCompanyPage(this.companyPage).then(res => {
+          console.log(res);
+          this.componyData = res;
+          Unicom.$emit('data', res)
+        });
+      }
     }
   }
 }

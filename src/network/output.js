@@ -276,4 +276,45 @@ export function BarrierLogPage({page, size, start, end}) {
 //缴费账单模块
 
 //添加缴费记录
-// export function PaymentAdd({})
+export function PaymentAdd({companyUuid, type, amount}) {
+    return transfer({
+        url: '/Payment/add',
+        method: 'post',
+        data: {companyUuid, type, amount},
+    })
+}
+
+//修改缴费记录
+export function PaymentUpdate({uuid, companyUuid, type, amount}) {
+    return transfer({
+        url: '/Payment/update',
+        method: 'post',
+        data: {uuid, companyUuid, type, amount},
+    })
+}
+
+//查询缴费记录
+export function Paymentpage({page, size, start, end, condition}) {
+    return transfer({
+        url: '/Payment/page',
+        method: 'post',
+        data: {page, size, start, end, condition},
+    })
+}
+
+//金额、用量统计
+export function PaymentSum() {
+    return transfer({
+        url: '/Payment/sum',
+        method: 'post',
+        data: []
+    })
+}
+
+//删除缴费
+export function PaymentDel(id) {
+    return transfer({
+        url: '/Payment/del',
+        params: {id},
+    })
+}
