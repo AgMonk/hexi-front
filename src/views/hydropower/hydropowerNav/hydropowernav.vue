@@ -6,8 +6,14 @@
     <el-menu-item-group>
       <template slot="title">缴费</template>
       <el-menu-item index="/addPay">缴费记录</el-menu-item>
-      <el-menu-item index="/user/EditUserInfo">修改用户信息</el-menu-item>
-      <el-menu-item index="/user/EditPassword">修改密码</el-menu-item>
+      <el-menu-item index="/user/EditUserInfo">预留</el-menu-item>
+      <el-menu-item index="/user/EditPassword">预留</el-menu-item>
+    </el-menu-item-group>
+    <el-menu-item-group>
+      <template slot="title">账单</template>
+      <el-menu-item index="/bill">账单</el-menu-item>
+      <el-menu-item index="/user/EditUserInfo">预留</el-menu-item>
+      <el-menu-item index="/user/EditPassword">预留</el-menu-item>
     </el-menu-item-group>
   </el-submenu>
 </template>

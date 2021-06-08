@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header>
-      <el-form :inline="true" :model="companyPage" class="demo-form-inline">
+      <el-form :inline="true" :model="companyPage">
         <el-form-item label="企业名称">
           <el-input v-model="companyPage.condition.name" placeholder="企业名称"></el-input>
         </el-form-item>
@@ -52,9 +52,6 @@ export default {
       },
       componyData: undefined,
     }
-  },
-  created() {
-    // this.queryCompanyPage();
   },
   methods: {
     queryCompanyPage() {

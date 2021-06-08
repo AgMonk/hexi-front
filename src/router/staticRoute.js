@@ -82,7 +82,8 @@ const staticRoute = [
         path: "/newCompony",
         component: () => import(/* webpackChunkName: 'home' */ "../views/firmManage/hatchCompony/newCompony")
     },
-    {path: "/addPay", component: () => import(/* webpackChunkName: 'pay'*/ "../views/hydropower/pay/addPay/addPay")}
+    {path: "/addPay", component: () => import(/* webpackChunkName: 'pay'*/ "../views/hydropower/pay/addPay/addPay")},
+    {path: "/bill", component: () => import(/* webpackChunkName: 'pay'*/ "../views/hydropower/pay/bill/bill")}
 ]
 
 export default staticRoute;

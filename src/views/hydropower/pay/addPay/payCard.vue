@@ -4,9 +4,7 @@
       <span>企业</span>
       <span style="float: right; padding: 0;">
       <el-button plain type="primary" @click="visible.addVisible = true">添加</el-button>
-
       <el-button plain type="warning" @click="paymentpage">水电查询</el-button>
-
       </span>
     </div>
     <div class="text item">

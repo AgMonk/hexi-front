@@ -318,3 +318,30 @@ export function PaymentDel(id) {
         params: {id},
     })
 }
+
+//查询账单
+export function QueryBill({page, size, condition}) {
+    return transfer({
+        url: 'Bill/page',
+        method: 'post',
+        data: {page, size, condition}
+    })
+}
+
+//修改账单
+export function UpdateBill({uuid, companyUuid, type, month, amount, unitPrice, remark, priceConstruction}) {
+    return transfer({
+        url: 'Bill/update',
+        method: 'post',
+        data: {uuid, companyUuid, type, month, amount, unitPrice, remark, priceConstruction}
+    })
+}
+
+//添加账单
+export function AddBill({companyUuid, type, month, amount, unitPrice, remark, priceConstruction}) {
+    return transfer({
+        url: 'Bill/add',
+        method: 'post',
+        data: {companyUuid, type, month, amount, unitPrice, remark, priceConstruction}
+    })
+}
