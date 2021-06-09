@@ -52,15 +52,42 @@
     <el-dialog
         :visible.sync="visible.addVisible"
         title="添加账单" width="30%">
-
-      <el-button @click="addBill(); send()">测试</el-button>
+      <el-form label-width="100px">
+        <el-form-item label="备注">
+          <el-input v-model="add.remark"/>
+        </el-form-item>
+        <el-form-item label="缴费类型">
+          <el-select v-model="add.type" style="width: 100%">
+            <el-option value="水费"></el-option>
+            <el-option value="电费"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="月份">
+          <el-date-picker
+              v-model="add.month"
+              placeholder="选择月"
+              style="width: 100%"
+              type="month"
+              value-format="yyyy-MM">
+          </el-date-picker>
+        </el-form-item>
+        <el-form-item label="用量">
+          <el-input v-model="add.amount"/>
+        </el-form-item>
+        <el-form-item label="单价">
+          <el-input v-model="add.unitPrice"/>
+        </el-form-item>
+        <el-form-item style="text-align: right">
+          <el-button type="primary" @click="addBill(); send(); ">添加</el-button>
+        </el-form-item>
+      </el-form>
     </el-dialog>
   </el-container>
 </template>
 
 <script>
 import Querybill from "./querybill";
-import {QueryCompanyPage} from "../../../../network/output";
+import {AddBill, QueryCompanyPage} from "../../../../network/output";
 import {Unicom} from "../../../../common/utils";
 
 export default {
@@ -82,9 +109,20 @@ export default {
           certificationType: undefined,
         },
       },
+      add: {
+        companyUuid: undefined,
+        type: undefined,
+        month: undefined,
+        amount: undefined,
+        unitPrice: undefined,
+        remark: undefined,
+        priceConstruction: undefined
+      },
       total: undefined,
-
-      billData: undefined,
+      Name: {
+        name: undefined,
+        uuid: undefined
+      },
     }
   },
   mounted() {
@@ -93,10 +131,9 @@ export default {
   methods: {
     //添加账单
     addBill() {
-      // AddBill().then(res => {
-      //   console.log(res);
-      // })
-      console.log(111)
+      AddBill(this.add).then(res => {
+        console.log(res);
+      })
     },
     //查询公司
     componyPage() {
@@ -108,13 +145,14 @@ export default {
     },
     //获取选中uuid
     change(val) {
-      this.billData = val[0] ? val[0].uuid : undefined;
-      console.log(this.billData);
+      this.add.companyUuid = val[0] ? val[0].uuid : undefined;
+      this.Name.name = val[0] ? val[0].name : undefined;
+      this.Name.uuid = val[0] ? val[0].uuid : undefined;
+      console.log(val);
     },
     send() {
-      Unicom.$emit('data2', this.billData);
+      Unicom.$emit('data2', this.Name);
       this.visible.addVisible = false
-      console.log(111)
     }
   },
 }

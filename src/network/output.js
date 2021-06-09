@@ -345,3 +345,28 @@ export function AddBill({companyUuid, type, month, amount, unitPrice, remark, pr
         data: {companyUuid, type, month, amount, unitPrice, remark, priceConstruction}
     })
 }
+
+//删除账单
+export function BillDel(id) {
+    return transfer({
+        url: '/Bill/del',
+        params: {id},
+    })
+}
+
+//道闸查询
+export function BarrierPage({page, size, start, end, condition}) {
+    return transfer({
+        data: {page, size, start, end, condition},
+        method: 'post',
+        url: '/BarrierLog/page'
+    })
+}
+
+//查询车辆分布
+export function CarStatus(day) {
+    return transfer({
+        params: {day},
+        url: '/BarrierLog/getCarStatus'
+    })
+}

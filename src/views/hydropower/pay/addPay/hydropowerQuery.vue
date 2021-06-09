@@ -102,6 +102,7 @@ export default {
       this.updateData.type = val[0] ? val[0].type : undefined;
       this.updateData.uuid = val[0] ? val[0].uuid : undefined;
       this.updateData.companyUuid = val[0] ? val[0].companyUuid : undefined;
+      console.log(this.updateData.amount)
     },
     update() {
 

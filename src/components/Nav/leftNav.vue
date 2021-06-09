@@ -8,6 +8,14 @@
       <hatch-nav/>
       <user-manage/>
       <hydropowernav/>
+
+      <el-menu-item index="/barrier">
+        <span slot="title">车位道闸</span>
+      </el-menu-item>
+      <el-menu-item index="2">
+        <span slot="title">火灾报警</span>
+      </el-menu-item>
+
       <user-logout/>
       <!--                <el-menu-item index=""><i class="el-icon-setting"></i>-->
       <!--                  <span slot="title">视频监控</span>-->
@@ -15,9 +23,7 @@
       <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
       <!--            <span slot="title">智能水电</span>-->
       <!--          </el-menu-item>-->
-      <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
-      <!--            <span slot="title">车位道闸</span>-->
-      <!--          </el-menu-item>-->
+
       <!--          <el-menu-item index=""><i class="el-icon-setting"></i>-->
       <!--            <span slot="title">火灾报警</span>-->
       <!--          </el-menu-item>-->
