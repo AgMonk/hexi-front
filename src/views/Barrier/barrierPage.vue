@@ -6,25 +6,27 @@
           <el-date-picker v-model="paging.start"
                           format="yyyy-MM-dd HH:mm"
                           placeholder="选择开始时间"
-                          style="width: 150px"
+                          style="width: 180px"
                           type="datetime"
                           value-format="timestamp"/>
           <el-date-picker v-model="paging.end"
                           format="yyyy-MM-dd HH:mm"
                           placeholder="选择结束时间"
-                          style="width: 150px"
+                          style="width: 180px"
                           type="datetime"
                           value-format="timestamp"/>
         </el-form-item>
-        <!--      <el-form-item label="进/出" >-->
-        <!--        <el-select v-model="paging.condition.type">-->
-        <!--          <el-option value="IN" label="进"></el-option>-->
-        <!--          <el-option value="OUT" label="出"></el-option>-->
-        <!--        </el-select>-->
-        <!--      </el-form-item>-->
-        <!--      <el-form-item label="牌照"><el-input v-model="paging.condition.plateNo" placeholder="可不填"/></el-form-item>-->
+        <el-form-item label="进/出">
+          <el-select v-model="paging.condition.type" placeholder="可不选">
+            <el-option label="进" value="IN"></el-option>
+            <el-option label="出" value="OUT"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="牌照">
+          <el-input v-model="paging.condition.plateNo" placeholder="可不填"/>
+        </el-form-item>
         <el-form-item>
-          <el-button type="primary" @click="barrierPage(); paging = {}">查询</el-button>
+          <el-button type="primary" @click="barrierPage();">查询</el-button>
         </el-form-item>
       </el-form>
     </el-header>
@@ -45,8 +47,6 @@ export default {
       paging: {
         page: 1,
         size: 5,
-        // start: 1591686308,
-        // end: new Date().getTime()/1000,
         start: undefined,
         end: undefined,
         condition: {
@@ -57,7 +57,6 @@ export default {
     }
   },
   mounted() {
-    // this.barrierPage();
   },
   methods: {
     barrierPage() {
@@ -65,6 +64,8 @@ export default {
       this.paging.end = Math.floor(this.paging.end / 1000);
       BarrierPage(this.paging).then(res => {
         console.log(res);
+        this.paging.start = undefined;
+        this.paging.end = undefined;
       })
     },
     carStatus() {
@@ -72,7 +73,7 @@ export default {
       CarStatus().then(res => {
         console.log(res)
       })
-    }
+    },
   }
 }
 </script>
