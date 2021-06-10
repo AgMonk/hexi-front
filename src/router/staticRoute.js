@@ -84,7 +84,16 @@ const staticRoute = [
     },
     {path: "/addPay", component: () => import(/* webpackChunkName: 'pay'*/ "../views/hydropower/pay/addPay/addPay")},
     {path: "/bill", component: () => import(/* webpackChunkName: 'pay'*/ "../views/hydropower/pay/bill/bill")},
-    {path: "/barrier", component: () => import(/* webpackChunkName: 'pay'*/ "../views/Barrier/barrierPage")}
+    {path: "/barrier", component: () => import(/* webpackChunkName: 'pay'*/ "../views/Barrier/barrierPage")},
+    {
+        path: "/waterPage",
+        component: () => import(/* webpackChunkName: 'pay'*/ "../views/monitor/WaterQuality/waterPage")
+    },
+    {path: "/SoilData", component: () => import(/* webpackChunkName: 'pay'*/ "../views/monitor/SoilData/SoilData")},
+    {
+        path: "/screen", meta: {Nav: false},
+        component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/screen")
+    }
 ]
 
 export default staticRoute;

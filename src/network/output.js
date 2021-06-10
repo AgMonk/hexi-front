@@ -370,3 +370,28 @@ export function CarStatus(day) {
         url: '/BarrierLog/getCarStatus'
     })
 }
+
+//水质查询
+export function WaterQualityPage({page, size, start, end, condition}) {
+    return transfer({
+        method: 'post',
+        data: {page, size, start, end, condition},
+        url: '/WaterQuality/page'
+    })
+}
+
+//查询站点
+export function getStations() {
+    return transfer({
+        url: '/WaterQuality/getStations'
+    })
+}
+
+//土质查询
+export function SoilDatapage({page, size, start, end}) {
+    return transfer({
+        method: 'post',
+        data: {page, size, start, end},
+        url: '/SoilData/page'
+    })
+}

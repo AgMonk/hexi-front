@@ -1,19 +1,22 @@
 <template>
-  <el-container>
-    <el-header style="padding: 0">
-      <top-nav/>
-    </el-header>
-    <el-main style="padding: 0">
-      <el-container>
-        <el-aside>
-          <left-nav/>
-        </el-aside>
-        <el-main>
-          <router-view></router-view>
-        </el-main>
-      </el-container>
-    </el-main>
-  </el-container>
+  <div>
+    <el-container v-if="$route.path!=='/screen'">
+      <el-header style="padding: 0">
+        <top-nav/>
+      </el-header>
+      <el-main style="padding: 0">
+        <el-container>
+          <el-aside>
+            <left-nav/>
+          </el-aside>
+          <el-main>
+            <router-view/>
+          </el-main>
+        </el-container>
+      </el-main>
+    </el-container>
+    <router-view v-if="$route.path==='/screen'"/>
+  </div>
 </template>
 
 <script>

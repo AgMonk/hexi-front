@@ -20,6 +20,7 @@
           <el-select v-model="paging.condition.type" placeholder="可不选">
             <el-option label="进" value="IN"></el-option>
             <el-option label="出" value="OUT"></el-option>
+            <el-option label="进/出" value=""></el-option>
           </el-select>
         </el-form-item>
         <el-form-item label="牌照">
@@ -31,14 +32,31 @@
       </el-form>
     </el-header>
     <el-main>
-
-      <el-button @click="carStatus"></el-button>
+      <el-table :data="car">
+        <el-table-column label="车主" prop="owner"></el-table-column>
+        <el-table-column label="车牌" prop="plateNo"></el-table-column>
+        <el-table-column label="车辆" prop="carTypeName"></el-table-column>
+        <el-table-column label="进出" prop="gateName"></el-table-column>
+        <el-table-column label="进出口" prop="gateNo"></el-table-column>
+        <el-table-column label="时间" prop="timestamp.timeString"></el-table-column>
+        <el-table-column label="" prop="reason"></el-table-column>
+      </el-table>
+      <el-pagination
+          :current-page.sync="paging.page"
+          :page-size.sync="paging.size"
+          :total="total"
+          background
+          layout="prev, pager, next,jumper"
+          @current-change="barrierPage"
+      >
+      </el-pagination>
     </el-main>
   </el-container>
 </template>
 
 <script>
 import {BarrierPage, CarStatus} from "../../network/output";
+import {copyObj} from "../../common/utils";
 
 export default {
   name: "barrierPage",
@@ -46,35 +64,44 @@ export default {
     return {
       paging: {
         page: 1,
-        size: 5,
+        size: 10,
         start: undefined,
         end: undefined,
         condition: {
           type: undefined,
-          plateNo: "",
+          plateNo: undefined,
         }
       },
+      car: undefined,
+      total: undefined,
     }
   },
   mounted() {
+    this.carStatus();
   },
   methods: {
     barrierPage() {
-      this.paging.start = Math.floor(this.paging.start / 1000);
-      this.paging.end = Math.floor(this.paging.end / 1000);
-      BarrierPage(this.paging).then(res => {
+      let d = copyObj(this.paging);
+      d.start /= 1000;
+      d.end /= 1000;
+      BarrierPage(d).then(res => {
+        this.car = res.data.records;
+        this.total = res.data.total;
         console.log(res);
-        this.paging.start = undefined;
-        this.paging.end = undefined;
       })
     },
-    carStatus() {
-      // let day = 7;
-      CarStatus().then(res => {
+    page() {
+      BarrierPage(this.paging).then(res => {
         console.log(res)
       })
     },
-  }
+    carStatus() {
+      let day = 7;
+      CarStatus(day).then(res => {
+        console.log(res)
+      })
+    },
+  },
 }
 </script>
 
