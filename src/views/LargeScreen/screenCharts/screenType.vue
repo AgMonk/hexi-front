@@ -1,6 +1,6 @@
 <template>
   <el-col :span="10">
-    <div id="enterprise" style="width: 500px;height: 300px; background: #FFFFFF; "></div>
+    <div id="enterprise" style="width: 500px;height: 270px; background: #0F373F; "></div>
   </el-col>
 </template>
 
@@ -31,11 +31,30 @@ export default {
             // name: '企业类型',
             type: 'pie',
             radius: ['40%', '70%'],
+
             avoidLabelOverlap: false,
             itemStyle: {
               borderRadius: 10,
               borderColor: '#fff',
-              borderWidth: 2
+              borderWidth: 2,
+
+              // emphasis: {
+              //   shadowBlur: 1,
+              //   shadowOffsetX: 0,
+              //   shadowColor: '#fff',
+              // },
+              normal: {
+                label: {
+                  show: true,
+                  formatter: '{c}',
+                  position: 'inner',
+                  color: '#ffffff'
+                },
+                // labelLine: {
+                //   show: true,
+                // }
+              },
+
             },
             label: {
               show: false,
@@ -65,6 +84,7 @@ export default {
           left: 'left',
           textStyle: {
             fontSize: '14px',
+            color: '#ffffff'
           }
         },
         series: []

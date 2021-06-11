@@ -4,8 +4,10 @@
     <el-main>
       <el-row :gutter="20">
         <compony-type/>
-        <el-col :span="6">
-          <div style="width: 300px;height: 300px; background: #FFFFFF; "></div>
+        <el-col :span="12">
+          <div style="background: #FFFFFF; ">
+            <compony-chart/>
+          </div>
         </el-col>
       </el-row>
     </el-main>
@@ -15,10 +17,11 @@
 <script>
 
 import ComponyType from "./charts/componyType";
+import ComponyChart from "../LargeScreen/screenCharts/componyChart";
 
 export default {
   name: "home",
-  components: {ComponyType},
+  components: {ComponyChart, ComponyType},
 }
 
 </script>
