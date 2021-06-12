@@ -395,3 +395,11 @@ export function SoilDatapage({page, size, start, end}) {
         url: '/SoilData/page'
     })
 }
+
+//水电统计
+export function BillStatistics() {
+    return transfer({
+        url: '/Bill/statistics',
+        // params: {month},
+    })
+}

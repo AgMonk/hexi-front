@@ -4,12 +4,13 @@
       <h4>修改用户信息</h4>
       <el-input v-model="phone" placeholder="电话号码" ></el-input>
       <el-input placeholder="姓名" v-model="name"></el-input>
-      <el-button @click="Edit" type="primary" >修改</el-button>
+      <el-button type="primary" @click="Edit">修改</el-button>
     </div>
 </template>
 
 <script>
 import {EditUserInfo} from "../../network/output";
+
 export default {
   name: "EditUserInfo",
   data() {

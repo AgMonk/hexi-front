@@ -93,7 +93,8 @@ const staticRoute = [
     {
         path: "/screen", meta: {Nav: false},
         component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/screen")
-    }
+    },
+    {path: "/test", component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/test")},
 ]
 
 export default staticRoute;

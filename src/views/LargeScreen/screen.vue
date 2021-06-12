@@ -38,7 +38,9 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
           </div>
         </el-col>
         <el-col :span="3">
-          <div class="Hallmark item"></div>
+          <div class="Hallmark item">
+            <hydropower-chart/>
+          </div>
         </el-col>
         <el-col :span="4">
           <div class="Hallmark item"></div>
@@ -75,10 +77,11 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
 <script>
 import ComponyChart from "./screenCharts/componyChart";
 import screenType from "./screenCharts/screenType";
+import HydropowerChart from "./screenCharts/hydropowerChart";
 
 export default {
   name: "screen",
-  components: {ComponyChart, screenType},
+  components: {HydropowerChart, ComponyChart, screenType},
   data() {
     return {}
   },
