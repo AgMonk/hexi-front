@@ -48,22 +48,47 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
       </el-row>
       <el-row :gutter="20">
         <el-col :span="7">
-          <div class="Hallmark"></div>
+          <div id="rectangle" class="Hallmark">
+            <div class="left-bottom">
+              <patent-chart/>
+            </div>
+            <div class="left-bottom">
+              <subsidy-chart/>
+            </div>
+          </div>
         </el-col>
-
         <el-col :span="10">
           <div class="bottom">
             <div class="small">
               <el-container>
                 <el-header><h1 class="typeTitle">企业类型</h1></el-header>
+                <el-main>
+                  <screen-type/>
+                </el-main>
               </el-container>
-              <el-main>
-                <screen-type/>
-              </el-main>
             </div>
-            <div class="small"></div>
-            <div class="small"></div>
-            <div class="small"></div>
+            <div class="small">
+              <el-container>
+                <el-header><h1 class="typeTitle">企业类型</h1></el-header>
+                <el-main>
+                  <authentication-chart/>
+                </el-main>
+              </el-container>
+            </div>
+            <div class="small">
+              <el-container>
+                <el-header><h1 class="typeTitle">专利状态</h1></el-header>
+                <el-main>
+                </el-main>
+              </el-container>
+            </div>
+            <div class="small">
+              <el-container>
+                <el-header><h1 class="typeTitle">车位信息</h1></el-header>
+
+                <parking-chart/>
+              </el-container>
+            </div>
           </div>
         </el-col>
         <el-col :span="7">
@@ -78,10 +103,14 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
 import ComponyChart from "./screenCharts/componyChart";
 import screenType from "./screenCharts/screenType";
 import HydropowerChart from "./screenCharts/hydropowerChart";
+import PatentChart from "./screenCharts/patentChart";
+import SubsidyChart from "./screenCharts/subsidyChart";
+import AuthenticationChart from "./screenCharts/authenticationChart";
+import ParkingChart from "./screenCharts/parkingChart";
 
 export default {
   name: "screen",
-  components: {HydropowerChart, ComponyChart, screenType},
+  components: {ParkingChart, AuthenticationChart, SubsidyChart, PatentChart, HydropowerChart, ComponyChart, screenType},
   data() {
     return {}
   },
@@ -113,7 +142,6 @@ export default {
 }
 
 .Hallmark {
-  /*background: #0F373F;*/
   height: 500px;
   border: 1px #5AB1EF solid;
 }
@@ -134,19 +162,23 @@ export default {
 }
 
 .Hallmark.right {
-  /*height: 550px;*/
-  /*position: absolute;*/
   background: #0F373F;
+}
 
+#rectangle {
+  display: flex;
 }
 
 .bottom > .small {
   height: 350px;
-  /*width: 100px;*/
   background: #0F373F;
   flex: 1;
   margin: 5px;
   margin-top: 50px;
   border: 1px #5AB1EF solid;
+}
+
+.left-bottom {
+  flex: 1;
 }
 </style>

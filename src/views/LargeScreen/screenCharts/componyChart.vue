@@ -65,7 +65,7 @@ export default {
             position: 'top', // 在上方显示
             distance: 20, // 距离图形元素的距离。当 position 为字符描述值（如 'top'、'insideRight'）时候有效。
             color: '#ffffff',
-            fontSize: 12
+            // fontSize: 12
           }
 
         }]

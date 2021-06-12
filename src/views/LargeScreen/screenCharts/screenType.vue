@@ -1,7 +1,5 @@
 <template>
-  <el-col :span="10">
     <div id="enterprise" style="width: 400px;height: 270px; background: #0F373F; "></div>
-  </el-col>
 </template>
 
 <script>
@@ -14,7 +12,6 @@ export default {
 // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById('enterprise'));
       QueryCompanyStatistics().then(res => {
-        // console.log(res)
         let c = res.data.countGroupByType;
         let data = [];
         for (let i = 0; i < c.length; i++) {
@@ -23,6 +20,7 @@ export default {
             name: c[i].type,
           });
         }
+        console.log(data)
         myChart.setOption({
           series: [{
             // name: '企业类型',

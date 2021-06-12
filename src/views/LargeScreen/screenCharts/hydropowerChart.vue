@@ -4,11 +4,12 @@
       <h1 class="title">水电信息管理</h1>
     </el-header>
     <el-main>
-      <div class="two">
-        <div id="left" class="chart">
-
+      <div class="main">
+        <h3 class="ranking">企业月用水用电排行</h3>
+        <div class="two">
+          <div id="left" class="chart"></div>
+          <div id="right" class="chart"/>
         </div>
-        <div class="chart"></div>
       </div>
     </el-main>
   </el-container>
@@ -20,35 +21,97 @@ import {BillStatistics} from "../../../network/output";
 export default {
   name: "hydropowerChart",
   methods: {
+    setOption(id, d) {
+      let myChart = this.$echarts.init(document.getElementById(id));
+      let data = [];
+      for (let i = 0; i < d.length; i++) {
+        data.push({
+          amount: d[i].amount,
+          name: d[i].companyName,
+        })
+      }
+      myChart.setOption({
+        yAxis: {
+          data: data.map(i => i.name).splice(0, 5),
+          show: false
+        },
+        series: [{
+          data: data.map(i => i.amount),
+          type: 'bar'
+        }]
+      })
+    },
     myEcharts() {
-      let myChart = this.$echarts.init(document.getElementById('left'));
+      BillStatistics().then(res => {
+        this.setOption("left", res.data.topMap.水费);
+        this.setOption("right", res.data.topMap.电费);
+      })
+    },
+    init(id, title) {
+      let myChart = this.$echarts.init(document.getElementById(id));
+      // if (document.getElementById(id) == null) {
+      //   return
+      // }
+      // this.$echarts.dispose(document.getElementById(id))
+      // myChart = this.$echarts.init(document.getElementById(id))
+      // myChart.setOption({})
       let option = {
+        title: {
+          text: title,
+          textStyle: {
+            color: "#ffffff"
+          }
+        },
         yAxis: {
           type: 'category',
-          data: ['Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+          //企业名字
+          data: []
         },
         xAxis: {
           type: 'value'
         },
         series: [{
-          data: [120, 200, 150, 110, 130],
-          type: 'bar'
-        }]
+          data: [],
+          type: 'bar',
+          itemStyle: {
+            color: function (params) {
+              let colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622'];
+              return colorList[params.dataIndex % colorList.length];
+            }
+          }
+        }],
+        label: {
+          show: true,
+          formatter: '{b}   {c}',
+          color: '#ffffff',
+          // fontSize: '12',
+        },
+        emphasis: {
+          label: {
+            show: true,
+            fontSize: '17',
+            fontWeight: 'bold'
+          }
+        },
       };
       myChart.setOption(option);
-      BillStatistics().then(res => {
-        console.log(res)
-      })
-    },
-
+    }
   },
   mounted() {
+    this.init('left', '电费用量排行');
+    this.init('right', '水费用量排行');
     this.myEcharts();
   }
 }
 </script>
 
 <style scoped>
+.main {
+  width: 510px;
+  height: 480px;
+  background: #0F373F;
+}
+
 .title {
   font-size: 30px;
   text-align: center;
@@ -57,13 +120,16 @@ export default {
 
 .two {
   display: flex;
-  width: 510px;
-  height: 480px;
-  background: #0F373F;
+  height: 420px;
 }
 
 .chart {
   flex: 1;
+}
 
+.ranking {
+  text-align: center;
+  color: #FFFFFF;
+  margin: 0;
 }
 </style>
