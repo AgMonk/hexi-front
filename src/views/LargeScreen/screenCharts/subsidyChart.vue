@@ -15,7 +15,7 @@ export default {
       let myCharts = this.$echarts.init(document.getElementById("subsidy"));
       QuerySubsidyStatistics().then(res => {
         let year = res.data.sumGroupByYear;
-        console.log(year.map(i => i.sum))
+        // console.log(year.map(i => i.sum))
         myCharts.setOption({
           textStyle: {
             color: '#ffffff'

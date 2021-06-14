@@ -3,8 +3,11 @@
     <!--    <hydropower-chart/>-->
     <!--    <patent-chart />-->
     <!--    <subsidy-chart />-->
-    <authentication-chart/>
+    <!--    <authentication-chart/>-->
+    <!--    <parking-chart />-->
+    <patent-status-chart/>
   </div>
+
 </template>
 
 <script>
@@ -12,16 +15,25 @@
 
 // import PatentChart from "./screenCharts/patentChart";
 // import SubsidyChart from "./screenCharts/subsidyChart";
-import AuthenticationChart from "./screenCharts/authenticationChart";
+// import AuthenticationChart from "./screenCharts/authenticationChart";
+
+// import ParkingChart from "./screenCharts/parkingChart";
+import PatentStatusChart from "./screenCharts/patentStatusChart";
 
 export default {
   name: "test",
   components: {
-    AuthenticationChart
+    PatentStatusChart
+    // ParkingChart
+    // AuthenticationChart
     // SubsidyChart
     // PatentChart
     // HydropowerChart
-  }
+  },
+  data() {
+    return {}
+  },
+  methods: {}
 }
 </script>
 

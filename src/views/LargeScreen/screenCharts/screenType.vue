@@ -20,7 +20,7 @@ export default {
             name: c[i].type,
           });
         }
-        console.log(data)
+        // console.log(data)
         myChart.setOption({
           series: [{
             // name: '企业类型',

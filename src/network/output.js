@@ -403,3 +403,39 @@ export function BillStatistics() {
         // params: {month},
     })
 }
+
+//公告
+//公告查询
+export function AnnouncementPage({page, size, start, end}) {
+    return transfer({
+        method: 'post',
+        data: {page, size, start, end},
+        url: 'Announcement/page'
+    })
+}
+
+// 公告添加
+export function AddAnnouncement({title, content}) {
+    return transfer({
+        url: '/Announcement/add',
+        method: 'post',
+        data: {title, content},
+    })
+}
+
+//修改公告
+export function UpdateAnnouncement({title, content, uuid}) {
+    return transfer({
+        url: '/Announcement/update',
+        method: 'post',
+        data: {title, content, uuid},
+    })
+}
+
+//删除公告
+export function AnnouncementDel(id) {
+    return transfer({
+        url: '/Announcement/del',
+        params: (id)
+    })
+}

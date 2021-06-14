@@ -69,7 +69,7 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
             </div>
             <div class="small">
               <el-container>
-                <el-header><h1 class="typeTitle">企业类型</h1></el-header>
+                <el-header><h1 class="typeTitle">企业认证</h1></el-header>
                 <el-main>
                   <authentication-chart/>
                 </el-main>
@@ -79,13 +79,13 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
               <el-container>
                 <el-header><h1 class="typeTitle">专利状态</h1></el-header>
                 <el-main>
+                  <patent-status-chart/>
                 </el-main>
               </el-container>
             </div>
             <div class="small">
               <el-container>
                 <el-header><h1 class="typeTitle">车位信息</h1></el-header>
-
                 <parking-chart/>
               </el-container>
             </div>
@@ -107,10 +107,14 @@ import PatentChart from "./screenCharts/patentChart";
 import SubsidyChart from "./screenCharts/subsidyChart";
 import AuthenticationChart from "./screenCharts/authenticationChart";
 import ParkingChart from "./screenCharts/parkingChart";
+import PatentStatusChart from "./screenCharts/patentStatusChart";
 
 export default {
   name: "screen",
-  components: {ParkingChart, AuthenticationChart, SubsidyChart, PatentChart, HydropowerChart, ComponyChart, screenType},
+  components: {
+    PatentStatusChart,
+    ParkingChart, AuthenticationChart, SubsidyChart, PatentChart, HydropowerChart, ComponyChart, screenType
+  },
   data() {
     return {}
   },

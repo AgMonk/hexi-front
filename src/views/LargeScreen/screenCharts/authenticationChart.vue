@@ -19,7 +19,7 @@ export default {
             name: d[i].certificationType,
           })
         }
-        console.log(res.data.countGroupByCertificationType)
+        console.log(data)
         myCharts.setOption({
           tooltip: {
             trigger: 'item'
@@ -41,9 +41,7 @@ export default {
                 show: true,
                 formatter: '{c}',
                 position: 'inner',
-                textStyle: {
-                  color: '#ffffff'
-                }
+                color: '#ffffff'
               },
               data,
               emphasis: {
