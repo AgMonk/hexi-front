@@ -5,7 +5,7 @@
     </template>
     <el-menu-item index="/waterPage">水质</el-menu-item>
     <el-menu-item index="/SoilData">土质</el-menu-item>
-    <el-menu-item index="">天气</el-menu-item>
+    <el-menu-item index="/Weather">天气</el-menu-item>
   </el-submenu>
 </template>
 

@@ -3,7 +3,7 @@
     <el-header>
     </el-header>
     <el-main>
-      <!--    <el-button @click="soilDatapage"></el-button>-->
+          <el-button @click="soilDatapage"></el-button>
     </el-main>
   </el-container>
 </template>

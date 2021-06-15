@@ -436,6 +436,6 @@ export function UpdateAnnouncement({title, content, uuid}) {
 export function AnnouncementDel(id) {
     return transfer({
         url: '/Announcement/del',
-        params: (id)
+        params: {id}
     })
 }

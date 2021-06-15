@@ -91,6 +91,7 @@ const staticRoute = [
         component: () => import(/* webpackChunkName: 'pay'*/ "../views/monitor/WaterQuality/waterPage")
     },
     {path: "/SoilData", component: () => import(/* webpackChunkName: 'pay'*/ "../views/monitor/SoilData/SoilData")},
+    {path: "/Weather", component: () => import(/* webpackChunkName: 'pay'*/ "../views/monitor/Weather/Weather")},
     {
         path: "/screen", meta: {Nav: false},
         component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/screen")

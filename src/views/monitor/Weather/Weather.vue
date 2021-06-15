@@ -4,7 +4,8 @@
 
 <script>
 export default {
-  name: "Weather"
+  name: "Weather",
+  methods: {}
 }
 </script>
 

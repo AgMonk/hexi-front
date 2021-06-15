@@ -4,7 +4,9 @@
     <el-header height="95px">
       <el-row :gutter="20">
         <el-col :span="8">
-          <div style=" background: #409EFF">11</div>
+          <div style=" background: #409EFF">
+            11
+          </div>
         </el-col>
         <el-col :span="10"><h1 class="header">柳州天步科技创业园智慧园区管理系统</h1></el-col>
         <el-col :span="6">
@@ -16,7 +18,9 @@
     <el-main>
       <el-row :gutter="20">
         <el-col :span="4">
-          <div class="Hallmark item"></div>
+          <div class="Hallmark item">
+            <notice/>
+          </div>
         </el-col>
         <el-col :span="3">
           <div class="Hallmark item">
@@ -25,9 +29,15 @@
         </el-col>
         <el-col :span="10">
           <div class="main">
-            <!--            <p style="font-size: 40px; position: absolute; top: -100px">测试</p>-->
+            <div style=" position: absolute; top: -100px; ">
+              <el-button style="font-size: 40px;">测试</el-button>
+              <el-button style="font-size: 40px;">测试</el-button>
+              <el-button style="font-size: 40px;">测试</el-button>
+              <el-button style="font-size: 40px;">测试</el-button>
+              <el-button style="font-size: 40px;">测试</el-button>
+            </div>
             <el-button
-                icon="el-icon-warning" style="font-size: 40px; position: absolute; top: -100px"
+                icon="el-icon-warning" style="font-size: 40px; position: absolute; top: -100px; right: 0px "
                 type="text"
             >火灾状态正常
             </el-button>
@@ -43,7 +53,9 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
           </div>
         </el-col>
         <el-col :span="4">
-          <div class="Hallmark item"></div>
+          <div class="Hallmark item" style="background: #FFFFFF">
+            <!--            <div style="background: #FFFFFF; height: 550px"></div>-->
+          </div>
         </el-col>
       </el-row>
       <el-row :gutter="20">
@@ -92,7 +104,23 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
           </div>
         </el-col>
         <el-col :span="7">
-          <div class="Hallmark right"></div>
+          <div class="Hallmark right">
+            <div class="fiveFather">
+              <div class="five"></div>
+              <div class="five"></div>
+              <div class="five"></div>
+              <div class="five"></div>
+              <div class="five"></div>
+            </div>
+            <br>
+            <div class="fiveFather">
+              <div class="five"></div>
+              <div class="five"></div>
+              <div class="five"></div>
+              <div class="five"></div>
+              <div class="five"></div>
+            </div>
+          </div>
         </el-col>
       </el-row>
     </el-main>
@@ -108,10 +136,12 @@ import SubsidyChart from "./screenCharts/subsidyChart";
 import AuthenticationChart from "./screenCharts/authenticationChart";
 import ParkingChart from "./screenCharts/parkingChart";
 import PatentStatusChart from "./screenCharts/patentStatusChart";
+import Notice from "./screenCharts/Notice";
 
 export default {
   name: "screen",
   components: {
+    Notice,
     PatentStatusChart,
     ParkingChart, AuthenticationChart, SubsidyChart, PatentChart, HydropowerChart, ComponyChart, screenType
   },
@@ -128,6 +158,17 @@ export default {
 </script>
 
 <style scoped>
+.fiveFather {
+  display: flex;
+  height: 240px;
+}
+
+.five {
+  flex: 1;
+  background: #ffffff;
+  margin: 5px;
+}
+
 .typeTitle {
   font-size: 30px;
   text-align: center;

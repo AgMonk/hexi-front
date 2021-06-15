@@ -5,7 +5,9 @@
     <!--    <subsidy-chart />-->
     <!--    <authentication-chart/>-->
     <!--    <parking-chart />-->
-    <patent-status-chart/>
+    <!--    <patent-status-chart/>-->
+    <!--    <notice />-->
+    <environmental-testing/>
   </div>
 
 </template>
@@ -18,12 +20,17 @@
 // import AuthenticationChart from "./screenCharts/authenticationChart";
 
 // import ParkingChart from "./screenCharts/parkingChart";
-import PatentStatusChart from "./screenCharts/patentStatusChart";
+// import PatentStatusChart from "./screenCharts/patentStatusChart";
+
+// import Notice from "./screenCharts/Notice";
+import EnvironmentalTesting from "./screenCharts/environmentalTesting";
 
 export default {
   name: "test",
   components: {
-    PatentStatusChart
+    EnvironmentalTesting
+    // Notice
+    // PatentStatusChart
     // ParkingChart
     // AuthenticationChart
     // SubsidyChart
