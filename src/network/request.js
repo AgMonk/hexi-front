@@ -33,6 +33,20 @@ export function cloud(config) {
         baseURL: '/cloud',
         timeout: 5000,
     })
+    instance.interceptors.response.use(res => {
+        let data = res.data;
+        if (data.code === 2000) {
+            Vue.prototype.$message({
+                message: data.message,
+                type: 'success'
+            })
+        } else {
+            Vue.prototype.$message.error(data.message)
+        }
+        return res.data;
+    }, err => {
+        console.log(err);
+    })
 
     return instance(config);
 }

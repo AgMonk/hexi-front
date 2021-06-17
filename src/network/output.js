@@ -474,10 +474,12 @@ export function getJson({type, name, version}) {
 }
 
 //修改数据
-export function setJson({type, name, version}) {
+export function setJson(params, data) {
     return cloud({
         url: '/json/set',
-        params: {type, name, version}
+        method: 'post',
+        params,
+        data
     })
 }
 
