@@ -36,12 +36,12 @@ export default {
       this.names = res.data.name;
       this.phones = res.data.phone;
       this.usernames = res.data.username;
-      if(res.code === 2000) {
-        this.$message({
-          message: res.message,
-          type: 'success'
-        })
-      }
+      // if(res.code === 2000) {
+      //   this.$message({
+      //     message: res.message,
+      //     type: 'success'
+      //   })
+      // }
     })
   }
 }

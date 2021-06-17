@@ -31,8 +31,8 @@
 </template>
 
 <script>
-import { Page } from "../../../../network/output";
-import { UserDel } from "../../../../network/output";
+import {Page, UserDel} from "../../../../network/output";
+
 export default {
   name: "inquire",
   data() {
@@ -61,15 +61,15 @@ export default {
           switch (res.code) {
             case 2000 :
               this.page();
-              this.$message({
-                message: res.message,
-                type: 'success'
-              })
+              // this.$message({
+              //   message: res.message,
+              //   type: 'success'
+              // })
               break;
-            default :
-              this.$message.error({
-                message: res.message,
-              })
+              // default :
+              //   this.$message.error({
+              //     message: res.message,
+              //   })
           }
         })
       }).catch(() => {})

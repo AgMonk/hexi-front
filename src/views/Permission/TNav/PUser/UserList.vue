@@ -34,9 +34,10 @@
 </template>
 
 <script>
-import { UserPage,UserDel } from "../../../../network/output";
+import {UserDel, UserPage} from "../../../../network/output";
 
 import UserDialog from "@/views/Permission/TNav/PUser/UserDialog";
+
 export default {
   name: "UserList",
   components: {
@@ -74,15 +75,15 @@ export default {
         switch (res.code) {
           case 2000 :
             this.findAll();
-            this.$message({
-              message: res.message,
-              type: 'success'
-            })
+            // this.$message({
+            //   message: res.message,
+            //   type: 'success'
+            // })
             break;
-            default :
-              this.$message.error({
-                message: res.message,
-            })
+            // default :
+            //   this.$message.error({
+            //     message: res.message,
+            // })
         }
       })
       }).catch(() => {})

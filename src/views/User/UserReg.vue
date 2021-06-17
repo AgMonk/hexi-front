@@ -29,22 +29,22 @@ export default {
   },
   methods: {
     Reg() {
-      UserReg(this.username, this.password, this.phone, this.name).then(res => {
+      UserReg(this.username, this.password, this.phone, this.name).then(() => {
         // console.log(res)
-        switch (res.code) {
-          case 2000 :
-            this.$message({
-              message: res.message,
-              type: 'success'
-            })
-            this.$router.push({path: '/'})
-            break;
-          default:
-            this.$message.error({
-              message: res.message,
-            })
-            break;
-        }
+        // switch (res.code) {
+        //   case 2000 :
+        //     this.$message({
+        //       message: res.message,
+        //       type: 'success'
+        //     })
+        //     this.$router.push({path: '/'})
+        //     break;
+        //   default:
+        //     this.$message.error({
+        //       message: res.message,
+        //     })
+        //     break;
+        // }
       })
     },
   },

@@ -59,7 +59,7 @@ export default {
       WaterQualityPage(this.paging).then(res => {
         this.waterData = res.data.records;
         this.total = res.data.total;
-        console.log(res)
+        // console.log(res)
       })
     },
     getStation() {

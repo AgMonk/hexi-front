@@ -82,18 +82,18 @@ export default {
       RoleSave(this.param).then(res => {
         switch (res.code) {
           case 2000 :
-            this.$message({
-              message: res.message,
-              type: 'success'
-            });
+            // this.$message({
+            //   message: res.message,
+            //   type: 'success'
+            // });
             this.$emit("success");
             break;
           default:
-              this.$message.error({
-                message: res.message,
-              });
-              break;
-          }
+            // this.$message.error({
+            //   message: res.message,
+            // });
+            // break;
+        }
         })
       // }
     }

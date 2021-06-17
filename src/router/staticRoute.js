@@ -99,6 +99,12 @@ const staticRoute = [
     {path: "/test", component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/test")},
     {path: "/announcement", component: () => import(/* webpackChunkName: 'pay'*/ "../views/Announcement/announcement")},
 
+    //版本控制
+    {
+        path: "/optimizedVersion",
+        component: () => import(/* webpackChunkName: 'pay'*/ "../views/optimizedVersion/optimizedVersion")
+    }
+
 ]
 
 export default staticRoute;

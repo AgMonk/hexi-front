@@ -35,20 +35,20 @@ export default {
   methods: {
     dele(id) {
       this.$confirm("确定删除？").then(() => {
-        UserDel(id).then((res) => {
-          switch (res.code) {
-            case 2000 :
-              this.page();
-              this.$message({
-                message: res.message,
-                type: 'success'
-              })
-              break;
-            default :
-              this.$message.error({
-                message: res.message,
-              })
-          }
+        UserDel(id).then(() => {
+          // switch (res.code) {
+          //   case 2000 :
+          //     this.page();
+          //     this.$message({
+          //       message: res.message,
+          //       type: 'success'
+          //     })
+          //     break;
+          //   default :
+          //     this.$message.error({
+          //       message: res.message,
+          //     })
+          // }
         })
       }).catch(() => {})
     }

@@ -4,8 +4,8 @@
     <el-header height="95px">
       <el-row :gutter="20">
         <el-col :span="8">
-          <div style=" background: #409EFF">
-            11
+          <div>
+            <environmental-testing/>
           </div>
         </el-col>
         <el-col :span="10"><h1 class="header">柳州天步科技创业园智慧园区管理系统</h1></el-col>
@@ -30,14 +30,27 @@
         <el-col :span="10">
           <div class="main">
             <div style=" position: absolute; top: -100px; ">
-              <el-button style="font-size: 40px;">测试</el-button>
-              <el-button style="font-size: 40px;">测试</el-button>
-              <el-button style="font-size: 40px;">测试</el-button>
-              <el-button style="font-size: 40px;">测试</el-button>
-              <el-button style="font-size: 40px;">测试</el-button>
+              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000; background: #915ADD">
+                企业总数：{{ companyTotal }}
+              </el-button>
+              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #E1AB5E">
+                专利申请数：{{ patentTotal }}
+              </el-button>
+              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #11D4E3">安全生产天数：
+              </el-button>
+              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #2887E8">
+                月电量使用总数：{{ electricTotal }}
+              </el-button>
+              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #53D77E">
+                本年入孵企业增长率：{{ growthRate }}
+              </el-button>
+              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #D96568">
+                本年专利申请增长率：{{ electricGrowthRate }}
+              </el-button>
             </div>
             <el-button
-                icon="el-icon-warning" style="font-size: 40px; position: absolute; top: -100px; right: 0px "
+                icon="el-icon-warning"
+                style="font-size: 40px; position: absolute; top: -60px; color: #FFFFFF; right: 0px "
                 type="text"
             >火灾状态正常
             </el-button>
@@ -137,16 +150,54 @@ import AuthenticationChart from "./screenCharts/authenticationChart";
 import ParkingChart from "./screenCharts/parkingChart";
 import PatentStatusChart from "./screenCharts/patentStatusChart";
 import Notice from "./screenCharts/Notice";
+import {BillStatistics, QueryCompanyStatistics, QueryPatentStatistics} from "../../network/output";
+import EnvironmentalTesting from "./screenCharts/environmentalTesting";
 
 export default {
   name: "screen",
   components: {
+    EnvironmentalTesting,
     Notice,
     PatentStatusChart,
     ParkingChart, AuthenticationChart, SubsidyChart, PatentChart, HydropowerChart, ComponyChart, screenType
   },
   data() {
-    return {}
+    return {
+      companyTotal: undefined,
+      patentTotal: undefined,
+      electricTotal: undefined,
+      growthRate: undefined,
+      electricGrowthRate: undefined
+    }
+  },
+  methods: {
+    queryCompanyStatistics() {
+    }
+  },
+  mounted() {
+    //查询公司总数
+    QueryCompanyStatistics().then(res => {
+      this.companyTotal = res.data.totalCount;
+    })
+    //查询专利申请数
+    QueryPatentStatistics().then(res => {
+      this.patentTotal = res.data.totalCount;
+      let now = res.data.countGroupByYear[1].count;
+      let last = res.data.countGroupByYear[2].count;
+      this.electricGrowthRate = Math.floor((now - last) / last * 100) + "%";
+    });
+    //水电查询
+    BillStatistics().then(res => {
+      this.electricTotal = res.data.amountGroupByTypeMonth[0].amount;
+      // console.log(res);
+    })
+    //入驻企业增长率
+    QueryCompanyStatistics().then(res => {
+      let now = res.data.countGroupByYear[1].count;
+      let last = res.data.countGroupByYear[2].count;
+      this.growthRate = Math.floor((now - last) / last * 100) + "%";
+      // console.log(this.growthRate);
+    })
   },
   beforeCreate() {
     document.querySelector('body').setAttribute('style', 'background:#45646A')

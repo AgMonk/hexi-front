@@ -26,6 +26,9 @@
       <el-menu-item index="/announcement">
         <span slot="title">公告</span>
       </el-menu-item>
+      <el-menu-item index="/optimizedVersion">
+        <span slot="title">版本控制</span>
+      </el-menu-item>
       <user-logout/>
     </el-menu>
   </div>

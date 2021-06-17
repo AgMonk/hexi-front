@@ -23,22 +23,22 @@ export default {
           message: "用户ID不能为空",
         })
       } else {
-      GetUserAvailable(this.userId).then(res => {
-        switch (res.code) {
-          case 2000 :
-            this.$message({
-              message: res.message,
-              type: 'success'
-            })
-            break;
-          default:
-            this.$message.error({
-              message: res.message,
-            })
-            break;
-        }
-    })
-  }
+        GetUserAvailable(this.userId).then(() => {
+          // switch (res.code) {
+          //   case 2000 :
+          //     this.$message({
+          //       message: res.message,
+          //       type: 'success'
+          //     })
+          //     break;
+          //   default:
+          //     this.$message.error({
+          //       message: res.message,
+          //     })
+          //     break;
+          // }
+        })
+      }
   }
   }
 }

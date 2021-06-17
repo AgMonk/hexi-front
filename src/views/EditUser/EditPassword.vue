@@ -12,6 +12,7 @@
 
 <script>
 import {EditPassword} from "../../network/output";
+
 export default {
   name: "EditPassword",
   data() {
@@ -22,26 +23,26 @@ export default {
   },
   methods: {
     edit() {
-      EditPassword(this.oldPass, this.newPass).then(res => {
+      EditPassword(this.oldPass, this.newPass).then(() => {
         // console.log(res);
-        if(this.oldPass.length === 0 || this.newPass.length === 0) {
+        if (this.oldPass.length === 0 || this.newPass.length === 0) {
           this.$message.error({
             message: "旧密码与新密码均不能为空",
           })
         } else {
-          switch (res.code) {
-            case 2000 :
-              this.$message({
-                message: res.message,
-                type: 'success'
-              })
-              break;
-            default:
-              this.$message.error({
-                message: res.message,
-              })
-              break;
-          }
+          // switch (res.code) {
+          //   case 2000 :
+          //     this.$message({
+          //       message: res.message,
+          //       type: 'success'
+          //     })
+          //     break;
+          //   default:
+          //     this.$message.error({
+          //       message: res.message,
+          //     })
+          //     break;
+          // }
         }
       })
     }

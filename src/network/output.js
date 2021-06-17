@@ -1,4 +1,4 @@
-import {transfer} from './request';
+import {cloud, transfer} from './request';
 
 //登录*
 export function UserLogin( username, password ) {
@@ -396,6 +396,14 @@ export function SoilDatapage({page, size, start, end}) {
     })
 }
 
+//天气
+export function GetWeather(city) {
+    return transfer({
+        url: "/Weather/get",
+        params: {city}
+    })
+}
+
 //水电统计
 export function BillStatistics() {
     return transfer({
@@ -436,6 +444,70 @@ export function UpdateAnnouncement({title, content, uuid}) {
 export function AnnouncementDel(id) {
     return transfer({
         url: '/Announcement/del',
+        params: {id}
+    })
+}
+
+
+//版本优化
+//获取当前版本
+export function getVersion() {
+    return cloud({
+        url: '/version/get',
+    })
+}
+
+//切换版本
+export function setVersion(id) {
+    return cloud({
+        url: '/version/set',
+        params: {id}
+    })
+}
+
+//获取数据
+export function getJson({type, name, version}) {
+    return cloud({
+        url: '/json/get',
+        params: {type, name, version}
+    })
+}
+
+//修改数据
+export function setJson({type, name, version}) {
+    return cloud({
+        url: '/json/set',
+        params: {type, name, version}
+    })
+}
+
+//覆盖数据
+export function overWrite({type, name, version}) {
+    return cloud({
+        url: '/json/overWrite',
+        params: {type, name, version}
+    })
+}
+
+//获取版本列表
+export function versionList() {
+    return cloud({
+        url: '/json/list',
+    })
+}
+
+//创建新版本
+export function createVersion(id) {
+    return cloud({
+        url: '/json/create',
+        params: {id}
+    })
+}
+
+//删除版本
+export function delVersion(id) {
+    return cloud({
+        url: '/json/del',
         params: {id}
     })
 }

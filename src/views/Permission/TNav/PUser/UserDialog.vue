@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import {HasRoles, addSave, Del, find, } from "../../../../network/output";
+import {addSave, Del, find, HasRoles,} from "../../../../network/output";
 
 export default {
   name: "user-dialog",
@@ -53,46 +53,47 @@ export default {
               let ro = this.rolePool.filter(r => r.id === role.roleId)[0];
               return Object.assign({uuid}, ro)
             });
-            switch (res.code) {
-              case 2000 : this.$message({ message: res.message,  type: 'success'})
-                break;
-              default : this.$message.error({ message: res.message, })
-            }
+            // switch (res.code) {
+            //   case 2000 : this.$message({ message: res.message,  type: 'success'})
+            //     break;
+            //   default : this.$message.error({ message: res.message, })
+            // }
           })
     },
     find() {
       find().then(res => {
-        switch (res.code) {
-          case 2000 : this.$message({ message: res.message,  type: 'success'})
-            break;
-          default : this.$message.error({ message: res.message, })
-        }
+        // switch (res.code) {
+        //   case 2000 : this.$message({ message: res.message,  type: 'success'})
+        //     break;
+        //   default : this.$message.error({ message: res.message, })
+        // }
         this.rolePool = res.data;
         this.hasRoles();
       })
     },
     save(roleId) {
       let p = {userId: this.userId, roleId};
-      addSave(p).then(res => {
-        switch (res.code) {
-          case 2000 : this.$message({ message: res.message,  type: 'success'})
-            break;
-          default : this.$message.error({ message: res.message, })
-        }
+      addSave(p).then(() => {
+        // switch (res.code) {
+        //   case 2000 : this.$message({ message: res.message,  type: 'success'})
+        //     break;
+        //   default : this.$message.error({ message: res.message, })
+        // }
         this.hasRoles();
         this.add = undefined;
       })
     },
 
     del(id) {
-        Del(id).then(res => {
-          switch (res.code) {
-            case 2000 : this.$message({ message: res.message,  type: 'success'})
-              break;
-            default : this.$message.error({ message: res.message, })
-          }
-          this.hasRoles();
-        })
+      Del(id).then(() => {
+
+        // switch (res.code) {
+        //   case 2000 : this.$message({ message: res.message,  type: 'success'})
+        //     break;
+        //   default : this.$message.error({ message: res.message, })
+        // }
+        this.hasRoles();
+      })
     },
   },
   mounted() {

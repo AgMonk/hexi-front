@@ -25,17 +25,17 @@ export default {
         console.log(res)
         switch (res.code) {
           case 2000 :
-            this.$message({
-              message: res.message,
-              type: 'success'
-            })
+            // this.$message({
+            //   message: res.message,
+            //   type: 'success'
+            // })
             this.$router.push({path: '/home'})
             break;
-          default:
-            this.$message.error({
-              message: res.message,
-            })
-            break;
+            // default:
+            //   this.$message.error({
+            //     message: res.message,
+            //   })
+            // break;
         }
       })
     }

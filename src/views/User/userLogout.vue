@@ -17,16 +17,16 @@ export default {
           switch (res.code) {
             case 2000 :
               this.$router.push({path: '/'})
-              this.$message({
-                message: res.message,
-                type: "success"
-              })
+              // this.$message({
+              //   message: res.message,
+              //   type: "success"
+              // })
               break;
-            default:
-              this.$message.error({
-                message: "未知错误",
-              })
-              break;
+              // default:
+              //   this.$message.error({
+              //     message: "未知错误",
+              //   })
+              //   break;
           }
         })
       }).catch(() => {

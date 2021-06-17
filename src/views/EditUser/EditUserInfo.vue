@@ -28,19 +28,19 @@ export default {
       } else {
         EditUserInfo(this.phone, this.name).then(res => {
           console.log(res);
-          switch (res.code) {
-            case 2000 :
-              this.$message({
-                message: res.message,
-                type: 'success'
-              })
-              break;
-            default:
-              this.$message.error({
-                message: res.message,
-              })
-              break;
-          }
+          // switch (res.code) {
+          //   case 2000 :
+          //     this.$message({
+          //       message: res.message,
+          //       type: 'success'
+          //     })
+          //     break;
+          //   default:
+          //     this.$message.error({
+          //       message: res.message,
+          //     })
+          //     break;
+          // }
         })
       }
     }
