@@ -9,10 +9,12 @@
       </el-form>
     </el-header>
     <el-main>
-      <el-form>
-        <el-form-item label="packData.carTypeName"></el-form-item>
-        <el-form-item label=""></el-form-item>
-        <el-form-item label=""></el-form-item>
+      <el-form :inline="true">
+        <el-form-item v-for="(item, i) in packData" :key="i" style="margin: 150px; ">
+          <p>{{ item.carTypeName }}：</p>
+          <p>数量： {{ item.count }}</p>
+          <p>时长： {{ item.timeout ? '超时' : '未超时' }}</p>
+        </el-form-item>
       </el-form>
     </el-main>
   </el-container>
@@ -36,10 +38,16 @@ export default {
         console.log(this.packData);
       })
     }
+  },
+  mounted() {
+    this.carStatus();
   }
 }
 </script>
 
 <style scoped>
-
+p {
+  font-size: 20px;
+  font-weight: bold;
+}
 </style>

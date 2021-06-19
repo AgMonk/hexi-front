@@ -31,13 +31,14 @@
       </el-form>
     </div>
     <div style="text-align: right">
+      <el-button type="danger" @click="OverWrite">恢复</el-button>
       <el-button type="danger" @click="setCompanyJson">确定修改</el-button>
     </div>
   </el-card>
 </template>
 
 <script>
-import {getJson, setJson,} from "../../network/output";
+import {getJson, overWrite, setJson,} from "../../network/output";
 
 export default {
   name: "companyVersion",
@@ -61,11 +62,20 @@ export default {
     },
     setCompanyJson() {
       setJson(this.param, this.companyList).then(() => {
+        this.getcompanyJson();
+      })
+    },
+    OverWrite() {
+      overWrite(this.param).then(res => {
+        console.log(res)
+        this.getcompanyJson();
       })
     },
   },
   mounted() {
-    // this.getcompanyJson();
+    if (!this.watch) {
+      this.getcompanyJson();
+    }
   },
   watch: {
     "version": {

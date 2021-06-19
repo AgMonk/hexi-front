@@ -31,13 +31,14 @@
       </el-form>
     </div>
     <div style="text-align: right">
+      <el-button type="danger" @click="OverWrite">恢复</el-button>
       <el-button type="danger" @click="setPatentJson">确定修改</el-button>
     </div>
   </el-card>
 </template>
 
 <script>
-import {getJson, setJson} from "../../network/output";
+import {getJson, overWrite, setJson} from "../../network/output";
 
 export default {
   name: "patentVersion",
@@ -56,18 +57,31 @@ export default {
       this.param.version = this.patent;
       getJson(this.param).then(res => {
         this.patentList = res.data;
-        console.log(res)
+        // console.log(res)
       })
     },
     setPatentJson() {
-      setJson(this.param, this.patentList)
-    }
+      setJson(this.param, this.patentList).then(() => {
+        this.getPatentJson();
+      })
+    },
+    OverWrite() {
+      overWrite(this.param).then(res => {
+        console.log(res)
+        this.getPatentJson();
+      })
+    },
   },
   watch: {
     "patent": {
       handler: function () {
         this.getPatentJson();
       }
+    }
+  },
+  mounted() {
+    if (!this.watch) {
+      this.getPatentJson();
     }
   },
   props: ["patent"]

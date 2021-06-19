@@ -43,10 +43,10 @@ export function UserLogout() {
     return transfer({url: '/user/logout'})
 }
 //查询用户列表（分页）*
-export function UserPage({page, size, condition}) {
+export function UserPage(data) {
     return transfer({
         method: 'post',
-        data: {page, size, condition},
+        data,
         url: '/user/a/page',
     })
 }

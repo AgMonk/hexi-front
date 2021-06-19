@@ -1,20 +1,20 @@
 <template>
   <el-form label-width="100px">
-    <el-form-item v-if="false">{{ selection.uuid }}</el-form-item>
+    <el-form-item v-if="false">{{ edit.uuid }}</el-form-item>
     <el-form-item label="企业名称">
-      <el-input v-model="selection.name"/>
+      <el-input v-model="edit.name"/>
     </el-form-item>
     <el-form-item label="企业地址">
-      <el-input v-model="selection.address"/>
+      <el-input v-model="edit.address"/>
     </el-form-item>
     <el-form-item label="联系电话">
-      <el-input v-model="selection.phone"/>
+      <el-input v-model="edit.phone"/>
     </el-form-item>
     <el-form-item label="企业类型">
-      <el-input v-model="selection.type"/>
+      <el-input v-model="edit.type"/>
     </el-form-item>
     <el-form-item label="认证类型">
-      <el-input v-model="selection.certificationType"/>
+      <el-input v-model="edit.certificationType"/>
     </el-form-item>
     <el-form-item style="text-align: right">
       <el-button type="primary" @click="update">添加</el-button>
@@ -24,18 +24,24 @@
 
 <script>
 import {updateCompony} from "../../../../../network/output";
+import {copyObj} from "../../../../../common/utils";
 
 export default {
   name: "newComponyForm",
   data() {
-    return {}
+    return {
+      edit: {}
+    }
   },
   methods: {
     update() {
-      updateCompony(this.selection).then(res => {
+      updateCompony(this.edit).then(res => {
         console.log(res)
       })
     },
+  },
+  mounted() {
+    this.edit = copyObj(this.selection);
   },
   props: ['selection']
 
