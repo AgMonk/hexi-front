@@ -5,7 +5,7 @@
       :cell-style="{background:'#042E36',color:'#11D5E4',padding:'0'}"
       :data="inOutData"
       :header-cell-style="{background:'#042E36',color:'#11D5E4',padding:'0'}"
-      style="font-size: 12px"
+      style="font-size: 10px"
   >
     <el-table-column label="车牌" prop="plateNo"></el-table-column>
     <el-table-column label="最近出入" prop="gateName"></el-table-column>
@@ -22,6 +22,7 @@ export default {
   data() {
     return {
       inOutData: undefined,
+      timer: null,
     }
   },
   methods: {
@@ -77,25 +78,26 @@ export default {
     barrierLogPage() {
       let paging = new Object();
       paging.page = 1, paging.size = 4, paging.end = Math.floor(new Date().getTime() / 1000),
-          paging.start = paging.end - 24 * 60 * 60 * 30 * 3;
+          paging.start = paging.end - 24 * 60 * 60 * 30 * 6;
       BarrierLogPage(paging).then(res => {
         // console.log(res);
         this.inOutData = res.data.records;
       })
     },
-    interval() {
-      this.barrierLogPage();
-      //定时查询
-      setInterval(() => {
-        this.barrierLogPage()
-      }, 6000 * 30);
-    },
+
 
   },
   mounted() {
     this.myEcharts();
-    this.interval();
-  }
+    this.barrierLogPage();
+    this.timer = setInterval(() => {
+      this.barrierLogPage()
+    }, 6000 * 30);
+  },
+  beforeDestroy() {
+    clearInterval(this.timer);
+    this.timer = null;
+  },
 }
 </script>
 

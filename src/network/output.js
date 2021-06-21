@@ -513,3 +513,32 @@ export function delVersion(id) {
         params: {id}
     })
 }
+
+//火灾报警
+export function getSafetyDays() {
+    return transfer({
+        url: '/FireAlarmLog/getSafetyDays'
+    })
+}
+
+//查询当前报警状态
+export function getStatus() {
+    return transfer({
+        url: '/FireAlarmLog/getStatus',
+    })
+}
+
+//查询监控探头列表
+export function ArtemisCameraPage() {
+    return transfer({
+        url: '/ArtemisCamera/page'
+    })
+}
+
+//查询播放地址
+export function getCameraUrl(params) {
+    return transfer({
+        url: '/ArtemisCamera/getUrl',
+        params
+    })
+}

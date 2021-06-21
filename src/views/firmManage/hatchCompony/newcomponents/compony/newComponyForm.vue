@@ -14,7 +14,7 @@
       <el-input v-model="edit.type"/>
     </el-form-item>
     <el-form-item label="认证类型">
-      <el-input v-model="edit.certificationType"/>
+      <el-input v-model="edit .certificationType"/>
     </el-form-item>
     <el-form-item style="text-align: right">
       <el-button type="primary" @click="update">添加</el-button>

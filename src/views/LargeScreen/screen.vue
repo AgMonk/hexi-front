@@ -10,7 +10,9 @@
         </el-col>
         <el-col :span="10"><h1 class="header">柳州天步科技创业园智慧园区管理系统</h1></el-col>
         <el-col :span="6">
-          <div style=" background: #409EFF">11</div>
+          <div style=" background: #45646A; text-align: right; font-size: 40px; font-weight: 600; color: #FFFFFF">
+            欢迎领导视察工作！
+          </div>
         </el-col>
       </el-row>
     </el-header>
@@ -36,7 +38,9 @@
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #E1AB5E">
                 专利申请数：{{ patentTotal }}
               </el-button>
-              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #11D4E3">安全生产天数：
+              <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #11D4E3">
+                安全生产天数：{{ safetyProduction }}
+
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #2887E8">
                 月电量使用总数：{{ electricTotal }}
@@ -48,15 +52,7 @@
                 本年专利申请增长率：{{ electricGrowthRate }}
               </el-button>
             </div>
-            <el-button
-                icon="el-icon-warning"
-                style="font-size: 40px; position: absolute; top: -60px; color: #FFFFFF; right: 0px "
-                type="text"
-            >火灾状态正常
-            </el-button>
-            <div style="
-height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left: 200px; border-radius: 50%;
-"></div>
+            <fire-alarm/>
             <img class="image" height="616" src="../../assets/img/screen.png" width="1891.66"/>
           </div>
         </el-col>
@@ -67,7 +63,7 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
         </el-col>
         <el-col :span="4">
           <div class="Hallmark item" style="background: #FFFFFF">
-            <!--            <div style="background: #FFFFFF; height: 550px"></div>-->
+            <img height="570" src="../../assets/img/img.png" width="742"/>
           </div>
         </el-col>
       </el-row>
@@ -119,19 +115,19 @@ height: 40px;width: 40px;background: #D9534F;position: absolute; top:200px; left
         <el-col :span="7">
           <div class="Hallmark right">
             <div class="fiveFather">
-              <div class="five"></div>
-              <div class="five"></div>
-              <div class="five"></div>
-              <div class="five"></div>
-              <div class="five"></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
             </div>
             <br>
             <div class="fiveFather">
-              <div class="five"></div>
-              <div class="five"></div>
-              <div class="five"></div>
-              <div class="five"></div>
-              <div class="five"></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
             </div>
           </div>
         </el-col>
@@ -150,12 +146,14 @@ import AuthenticationChart from "./screenCharts/authenticationChart";
 import ParkingChart from "./screenCharts/parkingChart";
 import PatentStatusChart from "./screenCharts/patentStatusChart";
 import Notice from "./screenCharts/Notice";
-import {BillStatistics, QueryCompanyStatistics, QueryPatentStatistics} from "../../network/output";
+import {BillStatistics, getSafetyDays, QueryCompanyStatistics, QueryPatentStatistics} from "../../network/output";
 import EnvironmentalTesting from "./screenCharts/environmentalTesting";
+import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
 
 export default {
   name: "screen",
   components: {
+    FireAlarm,
     EnvironmentalTesting,
     Notice,
     PatentStatusChart,
@@ -167,14 +165,20 @@ export default {
       patentTotal: undefined,
       electricTotal: undefined,
       growthRate: undefined,
-      electricGrowthRate: undefined
+      electricGrowthRate: undefined,
+      safetyProduction: ""
     }
   },
   methods: {
-    queryCompanyStatistics() {
-    }
+
   },
   mounted() {
+    //安全生产天数
+
+    getSafetyDays().then(res => {
+      // console.log(res)
+      this.safetyProduction = res.data;
+    })
     //查询公司总数
     QueryCompanyStatistics().then(res => {
       this.companyTotal = res.data.totalCount;

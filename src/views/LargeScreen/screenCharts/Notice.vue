@@ -3,13 +3,16 @@
     <el-header><h1>公告栏</h1></el-header>
     <el-main>
       <div class="main">
-        <div style="height: 210px;">
-          <h3 style="text-align: center; color: #FFFFFF; margin-top: 0; padding-top: 10px">{{ data.title }}</h3>
-          <p style="color: #FFFFFF; padding: 20px">{{ data.content }}</p>
+        <div v-for="(text, i) in data" :key="i" style="height: 220px;">
+          <h3 style="text-align: center; color: #FFFFFF; margin-top: 0; padding-top: 10px">{{ text.title }}</h3>
+          <p style="color: #FFFFFF; padding-left: 20px">{{ text.content }}</p>
+          <p style="color: #FFFFFF; padding-right: 20px; text-align: right">
+            {{ text.author }}
+            <br>
+            {{ text.lastEdit.timeString }}
+          </p>
         </div>
 
-        <h3 style="text-align: center; color: #FFFFFF;">{{ data.title }}</h3>
-        <p style="color: #FFFFFF; padding: 20px">{{ data.content }}</p>
       </div>
     </el-main>
   </el-container>
@@ -28,14 +31,18 @@ export default {
         start: undefined,
         end: undefined
       },
-      data: undefined,
+      data: {},
     }
   },
   methods: {
     notice() {
       AnnouncementPage(this.paging).then(res => {
-        console.log(res);
-        this.data = res.data.records[0];
+        this.data = res.data.records.splice(0, 2);
+        // for(let i=0; i<2; i++) {
+        //   // console.log(res.data.records[i])
+        //   this.data = res.data.records[i]
+        // }
+        console.log(this.data);
       })
     }
   },
@@ -50,6 +57,10 @@ h1 {
   text-align: center;
   color: #FFFFFF;
   font-weight: 1000;
+}
+
+p {
+  margin: 0;
 }
 
 .main {

@@ -4,7 +4,7 @@
     <el-main>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>水质数据</span>
+          <span>土质数据</span>
         </div>
         <div class="text item">
           <el-table :data="soilList">
@@ -40,7 +40,7 @@ export default {
     return {
       soilData: {
         page: 1,
-        size: 10,
+        size: 5,
         start: undefined,
         end: undefined
       },
@@ -64,4 +64,7 @@ export default {
 </script>
 
 <style scoped>
+.box-card {
+  width: 1200px;
+}
 </style>
