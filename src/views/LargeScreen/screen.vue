@@ -45,7 +45,8 @@
                 安全生产天数：366天
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #2887E8">
-                月电量使用总数：{{ electricTotal }}
+<!--                月电量使用总数：{{ electricTotal }}-->
+                月电量使用总数：226991
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #53D77E">
 <!--                本年入孵企业增长率：{{ growthRate }}-->

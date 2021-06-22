@@ -30,7 +30,7 @@ export default {
         // console.log(a);
         myChart.setOption({
           xAxis: {
-            data: data.map(item => item.month).splice(0, 6),
+            data: data.map(item => item.month).splice(0, 6).reverse(),
           },
           series: [{
             name: '入驻公司',
