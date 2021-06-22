@@ -5,13 +5,13 @@
       <el-row :gutter="20">
         <el-col :span="8">
           <div>
-            <environmental-testing/>
+            1
           </div>
         </el-col>
         <el-col :span="10"><h1 class="header">柳州天步科技创业园智慧园区管理系统</h1></el-col>
         <el-col :span="6">
           <div style=" background: #45646A; text-align: right; font-size: 40px; font-weight: 600; color: #FFFFFF">
-            欢迎领导视察工作！
+            <p> {{ nowDate }} </p>
           </div>
         </el-col>
       </el-row>
@@ -63,7 +63,7 @@
         </el-col>
         <el-col :span="4">
           <div class="Hallmark item" style="background: #FFFFFF">
-            <img height="570" src="../../assets/img/img.png" width="742"/>
+            <camera style="height: 100%; width: 100%" id="b8fa463342b74e759a2ad4249642ba3d"/>
           </div>
         </el-col>
       </el-row>
@@ -112,22 +112,35 @@
             </div>
           </div>
         </el-col>
-        <el-col :span="7">
+        <el-col :span="3">
+          <div class="Hallmark">
+            <environmental-testing/>
+          </div>
+        </el-col>
+        <el-col :span="4">
           <div class="Hallmark right">
             <div class="fiveFather">
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five">
+                <camera style="height: 100%; width: 100%" id="cf6c39b00b154e0a87707e91b72004fe"/>
+              </div>
+              <div class="five">
+                <camera style="height: 100%; width: 100%" id="7704cf1d6aad4bbfbbaa14d754b987ae"/>
+              </div>
+            <div class="five">
+              <camera style="height: 100%; width: 100%" id="367ad9af767d45f8a7c0437504e95d47"/>
+            </div>
             </div>
             <br>
             <div class="fiveFather">
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
-              <div class="five"><img height="230" src="../../assets/img/img.png" width="253"/></div>
+              <div class="five">
+                <camera style="height: 100%; width: 100%" id="8a798970dbc04f3ebe5c47f65b49e7d0"/>
+              </div>
+              <div class="five">
+                <camera style="height: 100%; width: 100%" id="2170bc4030994d2faa0a18322a9adae7"/>
+              </div>
+              <div class="five">
+                <camera  style="height: 100%; width: 100%" id="ee41380604444eb69486323ba7b9f078"/>
+              </div>
             </div>
           </div>
         </el-col>
@@ -149,10 +162,12 @@ import Notice from "./screenCharts/Notice";
 import {BillStatistics, getSafetyDays, QueryCompanyStatistics, QueryPatentStatistics} from "../../network/output";
 import EnvironmentalTesting from "./screenCharts/environmentalTesting";
 import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
+import Camera from "../camera/camera";
 
 export default {
   name: "screen",
   components: {
+    Camera,
     FireAlarm,
     EnvironmentalTesting,
     Notice,
@@ -166,13 +181,35 @@ export default {
       electricTotal: undefined,
       growthRate: undefined,
       electricGrowthRate: undefined,
-      safetyProduction: ""
+      safetyProduction: "",
+      nowDate: "",
     }
   },
   methods: {
 
+    currentTime() {
+      setInterval(this.formatDate, 500);
+    },
+    formatDate() {
+      let date = new Date();
+      let year = date.getFullYear(); // 年
+      let month = date.getMonth() + 1; // 月
+      let day = date.getDate(); // 日
+      let week = date.getDay(); // 星期
+      let weekArr = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+      let hour = date.getHours(); // 时
+      hour = hour < 10 ? "0" + hour : hour; // 如果只有一位，则前面补零
+      let minute = date.getMinutes(); // 分
+      minute = minute < 10 ? "0" + minute : minute; // 如果只有一位，则前面补零
+      let second = date.getSeconds(); // 秒
+      second = second < 10 ? "0" + second : second; // 如果只有一位，则前面补零
+      this.nowDate = `${year}/${month}/${day} ${hour}:${minute}:${second} ${weekArr[week]}`;
+    }
+
   },
   mounted() {
+
+    this.currentTime();
     //安全生产天数
 
     getSafetyDays().then(res => {
@@ -202,12 +239,20 @@ export default {
       this.growthRate = Math.floor((now - last) / last * 100) + "%";
       // console.log(this.growthRate);
     })
+
+
   },
   beforeCreate() {
     document.querySelector('body').setAttribute('style', 'background:#45646A')
   },
   beforeDestroy() {
     document.querySelector('body').removeAttribute('style')
+    // 销毁定时器
+
+      if (this.formatDate) {
+        clearInterval(this.formatDate); // 在Vue实例销毁前，清除时间定时器
+        this.formatDate = null;
+      }
   }
 }
 </script>

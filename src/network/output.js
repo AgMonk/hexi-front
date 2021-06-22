@@ -466,10 +466,10 @@ export function setVersion(id) {
 }
 
 //获取数据
-export function getJson({type, name, version}) {
+export function getJson(params) {
     return cloud({
         url: '/json/get',
-        params: {type, name, version}
+        params,
     })
 }
 
@@ -536,9 +536,9 @@ export function ArtemisCameraPage() {
 }
 
 //查询播放地址
-export function getCameraUrl(params) {
+export function getCameraUrl(id) {
     return transfer({
         url: '/ArtemisCamera/getUrl',
-        params
+        params: {id}
     })
 }

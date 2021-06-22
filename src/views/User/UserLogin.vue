@@ -8,7 +8,7 @@
   </div>
 </template>
 <script>
-import {UserLogin} from "../../network/output";
+import { UserLogin} from "../../network/output";
 
 export default {
   name: "UserLogin",
@@ -43,7 +43,8 @@ export default {
   mounted() {
     document.querySelector('body').setAttribute('style',
         "background-image: url(" + require("../../assets/img/login.jpg") + ");background-size: cover;" +
-        "background-repeat: no-repeat")
+        "background-repeat: no-repeat");
+
   },
   beforeDestroy() {
     document.querySelector('body').removeAttribute('style')

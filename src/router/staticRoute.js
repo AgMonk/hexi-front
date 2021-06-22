@@ -103,7 +103,10 @@ const staticRoute = [
     {
         path: "/optimizedVersion",
         component: () => import(/* webpackChunkName: 'pay'*/ "../views/optimizedVersion/optimizedVersion")
-    }
+    },
+
+    //测试播放
+    {path: "/camera", component: () => import("../views/camera/camera")}
 
 ]
 
