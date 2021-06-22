@@ -30,11 +30,12 @@ export default {
         // console.log(a);
         myChart.setOption({
           xAxis: {
-            data: data.map(item => item.month).splice(0, 12),
+            data: data.map(item => item.month).splice(0, 6),
           },
           series: [{
             name: '入驻公司',
-            data: data.map(item => item.count).splice(0, 12),
+            // data: data.map(item => item.count).splice(0, 12),
+            data: [2,3,3,2,2,4,]
           }]
         })
       });

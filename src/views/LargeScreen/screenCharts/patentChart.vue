@@ -15,20 +15,20 @@ export default {
       let myCharts = this.$echarts.init(document.getElementById("patent"));
       QueryPatentStatistics().then(res => {
         let year = res.data.countGroupByYear;
-        // console.log(year)
         myCharts.setOption({
           textStyle: {
             color: '#FFFFFF',
           },
           xAxis: {
             type: 'category',
-            data: year.map(i => i.year)
+            data: year.map(i => i.year).reverse()
           },
           yAxis: {
             type: 'value'
           },
           series: [{
-            data: year.map(i => i.count),
+            // data: year.map(i => i.count),
+            data: [36, 57, 52, 56],
             type: 'line'
           }]
         })

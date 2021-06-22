@@ -12,6 +12,7 @@
     <div style="background: #409EFF ;opacity: 0.9">1111</div>
 
 
+    <big-screen />
   </div>
 
 </template>
@@ -23,10 +24,12 @@
 // import ParkingChart from "./screenCharts/parkingChart";
 
 import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
+import BigScreen from "../camera/bigScreen";
 
 export default {
   name: "test",
   components: {
+    BigScreen,
     FireAlarm
     // ParkingChart,
     // Notice,

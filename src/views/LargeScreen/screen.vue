@@ -33,23 +33,27 @@
           <div class="main">
             <div style=" position: absolute; top: -100px; ">
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000; background: #915ADD">
-                企业总数：{{ companyTotal }}
+<!--                企业总数：{{ companyTotal }}-->
+                企业总数：146家
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #E1AB5E">
-                专利申请数：{{ patentTotal }}
+<!--                专利数量：{{ patentTotal }}-->
+                专利数量：201
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #11D4E3">
-                安全生产天数：{{ safetyProduction }}
-
+<!--                安全生产天数：{{ safetyProduction }}-->
+                安全生产天数：366天
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #2887E8">
                 月电量使用总数：{{ electricTotal }}
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #53D77E">
-                本年入孵企业增长率：{{ growthRate }}
+<!--                本年入孵企业增长率：{{ growthRate }}-->
+                本年入孵企业增长率：24%
               </el-button>
               <el-button style="font-size: 25px; color: #FFFFFF; font-weight: 1000;  background: #D96568">
-                本年专利申请增长率：{{ electricGrowthRate }}
+<!--                本年知识产权增长率：{{ electricGrowthRate }}-->
+                本年知识产权增长率：7%
               </el-button>
             </div>
             <fire-alarm/>
@@ -63,7 +67,7 @@
         </el-col>
         <el-col :span="4">
           <div class="Hallmark item" style="background: #FFFFFF">
-            <camera style="height: 100%; width: 100%" id="b8fa463342b74e759a2ad4249642ba3d"/>
+            <big-screen />
           </div>
         </el-col>
       </el-row>
@@ -119,29 +123,7 @@
         </el-col>
         <el-col :span="4">
           <div class="Hallmark right">
-            <div class="fiveFather">
-              <div class="five">
-                <camera style="height: 100%; width: 100%" id="cf6c39b00b154e0a87707e91b72004fe"/>
-              </div>
-              <div class="five">
-                <camera style="height: 100%; width: 100%" id="7704cf1d6aad4bbfbbaa14d754b987ae"/>
-              </div>
-            <div class="five">
-              <camera style="height: 100%; width: 100%" id="367ad9af767d45f8a7c0437504e95d47"/>
-            </div>
-            </div>
-            <br>
-            <div class="fiveFather">
-              <div class="five">
-                <camera style="height: 100%; width: 100%" id="8a798970dbc04f3ebe5c47f65b49e7d0"/>
-              </div>
-              <div class="five">
-                <camera style="height: 100%; width: 100%" id="2170bc4030994d2faa0a18322a9adae7"/>
-              </div>
-              <div class="five">
-                <camera  style="height: 100%; width: 100%" id="ee41380604444eb69486323ba7b9f078"/>
-              </div>
-            </div>
+        <camera style="height: 100%; width: 100%"/>
           </div>
         </el-col>
       </el-row>
@@ -163,10 +145,12 @@ import {BillStatistics, getSafetyDays, QueryCompanyStatistics, QueryPatentStatis
 import EnvironmentalTesting from "./screenCharts/environmentalTesting";
 import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
 import Camera from "../camera/camera";
+import BigScreen from "../camera/bigScreen";
 
 export default {
   name: "screen",
   components: {
+    BigScreen,
     Camera,
     FireAlarm,
     EnvironmentalTesting,
@@ -258,16 +242,7 @@ export default {
 </script>
 
 <style scoped>
-.fiveFather {
-  display: flex;
-  height: 240px;
-}
 
-.five {
-  flex: 1;
-  background: #ffffff;
-  margin: 5px;
-}
 
 .typeTitle {
   font-size: 30px;
