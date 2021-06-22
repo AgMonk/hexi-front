@@ -42,7 +42,7 @@ export default {
   },
   mounted() {
     document.querySelector('body').setAttribute('style',
-        "background-image: url(" + require("../../assets/img/login.png") + ");background-size: cover;" +
+        "background-image: url(" + require("../../assets/img/login.jpg") + ");background-size: cover;" +
         "background-repeat: no-repeat")
   },
   beforeDestroy() {
