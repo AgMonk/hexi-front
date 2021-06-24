@@ -14,7 +14,7 @@ export default {
 // 基于准备好的dom，初始化echarts实例
       let myChart = this.$echarts.init(document.getElementById('enterprise'));
 
-      QueryCompanyStatistics().then(res => {
+      QueryCompanyStatistics({showMessage: 1}).then(res => {
         console.log(res)
         let c = res.data.countGroupByType;
         let data = [];

@@ -10,7 +10,7 @@ export default {
   methods: {
     myEcharts() {
       let myCharts = this.$echarts.init(document.getElementById("authentication"));
-      QueryCompanyStatistics().then(res => {
+      QueryCompanyStatistics({showMessage: 1}).then(res => {
         let d = res.data.countGroupByCertificationType;
         let data = [];
         for (let i = 0; i < d.length; i++) {

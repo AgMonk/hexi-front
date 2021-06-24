@@ -72,6 +72,7 @@ export default {
       paging: {
         page: 1,
         size: 5,
+        showMessage: 1,
         start: undefined,
         end: undefined,
         condition: {
@@ -81,6 +82,7 @@ export default {
       soilData: {
         page: 1,
         size: 1,
+        showMessage: 1,
         start: undefined,
         end: undefined
       },
@@ -91,7 +93,7 @@ export default {
   methods: {
     getWeather() {
       let city = "柳州"
-      GetWeather(city).then(res => {
+      GetWeather({city, showMessage: 1}).then(res => {
         this.airData = res.data.aqi;
         this.airData.aqiinfo = res.data.aqi.aqiinfo;
         console.log(this.airData)

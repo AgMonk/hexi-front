@@ -5,34 +5,26 @@
 </template>
 
 <script>
-import {UserLogout} from '@/network/output.js'
+import {UserLogout} from "../../network/output";
 
 export default {
   name: "userLogout",
   methods: {
     logout() {
       this.$confirm('确定退出？').then(() => {
-        UserLogout().then(res => {
+        UserLogout({params: 1}).then(res => {
           console.log(res);
           switch (res.code) {
             case 2000 :
               this.$router.push({path: '/'})
-              // this.$message({
-              //   message: res.message,
-              //   type: "success"
-              // })
               break;
-              // default:
-              //   this.$message.error({
-              //     message: "未知错误",
-              //   })
-              //   break;
           }
         })
       }).catch(() => {
       });
     }
-  }
+  },
+
 }
 </script>
 

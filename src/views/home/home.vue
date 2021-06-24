@@ -10,7 +10,6 @@
           <div style="background: #FFFFFF; ">
             <!--            <compony-chart/>-->
             <!--            <hydropower-chart/>-->
-
           </div>
         </el-col>
       </el-row>

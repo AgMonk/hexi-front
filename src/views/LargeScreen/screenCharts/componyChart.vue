@@ -17,7 +17,7 @@ export default {
   methods: {
     myEcharts() {
       let myChart = this.$echarts.init(document.getElementById('componyChart'));
-      QueryCompanyStatistics().then(res => {
+      QueryCompanyStatistics({showMessage: 1}).then(res => {
         let c = res.data.countGroupByMonth;
         let data = [];
         for (let i = 0; i < c.length; i++) {

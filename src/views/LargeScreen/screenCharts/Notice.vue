@@ -28,6 +28,7 @@ export default {
       paging: {
         page: 1,
         size: 10,
+        showMessage: 1,
         start: undefined,
         end: undefined
       },

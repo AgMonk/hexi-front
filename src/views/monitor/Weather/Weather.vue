@@ -46,7 +46,7 @@ export default {
   methods: {
     getWeather() {
       let city = "柳州"
-      GetWeather(city).then(res => {
+      GetWeather({city,}).then(res => {
         this.airData = res.data.aqi;
         this.airData.aqiinfo = res.data.aqi.aqiinfo;
 

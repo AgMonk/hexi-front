@@ -58,7 +58,7 @@
               </el-button>
             </div>
             <fire-alarm/>
-            <img class="image" height="616" src="../../assets/img/screen.png" width="1891.66"/>
+            <screen-img/>
           </div>
         </el-col>
         <el-col :span="3">
@@ -147,10 +147,12 @@ import EnvironmentalTesting from "./screenCharts/environmentalTesting";
 import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
 import Camera from "../camera/camera";
 import BigScreen from "../camera/bigScreen";
+import ScreenImg from "./screenCharts/screenImg";
 
 export default {
   name: "screen",
   components: {
+    ScreenImg,
     BigScreen,
     Camera,
     FireAlarm,
@@ -197,28 +199,28 @@ export default {
     this.currentTime();
     //安全生产天数
 
-    getSafetyDays().then(res => {
+    getSafetyDays({showMessage: 1}).then(res => {
       // console.log(res)
       this.safetyProduction = res.data;
     })
     //查询公司总数
-    QueryCompanyStatistics().then(res => {
+    QueryCompanyStatistics({showMessage: 1}).then(res => {
       this.companyTotal = res.data.totalCount;
     })
     //查询专利申请数
-    QueryPatentStatistics().then(res => {
+    QueryPatentStatistics({showMessage: 1}).then(res => {
       this.patentTotal = res.data.totalCount;
       let now = res.data.countGroupByYear[1].count;
       let last = res.data.countGroupByYear[2].count;
       this.electricGrowthRate = Math.floor((now - last) / last * 100) + "%";
     });
     //水电查询
-    BillStatistics().then(res => {
+    BillStatistics({showMessage: 1}).then(res => {
       this.electricTotal = res.data.amountGroupByTypeMonth[0].amount;
       // console.log(res);
     })
     //入驻企业增长率
-    QueryCompanyStatistics().then(res => {
+    QueryCompanyStatistics({showMessage: 1}).then(res => {
       let now = res.data.countGroupByYear[1].count;
       let last = res.data.countGroupByYear[2].count;
       this.growthRate = Math.floor((now - last) / last * 100) + "%";

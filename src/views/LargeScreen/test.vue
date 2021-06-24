@@ -1,39 +1,44 @@
 <template>
-  <div style="background: #0F373F; text-align: center; ">
-    <!--    <environmental-testing/>-->
-    <!--    <el-button v-show="show"></el-button>-->
-    <!--    <el-button @click="btn"></el-button>-->
-    <!--    <el-button @click="GetJson()">测试</el-button>-->
-
-    <!--    <notice />-->
-    <!--    <parking-chart />-->
-
-    <fire-alarm/>
-    <div style="background: #409EFF ;opacity: 0.9">1111</div>
-
-
-    <big-screen />
-  </div>
+<div>
+  <compony-chart/>
+  <environmental-testing/>
+  <hydropower-chart/>
+  <authentication-chart/>
+  <Notice/>
+  <parking-chart/>
+  <patent-chart/>
+  <patent-status-chart/>
+  <screenType/>
+  <subsidy-chart/>
+</div>
 
 </template>
 
 <script>
-
-// import EnvironmentalTesting from "./screenCharts/environmentalTesting";
-// import Notice from "./screenCharts/Notice";
-// import ParkingChart from "./screenCharts/parkingChart";
-
-import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
-import BigScreen from "../camera/bigScreen";
+import ComponyChart from "./screenCharts/componyChart";
+import EnvironmentalTesting from "./screenCharts/environmentalTesting";
+import HydropowerChart from "./screenCharts/hydropowerChart";
+import AuthenticationChart from "./screenCharts/authenticationChart";
+import Notice from "./screenCharts/Notice";
+import ParkingChart from "./screenCharts/parkingChart";
+import PatentChart from "./screenCharts/patentChart";
+import PatentStatusChart from "./screenCharts/patentStatusChart";
+import screenType from "./screenCharts/screenType";
+import SubsidyChart from "./screenCharts/subsidyChart";
 
 export default {
   name: "test",
   components: {
-    BigScreen,
-    FireAlarm
-    // ParkingChart,
-    // Notice,
-    // EnvironmentalTesting
+    SubsidyChart,
+    PatentStatusChart,
+    PatentChart,
+    ParkingChart,
+    Notice,
+    AuthenticationChart,
+    HydropowerChart,
+    EnvironmentalTesting,
+    ComponyChart,
+    screenType
   },
   data() {
     return {
@@ -42,8 +47,6 @@ export default {
       param: {
         type: "Patent",
         name: "statistics",
-        // type: "",
-        // name: "",
         version: 1,
       },
     }
@@ -54,6 +57,7 @@ export default {
       // console.log(111)
     },
 
+
   },
   mounted() {
     // QueryCompanyStatistics().then(res => {
@@ -61,6 +65,9 @@ export default {
     //   let last = res.data.countGroupByYear[1].count;
     //   let growthRate = Math.floor((now - last) / last * 100);
     //   console.log(growthRate);
+    // })
+    // getCameraUrl({id:"7d7e627f5f78429795b64a09fb9c4024", showMessage: 1}).then(res => {
+    //   console.log(res)
     // })
 
   }

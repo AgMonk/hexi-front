@@ -13,7 +13,7 @@ export default {
   methods: {
     myEcharts() {
       let myCharts = this.$echarts.init(document.getElementById("patent"));
-      QueryPatentStatistics().then(res => {
+      QueryPatentStatistics({showMessage: 1}).then(res => {
         let year = res.data.countGroupByYear;
         myCharts.setOption({
           textStyle: {

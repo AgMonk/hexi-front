@@ -7,7 +7,7 @@
       <span v-if="status.alarmStatus === 0 " style="color: red"><i class="el-icon-bell"/>火警状态异常</span>
     </el-button>
     <!--  8#-->
-    <svg-icon v-if="status.status8 === 0" style=" position: absolute; top:200px; left: 270px; "/>
+    <svg-icon v-if="status.status8 === 0" style=" position: absolute; top:180px; left: 230px; "/>
     <!--  10#-->
     <svg-icon v-if="status.status10 === 0" style=" position: absolute; top:300px; left: 360px; "/>
     <!--  18# 办公楼-->
@@ -62,9 +62,9 @@ export default {
   },
   methods: {
     GetStatus() {
-      getStatus().then(res => {
+      getStatus({showMessage: 1}).then(res => {
         this.status = res.data;
-        console.log(res)
+        // console.log(this.status)
       })
     },
   },
@@ -72,9 +72,7 @@ export default {
     this.GetStatus();
     this.timer = setInterval(() => {
       this.GetStatus()
-    }, 10000);
-
-
+    }, 2000);
   },
   beforeDestroy() {
     clearInterval(this.timer);

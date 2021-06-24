@@ -117,7 +117,7 @@ export default {
     },
     //统计信息
     paymentSum() {
-      PaymentSum().then(res => {
+      PaymentSum({data: 1}).then(res => {
         console.log(res)
       })
     },

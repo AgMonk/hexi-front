@@ -7,7 +7,7 @@
       <div class="main">
         <h3 class="ranking">企业月用水用电排行</h3>
         <div class="two">
-          <div id="left" class="chart"></div>
+          <div id="left" class="chart"/>
           <div id="right" class="chart"/>
         </div>
       </div>
@@ -20,9 +20,16 @@ import {BillStatistics} from "../../../network/output";
 
 export default {
   name: "hydropowerChart",
+  data() {
+    return {
+      mycharts: null,
+      myCharts: null
+
+    }
+  },
   methods: {
     setOption(id, d) {
-      let myChart = this.$echarts.init(document.getElementById(id));
+      this.mycharts = this.$echarts.init(document.getElementById(id));
       let data = [];
       for (let i = 0; i < d.length; i++) {
         data.push({
@@ -30,7 +37,7 @@ export default {
           name: d[i].companyName,
         })
       }
-      myChart.setOption({
+      this.mycharts.setOption({
         yAxis: {
           data: data.map(i => i.name).splice(0, 5),
           show: false
@@ -42,19 +49,13 @@ export default {
       })
     },
     myEcharts() {
-      BillStatistics().then(res => {
+      BillStatistics({showMessage: 1}).then(res => {
         this.setOption("left", res.data.topMap.水费);
         this.setOption("right", res.data.topMap.电费);
       })
     },
     init(id, title) {
-      let myChart = this.$echarts.init(document.getElementById(id));
-      // if (document.getElementById(id) == null) {
-      //   return
-      // }
-      // this.$echarts.dispose(document.getElementById(id))
-      // myChart = this.$echarts.init(document.getElementById(id))
-      // myChart.setOption({})
+      this.myCharts = this.$echarts.init(document.getElementById(id));
       let option = {
         title: {
           text: title,
@@ -94,7 +95,7 @@ export default {
           }
         },
       };
-      myChart.setOption(option);
+      this.myCharts.setOption(option);
     }
   },
   mounted() {

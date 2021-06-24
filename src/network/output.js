@@ -8,12 +8,19 @@ export function UserLogin( username, password ) {
     })
 }
 //获取当前登录状态
-export  function UserStatus() {
-    return transfer({url: '/user/status',})
+export function UserStatus(params) {
+    return transfer({
+        url: '/user/status',
+        params
+    })
 }
 //获取用户信息*
-export  function UserInfo() {
-    return transfer({url: '/user/info',})
+export function UserInfo(params) {
+    return transfer(
+        {
+            url: '/user/info',
+            params
+        })
 }
 //注册*
 export  function UserReg(username, password, phone, name) {
@@ -39,8 +46,12 @@ export function EditPassword(oldPass,newPass) {
     })
 }
 //登出*
-export function UserLogout() {
-    return transfer({url: '/user/logout'})
+export function UserLogout(params) {
+    return transfer({
+        url: '/user/logout',
+        params
+    })
+
 }
 //查询用户列表（分页）*
 export function UserPage(data) {
@@ -246,30 +257,33 @@ export function QueryCompanyPage({page, size, start, end, condition}) {
 }
 
 //查询统计信息
-export function QueryCompanyStatistics() {
+export function QueryCompanyStatistics(params) {
     return transfer({
-        url: '/Company/statistics'
+        url: '/Company/statistics',
+        params
     })
 }
 
-export function QueryPatentStatistics() {
+export function QueryPatentStatistics(params) {
     return transfer({
-        url: '/Patent/statistics'
+        url: '/Patent/statistics',
+        params
     })
 }
 
-export function QuerySubsidyStatistics() {
+export function QuerySubsidyStatistics(params) {
     return transfer({
-        url: '/Subsidy/statistics'
+        url: '/Subsidy/statistics',
+        params
     })
 }
 
 //道闸模块
-export function BarrierLogPage({page, size, start, end}) {
+export function BarrierLogPage(data) {
     return transfer({
         url: '/BarrierLog/page',
         method: 'post',
-        data: {page, size, start, end},
+        data,
     })
 }
 
@@ -303,11 +317,12 @@ export function Paymentpage({page, size, start, end, condition}) {
 }
 
 //金额、用量统计
-export function PaymentSum() {
+export function PaymentSum(params) {
     return transfer({
         url: '/Payment/sum',
         method: 'post',
-        data: []
+        data: [],
+        params
     })
 }
 
@@ -366,58 +381,59 @@ export function BarrierPage({page, size, start, end, condition}) {
 //查询车辆分布
 export function CarStatus(day) {
     return transfer({
-        params: {day},
+        params: day,
         url: '/BarrierLog/getCarStatus'
     })
 }
 
 //水质查询
-export function WaterQualityPage({page, size, start, end, condition}) {
+export function WaterQualityPage(data) {
     return transfer({
         method: 'post',
-        data: {page, size, start, end, condition},
+        data,
         url: '/WaterQuality/page'
     })
 }
 
 //查询站点
-export function getStations() {
+export function getStations(params) {
     return transfer({
-        url: '/WaterQuality/getStations'
+        url: '/WaterQuality/getStations',
+        params
     })
 }
 
 //土质查询
-export function SoilDatapage({page, size, start, end}) {
+export function SoilDatapage(data) {
     return transfer({
         method: 'post',
-        data: {page, size, start, end},
+        data,
         url: '/SoilData/page'
     })
 }
 
 //天气
-export function GetWeather(city) {
+export function GetWeather(params) {
     return transfer({
         url: "/Weather/get",
-        params: {city}
+        params
     })
 }
 
 //水电统计
-export function BillStatistics() {
+export function BillStatistics(params) {
     return transfer({
         url: '/Bill/statistics',
-        // params: {month},
+        params,
     })
 }
 
 //公告
 //公告查询
-export function AnnouncementPage({page, size, start, end}) {
+export function AnnouncementPage(data) {
     return transfer({
         method: 'post',
-        data: {page, size, start, end},
+        data,
         url: 'Announcement/page'
     })
 }
@@ -445,6 +461,39 @@ export function AnnouncementDel(id) {
     return transfer({
         url: '/Announcement/del',
         params: {id}
+    })
+}
+
+
+//火灾报警
+export function getSafetyDays(params) {
+    return transfer({
+        url: '/FireAlarmLog/getSafetyDays',
+        params,
+    })
+}
+
+//查询当前报警状态
+export function getStatus(params) {
+    return transfer({
+        url: '/FireAlarmLog/getStatus',
+        params
+    })
+}
+
+//查询监控探头列表
+export function ArtemisCameraPage(params) {
+    return transfer({
+        url: '/ArtemisCamera/page',
+        params
+    })
+}
+
+//查询播放地址
+export function getCameraUrl({id, showMessage = 1}) {
+    return transfer({
+        url: '/ArtemisCamera/getUrl',
+        params: {id, showMessage}
     })
 }
 
@@ -514,31 +563,4 @@ export function delVersion(id) {
     })
 }
 
-//火灾报警
-export function getSafetyDays() {
-    return transfer({
-        url: '/FireAlarmLog/getSafetyDays'
-    })
-}
 
-//查询当前报警状态
-export function getStatus() {
-    return transfer({
-        url: '/FireAlarmLog/getStatus',
-    })
-}
-
-//查询监控探头列表
-export function ArtemisCameraPage() {
-    return transfer({
-        url: '/ArtemisCamera/page'
-    })
-}
-
-//查询播放地址
-export function getCameraUrl(id) {
-    return transfer({
-        url: '/ArtemisCamera/getUrl',
-        params: {id}
-    })
-}

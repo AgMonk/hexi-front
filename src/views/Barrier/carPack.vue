@@ -27,7 +27,7 @@ export default {
   name: "carPack",
   data() {
     return {
-      day: undefined,
+      day: 3,
       packData: {},
     }
   },

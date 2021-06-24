@@ -13,7 +13,7 @@ export default {
   methods: {
     myEcharts() {
       let myCharts = this.$echarts.init(document.getElementById("subsidy"));
-      QuerySubsidyStatistics().then(res => {
+      QuerySubsidyStatistics({showMessage: 1}).then(res => {
         let year = res.data.sumGroupByYear.reverse();
         // console.log(year.map(i => i.sum))
         myCharts.setOption({

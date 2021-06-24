@@ -28,7 +28,7 @@ export default {
   methods: {
     myEcharts() {
       let myCharts = this.$echarts.init(document.getElementById("parking"));
-      CarStatus().then(res => {
+      CarStatus({showMessage: 1}).then(res => {
         let d = res.data
         let data = new Array();
         for (let i = 0; i < d.length; i++) {
@@ -79,6 +79,7 @@ export default {
       let paging = new Object();
       paging.page = 1, paging.size = 4, paging.end = Math.floor(new Date().getTime() / 1000),
           paging.start = paging.end - 24 * 60 * 60 * 30 * 6;
+      paging.showMessage = 1
       BarrierLogPage(paging).then(res => {
         // console.log(res);
         this.inOutData = res.data.records;

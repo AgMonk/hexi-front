@@ -1,6 +1,6 @@
 const nav = () => import('../components/Nav');
-
-
+import UserLogin from "../views/User/UserLogin";
+import home from "../views/home/home";
 
 const staticRoute = [
     //重定向
@@ -13,7 +13,7 @@ const staticRoute = [
         path: "/login",
         name: "login",
         meta: {Nav: false},
-        component: () => import(/* webpackChunkName: 'user' */'../views/User/UserLogin' )
+        component: UserLogin
     },
     //注册页
     {
@@ -77,7 +77,7 @@ const staticRoute = [
         ]
     },
 
-    {path: "/home", component: () => import(/* webpackChunkName: 'home' */ "../views/home/home")},
+    {path: "/home", component: home},
     {
         path: "/newCompony",
         component: () => import(/* webpackChunkName: 'home' */ "../views/firmManage/hatchCompony/newCompony")
@@ -97,6 +97,7 @@ const staticRoute = [
         component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/screen")
     },
     {path: "/test", component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/test")},
+    {path: "/test1", component: () => import("../views/LargeScreen/test1")},
     {path: "/announcement", component: () => import(/* webpackChunkName: 'pay'*/ "../views/Announcement/announcement")},
 
     //版本控制

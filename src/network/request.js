@@ -2,23 +2,31 @@ import axios from 'axios';
 import Vue from "vue";
 
 export function transfer(config) {
+    let showMessage;
     const instance = axios.create({
         baseURL: '/api',
         timeout: 6000,
     })
     instance.interceptors.request.use(config => {
+        if (config.data) {
+            showMessage = config.data.showMessage;
+        } else {
+            showMessage = config.params.showMessage;
+        }
         return config;
     }, err => {
         console.log(err);
     })
     instance.interceptors.response.use(res => {
+        // console.log(res)
         let data = res.data;
-        if (data.code === 2000) {
+        if (data.code === 2000 && !showMessage) {
             Vue.prototype.$message({
                 message: data.message,
                 type: 'success'
             })
-        } else {
+        }
+        if (data.code !== 2000) {
             Vue.prototype.$message.error(data.message)
         }
         return res.data;

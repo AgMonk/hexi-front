@@ -14,13 +14,13 @@ export function transfer(config) {
     instance.interceptors.response.use(res => {
         let showMessage = res.config.params.showMessage;
         let data = res.data;
-        if (data.code === 2000 && showMessage) {
+        if (data.code === 2000 && !showMessage) {
             Vue.prototype.$message({
                 message: data.message,
                 type: 'success'
             })
         }
-        if(data.code !== 2000){
+        if (data.code !== 2000) {
             Vue.prototype.$message.error(data.message)
         }
         return res.data;

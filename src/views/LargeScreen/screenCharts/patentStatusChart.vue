@@ -10,7 +10,7 @@ export default {
   methods: {
     myEcharts() {
       let myCharts = this.$echarts.init(document.getElementById("status"));
-      QueryPatentStatistics().then(res => {
+      QueryPatentStatistics({showMessage: 1}).then(res => {
         let d = res.data.countGroupByStatus;
         d.count = d.map(i => i.count),
             d.status = d.map(i => i.status),

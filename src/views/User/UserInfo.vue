@@ -80,10 +80,10 @@ export default {
     }
   },
   created() {
-    UserInfo().then(res => {
+    UserInfo({params: 1}).then(res => {
       this.timeStrings = res.data.createdAt.timeString;
       this.userList = res.data;
-      console.log(this.userList)
+      console.log(res)
 
     })
   }
