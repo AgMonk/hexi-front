@@ -12,7 +12,8 @@
 </template>
 
 <script>
-import {QueryCompanyStatistics} from "../network/output";
+
+import {copyObj} from "../common/utils";
 
 export default {
   name: "card",
@@ -22,21 +23,19 @@ export default {
       length: ""
     }
   },
-  methods: {
-    listGroupByBuildingIndex() {
+  methods: {},
+  mounted() {
 
-      QueryCompanyStatistics({showMessage: 1}).then(res => {
-        this.companyList = res.data.listGroupByBuildingIndex[this.num];
-        // console.log(this.companyList.length)
-        this.length = this.companyList.length;
-      })
+  },
+  watch: {
+    "number": {
+      handler(a) {
+        this.companyList = copyObj(a);
+        this.length = a.length;
+      }
     }
   },
-  mounted() {
-    this.listGroupByBuildingIndex()
-    // console.log(this.num)
-  },
-  props: ['num']
+  props: ['number']
 }
 </script>
 

@@ -19,7 +19,7 @@ export default {
             name: d[i].certificationType,
           })
         }
-        console.log(data)
+        // console.log(data)
         myCharts.setOption({
           tooltip: {
             trigger: 'item'

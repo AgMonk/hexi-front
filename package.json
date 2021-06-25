@@ -12,6 +12,7 @@
     "core-js": "^3.6.5",
     "echarts": "^5.1.1",
     "element-ui": "^2.15.1",
+    "hls.js": "^1.0.7",
     "video.js": "^7.12.3",
     "videojs-contrib-hls": "^5.15.0",
     "vue": "^2.6.11",

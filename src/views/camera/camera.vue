@@ -112,8 +112,8 @@ export default {
     }
   },
   methods: {
-
     getVideo(index) {
+      console.log(index)
       videojs(
           index,
           {
@@ -123,7 +123,7 @@ export default {
             errorDisplay: false,
             controlBar: true
           },
-          function() {
+          function () {
             this.play();
           }
       );

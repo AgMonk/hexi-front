@@ -107,7 +107,10 @@ const staticRoute = [
     },
 
     //测试播放
-    {path: "/camera", component: () => import("../views/camera/camera")}
+    {path: "/camera", component: () => import("../views/camera/camera")},
+
+    //视频监控
+    {path: "/cameraIndex", component: () => import("../views/camera/cameraIndex")}
 
 ]
 

@@ -37,7 +37,7 @@ export default {
             name: d[i].carTypeName,
           })
         }
-        console.log(data);
+        // console.log(data);
         myCharts.setOption({
           tooltip: {
             trigger: 'item'

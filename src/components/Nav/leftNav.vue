@@ -20,6 +20,9 @@
       <el-menu-item index="/camera">
         <span slot="title">测试</span>
       </el-menu-item>
+      <el-menu-item index="/cameraIndex">
+        <span slot="title">视频监控</span>
+      </el-menu-item>
       <el-menu-item index="/screen">
         <span slot="title">大屏入口</span>
       </el-menu-item>

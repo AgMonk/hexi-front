@@ -1,4 +1,5 @@
 <template>
+
   <video
       id="big"
       class="video-js vjs-default-skin"
@@ -11,12 +12,15 @@
   >
     <source src="" type="application/x-mpegURL" />
   </video>
+
 </template>
 
 <script>
 import {getCameraUrl} from "../../network/output";
 import videojs from "video.js";
 import "videojs-contrib-hls";
+import {Unicom} from "../../common/utils";
+
 export default {
   name: "bigScreen",
   methods: {
@@ -37,7 +41,7 @@ export default {
     },
   },
   mounted() {
-    getCameraUrl("0dda9cfaa2904764a77beb31db6c4678").then(res=>{
+    getCameraUrl("0dda9cfaa2904764a77beb31db6c4678").then(res => {
       let myPlayer = videojs("big");
       myPlayer.src([
         {
@@ -46,6 +50,9 @@ export default {
         }
       ]);
       myPlayer.play();
+    });
+    Unicom.$on("videoIndex", res => {
+      console.log(res)
     })
   }
 }

@@ -43,7 +43,7 @@ export default {
         //   // console.log(res.data.records[i])
         //   this.data = res.data.records[i]
         // }
-        console.log(this.data);
+        // console.log(this.data);
       })
     }
   },

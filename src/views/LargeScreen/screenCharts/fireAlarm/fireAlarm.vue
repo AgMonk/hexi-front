@@ -70,9 +70,9 @@ export default {
   },
   mounted() {
     this.GetStatus();
-    this.timer = setInterval(() => {
-      this.GetStatus()
-    }, 2000);
+    // this.timer = setInterval(() => {
+    //   this.GetStatus()
+    // }, 2000);
   },
   beforeDestroy() {
     clearInterval(this.timer);

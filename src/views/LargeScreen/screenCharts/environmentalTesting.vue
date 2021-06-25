@@ -96,20 +96,20 @@ export default {
       GetWeather({city, showMessage: 1}).then(res => {
         this.airData = res.data.aqi;
         this.airData.aqiinfo = res.data.aqi.aqiinfo;
-        console.log(this.airData)
+        // console.log(this.airData)
       })
     },
     waterQualityInquiry() {
       WaterQualityPage(this.paging).then(res => {
         this.waterData = res.data.records[0] ? res.data.records[0].factorValue : undefined;
         this.total = res.data.total;
-        console.log(this.waterData)
+        // console.log(this.waterData)
       })
     },
     soilQuality() {
       SoilDatapage(this.soilData).then(res => {
         this.soilList = res.data.records[0] ? res.data.records[0] : undefined;
-        console.log(this.soilList);
+        // console.log(this.soilList);
       })
     },
 
