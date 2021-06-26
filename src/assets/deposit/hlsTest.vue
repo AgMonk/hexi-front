@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <video ref="video" autoplay controls muted preload="auto" width="500px"></video>
-  </div>
+<div>
+  <video ref="video" autoplay controls muted preload="auto" width="500px"></video>
+</div>
 </template>
 
 <script>

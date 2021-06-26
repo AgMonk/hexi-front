@@ -97,7 +97,7 @@ const staticRoute = [
         component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/screen")
     },
     {path: "/test", component: () => import(/* webpackChunkName: 'pay'*/ "../views/LargeScreen/test")},
-    {path: "/test1", component: () => import("../views/LargeScreen/test1")},
+    {path: "/checkOut", component: () => import("../views/LargeScreen/test1")},
     {path: "/announcement", component: () => import(/* webpackChunkName: 'pay'*/ "../views/Announcement/announcement")},
 
     //版本控制

@@ -1,7 +1,7 @@
 <template>
-  <div>
-    <video :ref="'video' + id" autoplay controls muted preload="auto" width="300px"></video>
-  </div>
+<div>
+  <video :ref="'video' + id" autoplay class="videoPlay" muted preload="auto"></video>
+</div>
 </template>
 
 <script>
@@ -31,7 +31,15 @@ export default {
         this.hls.attachMedia(this.$refs[`video${this.id}`]);
         this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
           console.log('加载成功');
-          this.$refs[`video${this.id}`].play();
+          let playPromise = this.$refs[`video${this.id}`].play();
+          if (playPromise !== undefined) {
+            playPromise.then(res => {
+              console.log(res)
+              this.$refs[`video${this.id}`].play();
+            }).catch(err => {
+              console.log(err)
+            })
+          }
         });
         this.hls.on(Hls.Events.ERROR, (event, data) => {
           console.log(event, data, '加载失败')
@@ -48,4 +56,8 @@ export default {
 
 <style scoped>
 
+.videoPlay {
+  width: 237.55px;
+  height: 250px;
+}
 </style>

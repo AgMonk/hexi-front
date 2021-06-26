@@ -134,8 +134,6 @@ export default {
       // let index = this.indexList[i];
       this.getVideo("index"+i);
     }
-
-
     for (let i = 0; i < this.indexList.length; i++) {
       let index = this.indexList[i];
       getCameraUrl(index).then(res=>{
@@ -149,9 +147,7 @@ export default {
         myPlayer.play();
       })
     }
-
   },
-
 }
 </script>
 

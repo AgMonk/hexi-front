@@ -143,7 +143,8 @@
     </el-tooltip>
     <!--    摄像头定位-->
     <!--    12-13 -->
-    <i class="el-icon-location" style="top: 160px; left:400px" @click="test"></i>
+    <i class="el-icon-location" style="top: 160px; left:400px"
+       @click="videoUrl('http://ivi.bupt.edu.cn/hls/cctv1.m3u8')"></i>
     <!--   14-7 -->
     <i class="el-icon-location" style="top: 320px; left: 680px"></i>
     <!--    13-14 -->
@@ -178,9 +179,7 @@ export default {
         this.companyList = res.data.listGroupByBuildingIndex
       })
     },
-    test() {
-      // console.log(111)
-      let id = 111;
+    videoUrl(id) {
       Unicom.$emit('videoIndex', id)
     }
   },
