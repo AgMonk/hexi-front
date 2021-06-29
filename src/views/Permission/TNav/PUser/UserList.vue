@@ -1,10 +1,10 @@
 <template>
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <h2>查询用户列表</h2>
+      <h3>查询用户列表</h3>
     </div>
     <div class="text item">
-      <el-table :data="userLists" style="width: 900px; ">
+      <el-table :data="userLists">
         <el-table-column label="用户名" prop="username"></el-table-column>
         <el-table-column label="ID" prop="id"></el-table-column>
         <el-table-column label="姓名" prop="name"></el-table-column>
@@ -17,7 +17,7 @@
         </el-table-column>
         <el-table-column>
           <template slot-scope="prop">
-            <el-button @click=" visible.userRole = true; userId = prop.row.id">角色</el-button>
+            <el-button type="primary" @click=" visible.userRole = true; userId = prop.row.id">添加角色</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -90,7 +90,6 @@ export default {
 </script>
 
 <style scoped>
-
 .text {
   font-size: 14px;
 }

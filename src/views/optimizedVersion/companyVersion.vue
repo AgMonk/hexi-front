@@ -18,6 +18,12 @@
         </el-form-item>
       </el-form>
       <el-form label-width="130px">
+        <h3>入驻公司数/月</h3>
+        <el-form-item v-for="(count, i) in companyList.countGroupByMonth" :key="i" :label="count.month + ''">
+          <el-input v-model="count.count"/>
+        </el-form-item>
+      </el-form>
+      <el-form label-width="130px">
         <h3>入驻公司数/年</h3>
         <el-form-item v-for="(count, i) in companyList.countGroupByYear" :key="i" :label="count.year + ''">
           <el-input v-model="count.count"/>

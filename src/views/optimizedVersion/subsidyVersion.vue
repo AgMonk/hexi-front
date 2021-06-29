@@ -50,7 +50,7 @@ export default {
       this.param.version = this.subsidy;
       getJson(this.param).then(res => {
         this.subdisyList = res.data;
-        console.log(this.subdisyList)
+        // console.log(this.subdisyList)
       })
     },
     setSubsidyJson() {

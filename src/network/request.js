@@ -5,7 +5,7 @@ export function transfer(config) {
     let showMessage;
     const instance = axios.create({
         baseURL: '/api',
-        timeout: 6000,
+        timeout: 5000,
     })
     instance.interceptors.request.use(config => {
         if (config.data) {
@@ -32,6 +32,7 @@ export function transfer(config) {
         return res.data;
     }, err => {
         console.log(err);
+        throw err;
     })
     return instance(config);
 }

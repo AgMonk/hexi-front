@@ -5,12 +5,6 @@
         <el-form-item label="企业名称">
           <el-input v-model="companyPage.condition.name" placeholder="企业名称"></el-input>
         </el-form-item>
-        <el-form-item label="企业地址">
-          <el-input v-model="companyPage.condition.address" placeholder="企业地址"></el-input>
-        </el-form-item>
-        <el-form-item label="企业类型">
-          <el-input v-model="companyPage.condition.type" placeholder="企业类型"></el-input>
-        </el-form-item>
         <el-form-item>
           <el-button type="primary" @click="queryCompanyPage">查询</el-button>
         </el-form-item>

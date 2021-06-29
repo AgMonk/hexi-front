@@ -32,20 +32,7 @@ export default {
   },
   methods: {},
   mounted() {
-    // function d(f, ms) {
-    //   return function (...args) {
-    //     let  ctx = this;
-    //     setTimeout(function () {
-    //       return f.apply(ctx, args);
-    //     },ms)
-    //   }
-    // }
-    // function sayHi(who,d) {
-    //   console.log('hello' + who,d);
-    // }
-    // let sayHiDeferred = d(sayHi, 2000)
-    // sayHiDeferred("kkk", "111")
-    // sayHi(111,111)
+
   }
 }
 

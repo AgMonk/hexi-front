@@ -44,7 +44,6 @@
         </el-col>
         <el-col :span="12">
           <Querybill/>
-
         </el-col>
       </el-row>
     </el-main>

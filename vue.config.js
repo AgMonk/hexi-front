@@ -23,7 +23,7 @@ module.exports = {
         },
         '/cloud': {
             // target: 'http://192.168.0.116:8484/',
-            target: 'http://81.71.92.103:8080/',
+            target: 'https://www.xykgjt.net/',
             changeOrigin: true,
             pathRewrite: {
                 '^/cloud': ''

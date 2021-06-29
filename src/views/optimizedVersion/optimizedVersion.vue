@@ -51,7 +51,17 @@
 </template>
 
 <script>
-import {createVersion, delVersion, getVersion, overWrite, setVersion, versionList} from "../../network/output";
+import {
+  createVersion,
+  delVersion,
+  find,
+  getVersion,
+  HasRoles,
+  overWrite,
+  setVersion,
+  UserInfo,
+  versionList
+} from "../../network/output";
 import CompanyVersion from "./companyVersion";
 import PatentVersion from "./patentVersion";
 import SubsidyVersion from "./subsidyVersion";
@@ -72,6 +82,8 @@ export default {
       delIds: undefined,
       delId: undefined,
       activeName: 'bill',
+      userRoles: {},
+      rolePool: [],
     }
   },
   methods: {
@@ -121,12 +133,29 @@ export default {
       })
     },
 
+
   },
 
   mounted() {
     this.GetVersion();
-    //
     this.VersionList();
+
+    find({params: 1}).then(res => {
+      this.rolePool = res.data;
+      console.log(res)
+    })
+
+    UserInfo({params: 1}).then(res => {
+      let userId = res.data.id;
+      userId;
+      HasRoles(2).then(res => {
+        this.userRoles = res.data.map(role => {
+          let uuid = role.uuid;
+          let ro = this.rolePool.filter(r => r.id === role.roleId)[0];
+          return Object.assign({uuid}, ro)
+        });
+      })
+    })
   }
 }
 </script>

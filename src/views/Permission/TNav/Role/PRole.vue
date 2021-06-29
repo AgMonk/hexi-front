@@ -2,10 +2,10 @@
 
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <h2>查询角色列表</h2>
+      <h3>查询角色列表</h3>
     </div>
     <div class="text item">
-      <el-table :data="userLists" style="width: 800px;">
+      <el-table :data="userLists">
         <!-- 下拉框 -->
         <el-table-column label="权限" type="expand">
           <template slot-scope="scope">
@@ -25,12 +25,12 @@
         <el-table-column label="中文名称" prop="nickname"></el-table-column>
         <el-table-column>
           <template slot-scope="del">
-            <el-button @click="roleFromData = del.row; dialogVisible.edit = true; ">修改</el-button>
+            <el-button type="primary" @click="roleFromData = del.row; dialogVisible.edit = true; ">修改角色</el-button>
           </template>
         </el-table-column>
         <el-table-column>
           <template slot-scope="del">
-            <el-button @click="dele(del.row.id);">删除</el-button>
+            <el-button type="danger" @click="dele(del.row.id);">删除角色</el-button>
           </template>
         </el-table-column>
       </el-table>
@@ -43,7 +43,7 @@
         @current-change="queryRole">
     </el-pagination>
 
-    <el-button @click="dialogVisible.add = true; roleFromData  = {} ">添加角色</el-button>
+    <!--    <el-button @click="dialogVisible.add = true; roleFromData  = {} ">添加角色</el-button>-->
     <el-dialog title="添加角色" :visible.sync="dialogVisible.add" width="40%">
       <role-from :data="roleFromData" @success="dialogVisible.add = false; queryRole()"/>
     </el-dialog>
@@ -100,4 +100,21 @@ export default {
 </script>
 
 <style scoped>
+.text {
+  font-size: 14px;
+}
+
+.item {
+  margin-bottom: 18px;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: "";
+}
+
+.clearfix:after {
+  clear: both
+}
 </style>

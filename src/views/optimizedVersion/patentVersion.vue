@@ -6,6 +6,12 @@
     <div class="text item">
       <!--      <el-button @click="getPatentJson"></el-button>-->
       <el-form label-width="130px">
+        <h3>新增专利数/月</h3>
+        <el-form-item v-for="(patent, i) in patentList.countGroupByMonth" :key="i" :label="patent.month + ''">
+          <el-input v-model="patent.count"/>
+        </el-form-item>
+      </el-form>
+      <el-form label-width="130px">
         <h3>新增专利数/年</h3>
         <el-form-item v-for="(patent, i) in patentList.countGroupByYear" :key="i" :label="patent.year + ''">
           <el-input v-model="patent.count"/>

@@ -90,7 +90,7 @@ export function Page({page, size, condition}) {
 export function UserDel(id) {
     return transfer({
         params: {id},
-        url: '/permission/del',
+        url: '/role/del',
     })
 }
 // 添加*

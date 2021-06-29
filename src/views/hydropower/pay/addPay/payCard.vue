@@ -11,7 +11,6 @@
       <el-table :data="companyPage" @selection-change="selection">
         <el-table-column label="企业名称" prop="name"></el-table-column>
         <el-table-column label="企业地址" prop="address"></el-table-column>
-        <el-table-column label="企业类型" prop="type"></el-table-column>
         <el-table-column
             type="selection"
             width="55">
