@@ -48,15 +48,14 @@ export default {
     },
     findAll(){
       let permId = this.param.permissions.map(p=>p.id);
-
-      FindAll().then(res => {
+      FindAll({params: 1}).then(res => {
         this.permissions = res.data;
-        setTimeout(()=>{
-          this.permissions.forEach(perm=>{
-            if (permId.includes(perm.id)){
+        setTimeout(() => {
+          this.permissions.forEach(perm => {
+            if (permId.includes(perm.id)) {
               this.$refs.multipleTable.toggleRowSelection(perm)
             }
-          },1000)
+          }, 1000)
         })
       })
     },
@@ -82,20 +81,12 @@ export default {
       RoleSave(this.param).then(res => {
         switch (res.code) {
           case 2000 :
-            // this.$message({
-            //   message: res.message,
-            //   type: 'success'
-            // });
             this.$emit("success");
             break;
           default:
-            // this.$message.error({
-            //   message: res.message,
-            // });
-            // break;
+
         }
         })
-      // }
     }
   },
   mounted() {

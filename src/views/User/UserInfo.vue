@@ -84,7 +84,6 @@ export default {
       this.timeStrings = res.data.createdAt.timeString;
       this.userList = res.data;
       console.log(res)
-
     })
   }
 }

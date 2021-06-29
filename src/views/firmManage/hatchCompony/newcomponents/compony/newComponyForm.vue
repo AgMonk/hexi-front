@@ -7,6 +7,9 @@
     <el-form-item label="企业地址">
       <el-input v-model="edit.address"/>
     </el-form-item>
+    <el-form-item label="企业所在楼栋">
+      <el-input v-model="edit.buildingIndex"/>
+    </el-form-item>
     <el-form-item label="联系电话">
       <el-input v-model="edit.phone"/>
     </el-form-item>
@@ -37,8 +40,19 @@ export default {
     update() {
       updateCompony(this.edit).then(res => {
         console.log(res)
+        if (res.code === 2000) {
+          this.$emit("success");
+        }
       })
     },
+  },
+  watch: {
+    'selection': {
+      handler: function (e) {
+        this.edit = e ? copyObj(e) : [];
+      }
+
+    }
   },
   mounted() {
     this.edit = copyObj(this.selection);

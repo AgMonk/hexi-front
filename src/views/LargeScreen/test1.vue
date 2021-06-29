@@ -1,14 +1,14 @@
 <template>
   <div class="box">
     <div class="column">
-      <hls-test :id="1" :src="playing[0]"/>
-      <hls-test :id="2" :src="playing[1]"/>
-      <hls-test :id="3" :src="playing[1]"/>
+      <hls-test :id="1" :src="playing[0]" style="  width: 237.55px; height: 245px;"/>
+      <hls-test :id="2" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
+      <hls-test :id="3" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
     </div>
     <div class="column">
-      <hls-test :id="4" :src="playing[1]"/>
-      <hls-test :id="5" :src="playing[1]"/>
-      <hls-test :id="6" :src="playing[1]"/>
+      <hls-test :id="4" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
+      <hls-test :id="5" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
+      <hls-test :id="6" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
     </div>
   </div>
 </template>
@@ -47,7 +47,7 @@ export default {
         array.push(this.src[index])
       }
       this.playing = array
-      // console.log(this.playing)
+      console.log(this.playing)
     }, 1000 * 60)
   }
 }

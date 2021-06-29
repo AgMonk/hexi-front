@@ -7,7 +7,6 @@
           @select="select"
           @select-all="selectAll"
           @selection-change="$emit('selection-change', $event)"
-
       >
         <el-table-column type="selection"></el-table-column>
         <table-component/>

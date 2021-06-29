@@ -1,165 +1,151 @@
 <template>
-    <div >
-      <div class="fiveFather">
-        <div class="five">
-          <video
-              id="index1"
-              class="video-js vjs-default-skin"
-              controls
-              preload="auto"
-              muted
-              autoplay
-              width="237.55px"
-              height="230px"
-          >
-            <source src="" type="application/x-mpegURL" />
-          </video>
-        </div>
-        <div class="five">
-          <video
-              id="index0"
-              class="video-js vjs-default-skin"
-              controls
-              preload="auto"
-              muted
-              autoplay
-              width="237.55px"
-              height="230px"
-          >
-            <source src="" type="application/x-mpegURL" />
-          </video>
-        </div>
-        <div class="five">
-          <video
-              id="index2"
-              class="video-js vjs-default-skin"
-              controls
-              preload="auto"
-              muted
-              autoplay
-              width="237.55px"
-              height="230px"
-          >
-            <source src="" type="application/x-mpegURL" />
-          </video>
-        </div>
+<el-container>
+  <el-aside width="500px">
+
+    <el-card class="box-card">
+      <div v-for="(i, o) in indexCode" :key="o" class="text item">
+        <span style="cursor: pointer;" @click="play()">{{ i.name }}</span>
       </div>
-      <br>
-      <div class="fiveFather">
-        <div class="five">
-          <video
-              id="index3"
-              class="video-js vjs-default-skin"
-              controls
-              preload="auto"
-              muted
-              autoplay
-              width="237.55px"
-              height="230px"
-          >
-            <source src="" type="application/x-mpegURL" />
-          </video>
-        </div>
-        <div class="five">
-          <video
-              id="index4"
-              class="video-js vjs-default-skin"
-              controls
-              preload="auto"
-              muted
-              autoplay
-              width="237.55px"
-              height="230px"
-          >
-            <source src="" type="application/x-mpegURL" />
-          </video>
-        </div>
-        <div class="five">
-          <video
-              id="index5"
-              class="video-js vjs-default-skin"
-              controls
-              preload="auto"
-              muted
-              autoplay
-              width="237.55px"
-              height="230px"
-          >
-            <source src="" type="application/x-mpegURL" />
-          </video>
-        </div>
-      </div>
-    </div>
+    </el-card>
+
+  </el-aside>
+  <el-main style="padding: 0">
+    <hls-test :id="6" :src="playing" style="width: 800px"/>
+  </el-main>
+</el-container>
 </template>
 
 <script>
-import {getCameraUrl} from "../../network/output";
-import videojs from "video.js";
-import "videojs-contrib-hls";
+import {ArtemisCameraPage, getCameraUrl} from "../../network/output";
+import hlsTest from "./hlsTest";
 
 export default {
   name: "camera",
+  components: {hlsTest},
   data() {
     return {
-      indexList:[
+      id: '',
+      indexList: [
         "7d7e627f5f78429795b64a09fb9c4024",
         "631f1ae020b74c89b2980e4b068d6b4f",
         "636f41a3f699483e89d4dfc59c9933b2",
         "68c20b3fa4e3410cbd07fd5227474f35",
         "45e0eb16003f43a1a7d881ee0a1e1001",
         "ed131bd09dcc46f492a506bf15a7b268"
-      ]
+      ],
+      playing: "http://ivi.bupt.edu.cn/hls/cctv1.m3u8",
+      src: [
+        "http://ivi.bupt.edu.cn/hls/cctv1.m3u8",
+        "http://ivi.bupt.edu.cn/hls/cctv2.m3u8",
+        "http://ivi.bupt.edu.cn/hls/cctv3.m3u8",
+        // "http://ivi.bupt.edu.cn/hls/cctv4.m3u8",
+        // "http://ivi.bupt.edu.cn/hls/cctv6.m3u8",
+        // "http://ivi.bupt.edu.cn/hls/cctv7.m3u8",
+      ],
+      indexCode: [],
+      data: [
+        {
+          "code": "0",
+          "msg": "SUCCESS",
+          "data": {
+            "total": 3,
+            "pageNo": 1,
+            "pageSize": 1,
+            "list": [
+              {
+                "belongIndexCode": "0c0c683b-91fb-4ad2-9fd4-802dc0bb3ffc",
+                "indexCode": "636f41a3f699483e89d4dfc59c9933b2",
+                "manufacturer": "hik",
+                "name": "10栋北面",
+                "regionIndexCode": "d8a5476e-25c0-4aa2-b7e3-db3788ba1f77",
+              }
+            ]
+          }
+        },
+        {
+          "code": "0",
+          "msg": "SUCCESS",
+          "data": {
+            "total": 3,
+            "pageNo": 1,
+            "pageSize": 1,
+            "list": [
+              {
+                "belongIndexCode": "0c0c683b-91fb-4ad2-9fd4-802dc0bb3ffc",
+                "indexCode": "631f1ae020b74c89b2980e4b068d6b4f",
+                "manufacturer": "hik",
+                "name": "8栋西面通道",
+                "regionIndexCode": "d8a5476e-25c0-4aa2-b7e3-db3788ba1f77",
+              }
+            ]
+          }
+        },
+        {
+          "code": "0",
+          "msg": "SUCCESS",
+          "data": {
+            "total": 3,
+            "pageNo": 1,
+            "pageSize": 1,
+            "list": [
+              {
+                "belongIndexCode": "0c0c683b-91fb-4ad2-9fd4-802dc0bb3ffc",
+                "indexCode": "7d7e627f5f78429795b64a09fb9c4024",
+                "manufacturer": "hik",
+                "name": "13栋北面",
+                "regionIndexCode": "d8a5476e-25c0-4aa2-b7e3-db3788ba1f77",
+              }
+            ]
+          }
+        },
+      ],
     }
   },
   methods: {
-    getVideo(index) {
-      console.log(index)
-      videojs(
-          index,
-          {
-            bigPlayButton: false,
-            textTrackDisplay: false,
-            posterImage: true,
-            errorDisplay: false,
-            controlBar: true
-          },
-          function () {
-            this.play();
-          }
-      );
+    play() {
+      this.playing = "http://ivi.bupt.edu.cn/hls/cctv3.m3u8"
     },
-  },
-  mounted() {
-    for (let i = 0; i < this.indexList.length; i++) {
-      // let index = this.indexList[i];
-      this.getVideo("index"+i);
-    }
-    for (let i = 0; i < this.indexList.length; i++) {
-      let index = this.indexList[i];
-      getCameraUrl(index).then(res=>{
-        let myPlayer = videojs("index"+i);
-        myPlayer.src([
-          {
-            type: "application/x-mpegURL",
-            src: res.data,
-          }
-        ]);
-        myPlayer.play();
+    cameraPage() {
+      ArtemisCameraPage({showMessage: 1}).then(res => {
+        console.log(res)
+      }).catch(err => {
+        console.log(err)
+      })
+    },
+    cameraUrl() {
+      getCameraUrl({id: "7d7e627f5f78429795b64a09fb9c4024"}).then(res => {
+        console.log(res)
+        for (let i = 0; i < this.data.length; i++) {
+          this.indexCode.push({
+                // code: this.data[i].data.list[0].indexCode,
+                code: this.src,
+                name: this.data[i].data.list[0].name,
+              }
+          )
+        }
+        console.log(this.indexCode)
       })
     }
+  },
+  mounted() {
+    this.cameraPage();
+    this.cameraUrl();
   },
 }
 </script>
 
 <style scoped>
-.fiveFather {
-  display: flex;
-  height: 240px;
+
+.text {
+  font-size: 14px;
 }
 
-.five {
-  flex: 1;
-  background: #ffffff;
-  margin: 5px;
+.item {
+  padding: 18px 0;
 }
+
+.box-card {
+  width: 480px;
+}
+
 </style>

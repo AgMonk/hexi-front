@@ -38,13 +38,6 @@ export default {
     }
   },
   methods: {
-
-      // switch (res.code) {
-      //   case 2000 : this.$message({ message: res.message,  type: 'success'})
-      //     break;
-      //   default : this.$message.error({ message: res.message, })
-      // }
-
     hasRoles(){
       HasRoles(this.userId)
           .then(res => {
@@ -53,32 +46,18 @@ export default {
               let ro = this.rolePool.filter(r => r.id === role.roleId)[0];
               return Object.assign({uuid}, ro)
             });
-            // switch (res.code) {
-            //   case 2000 : this.$message({ message: res.message,  type: 'success'})
-            //     break;
-            //   default : this.$message.error({ message: res.message, })
-            // }
           })
     },
     find() {
-      find().then(res => {
-        // switch (res.code) {
-        //   case 2000 : this.$message({ message: res.message,  type: 'success'})
-        //     break;
-        //   default : this.$message.error({ message: res.message, })
-        // }
+      find({params: 1}).then(res => {
         this.rolePool = res.data;
         this.hasRoles();
+        console.log(res)
       })
     },
     save(roleId) {
       let p = {userId: this.userId, roleId};
       addSave(p).then(() => {
-        // switch (res.code) {
-        //   case 2000 : this.$message({ message: res.message,  type: 'success'})
-        //     break;
-        //   default : this.$message.error({ message: res.message, })
-        // }
         this.hasRoles();
         this.add = undefined;
       })
@@ -86,12 +65,6 @@ export default {
 
     del(id) {
       Del(id).then(() => {
-
-        // switch (res.code) {
-        //   case 2000 : this.$message({ message: res.message,  type: 'success'})
-        //     break;
-        //   default : this.$message.error({ message: res.message, })
-        // }
         this.hasRoles();
       })
     },

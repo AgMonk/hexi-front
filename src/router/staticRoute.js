@@ -39,19 +39,17 @@ const staticRoute = [
                 path: "EditUserInfo",
                 component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditUserInfo")
             },
-          //查询用户
-          {path: "QUser", component: () => import(/* webpackChunkName: 'user' */'../views/Query/QUser')},
+            //查询用户
+            {path: "QUser", component: () => import(/* webpackChunkName: 'user' */'../views/Query/QUser')},
 
-          { path: "EditUserAvailable", component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditUserAvailable") },
+            {
+                path: "EditUserAvailable",
+                component: () => import(/* webpackChunkName: 'user' */"../views/EditUser/EditUserAvailable")
+            },
 
-          { path: "UserSave", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/UserSave"),
-          children: [
-              { path: "Permission", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/TNav/mission/Permission") },
-              { path: "PRole", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/TNav/Role/PRole") },
-              { path: "UserList", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/TNav/PUser/UserList")},
-          ],
-          }
-      ]
+            //用户权限管理
+            {path: "UserSave", component: () => import(/* webpackChunkName: 'user' */"../views/Permission/UserSave"),}
+        ]
     },
     {
         path: '/hatch',
@@ -110,7 +108,10 @@ const staticRoute = [
     {path: "/camera", component: () => import("../views/camera/camera")},
 
     //视频监控
-    {path: "/cameraIndex", component: () => import("../views/camera/cameraIndex")}
+    {path: "/cameraIndex", component: () => import("../views/camera/cameraIndex")},
+
+    //用户权限管理
+    // {path: "/userSave", component: () => import("../views/Permission/UserSave")}
 
 ]
 

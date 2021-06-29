@@ -57,21 +57,24 @@ Date.prototype.format = function (fmt) {
   return fmt;
 }
 //格式化日志方法
-console.slf4j = function  (template, ...data){
-  console.log(format (template, ...data))
+console.slf4j = function (template, ...data) {
+  console.log(format(template, ...data))
 }
 //字符串格式化方法
-String.prototype.format = function (...data) {return format(this, ...data)}
+String.prototype.format = function (...data) {
+  return format(this, ...data)
+}
 console.clear()
 
-export const copyObj = (obj) => JSON.parse(JSON.stringify(obj))
+
+export const copyObj = (obj, defaultValue) => obj ? JSON.parse(JSON.stringify(obj)) : defaultValue
 
 export {
   getTypeOf,
   format,
 }
 
-export const getClientWidth = ()=>{
+export const getClientWidth = () => {
   let w = document.body.clientWidth;
   if (w < 768) {
     return 0;
@@ -90,14 +93,4 @@ export const getClientWidth = ()=>{
 
 export let Unicom = new Vue();
 
-// export let backg = new Vue({
-//   mounted() {
-//     document.querySelector('body').setAttribute('style',
-//         "background-image: url("+require("../assets/img/login.png")+");background-size: cover;" +
-//         "background-repeat: no-repeat")
-//   },
-//   beforeDestroy() {
-//     document.querySelector('body').removeAttribute('style')
-//   },
-// });
 

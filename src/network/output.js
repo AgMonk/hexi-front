@@ -111,8 +111,8 @@ export function QueryRole({page, size, condition}) {
 }
 
 //查询所有*
-export function FindAll() {
-    return transfer({url: '/permission/findAll',})
+export function FindAll(params) {
+    return transfer({url: '/permission/findAll', params,})
 }
 //查询当前用户拥有的角色和权限*
 export function HasRoles(userId) {
@@ -146,8 +146,9 @@ export function Del(id) {
     })
 }
 //查找所有*
-export function find() {
-    return transfer({url: '/role/findAll'})
+export function find(params) {
+    return transfer({url: '/role/findAll', params},
+    )
 }
 
 //孵化器模块
@@ -155,18 +156,18 @@ export function find() {
 //专利Patent，补贴Subsidy；接口名完全相同，仅在分页查询时的可选过滤条件有所不同
 
 //添加企业
-export function AddModule({name, address, phone, type, certificationType}) {
+export function AddModule(data) {
     return transfer({
         method: 'post',
-        data: {name, address, phone, type, certificationType},
+        data,
         url: '/Company/add',
     })
 }
 //修改企业
-export function updateCompony({uuid, name, address, phone, type, certificationType}) {
+export function updateCompony(data) {
     return transfer({
         method: 'post',
-        data: {uuid, name, address, phone, type, certificationType},
+        data,
         url: '/Company/update',
     })
 }
@@ -247,10 +248,10 @@ export function QueryPatentPage({page, size, start, end, condition}) {
     })
 }
 
-export function QueryCompanyPage({page, size, start, end, condition}) {
+export function QueryCompanyPage(data) {
     return transfer({
         method: 'post',
-        data: {page, size, start, end, condition},
+        data,
         //condition条件
         url: '/Company/page',
     })

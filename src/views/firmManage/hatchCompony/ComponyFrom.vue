@@ -1,10 +1,13 @@
 <template>
-  <el-form  label-width="100px">
-    <el-form-item label="企业名称" >
+  <el-form label-width="100px">
+    <el-form-item label="企业名称">
       <el-input v-model="componyData.name"/>
     </el-form-item>
     <el-form-item label="企业地址">
       <el-input v-model="componyData.address"/>
+    </el-form-item>
+    <el-form-item label="企业所在楼栋">
+      <el-input v-model="componyData.buildingIndex"/>
     </el-form-item>
     <el-form-item label="联系电话">
       <el-input v-model="componyData.phone"/>
@@ -26,7 +29,6 @@
     </el-form-item>
     <el-form-item style="text-align: right">
       <el-button type="primary" @click="addCompony">添加</el-button>
-      <el-button @click="empty">清空</el-button>
     </el-form-item>
 
   </el-form>
@@ -44,16 +46,18 @@ export default {
         phone: undefined,
         type: undefined,
         certificationType: undefined,
+        buildingIndex: ''
       },
     }
-  },
-  created() {
-
   },
   methods: {
     addCompony() {
       AddModule(this.componyData).then(res => {
         console.log(res)
+        if (res.code === 2000) {
+          this.componyData = {};
+          this.$emit("success");
+        }
       })
     },
     empty() {

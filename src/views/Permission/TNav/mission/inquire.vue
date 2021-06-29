@@ -12,8 +12,6 @@
     <el-table-column label="命名空间" prop="namespace"></el-table-column>
     <el-table-column label="操作" prop="action"></el-table-column>
     <el-table-column label="操作对象" prop="target"></el-table-column>
-
-    <el-table-column><template slot-scope="del"><el-button @click="delet(del.row.id)">删除</el-button></template></el-table-column>
   </el-table>
     </el-main>
 
@@ -21,7 +19,7 @@
   <el-pagination
       :current-page.sync="param.page"
       :page-size.sync="param.size"
-      :total="200"
+      :total="total"
       layout="prev, pager, next, jumper"
       @current-change="page">
   </el-pagination>
@@ -31,7 +29,7 @@
 </template>
 
 <script>
-import {Page, UserDel} from "../../../../network/output";
+import {Page} from "../../../../network/output";
 
 export default {
   name: "inquire",
@@ -39,8 +37,9 @@ export default {
     return {
       param: {
         page: 1,
-        size: 10,
+        size: 5,
       },
+      total: null,
       permissions: [],
     }
   },
@@ -53,36 +52,12 @@ export default {
     page() {
       Page(this.param).then(res => {
         this.permissions = res.data.records;
+        this.total = res.data.total;
       })
     },
-    delet(id) {
-      this.$confirm("确定删除？").then(() => {
-        UserDel(id).then((res) => {
-          switch (res.code) {
-            case 2000 :
-              this.page();
-              // this.$message({
-              //   message: res.message,
-              //   type: 'success'
-              // })
-              break;
-              // default :
-              //   this.$message.error({
-              //     message: res.message,
-              //   })
-          }
-        })
-      }).catch(() => {})
-    }
-
   }
 }
 </script>
 
 <style scoped>
-
-.center {
-  position: absolute;
-  right: 30%;
-}
 </style>

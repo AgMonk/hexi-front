@@ -1,7 +1,5 @@
 <template>
-<div>
-  <video :ref="'video' + id" autoplay class="videoPlay" muted preload="auto"></video>
-</div>
+  <video :ref="'video' + id" autoplay muted preload="auto"></video>
 </template>
 
 <script>
@@ -33,8 +31,8 @@ export default {
           console.log('加载成功');
           let playPromise = this.$refs[`video${this.id}`].play();
           if (playPromise !== undefined) {
-            playPromise.then(res => {
-              console.log(res)
+            playPromise.then(() => {
+              // console.log(res)
               this.$refs[`video${this.id}`].play();
             }).catch(err => {
               console.log(err)
@@ -50,14 +48,18 @@ export default {
   beforeDestroy() {
     this.videoPause();
   },
+  watch: {
+    'src': {
+      handler: function (e) {
+        console.log(e)
+        this.videoPause();
+        this.getStream(e);
+      }
+    }
+  },
   props: ['id', 'src']
 }
 </script>
 
 <style scoped>
-
-.videoPlay {
-  width: 237.55px;
-  height: 250px;
-}
 </style>

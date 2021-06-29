@@ -15,7 +15,7 @@ export default {
       let myChart = this.$echarts.init(document.getElementById('enterprise'));
 
       QueryCompanyStatistics({showMessage: 1}).then(res => {
-        console.log(res)
+        // console.log(res)
         let c = res.data.countGroupByType;
         let data = [];
         for (let i = 0; i < c.length; i++) {
@@ -37,10 +37,14 @@ export default {
               borderColor: '#fff',
               borderWidth: 2
             },
+
             label: {
-              show: false,
-              position: 'center'
+              show: true,
+              formatter: '{c}',
+              position: 'inner',
+              color: '#ffffff'
             },
+
             emphasis: {
               label: {
                 show: true,

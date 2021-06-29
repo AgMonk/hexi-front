@@ -124,7 +124,8 @@
         </el-col>
         <el-col :span="4">
           <div class="Hallmark right">
-        <camera style="height: 100%; width: 100%"/>
+            <!--        <camera style="height: 100%; width: 100%"/>-->
+            <test1/>
           </div>
         </el-col>
       </el-row>
@@ -145,16 +146,18 @@ import Notice from "./screenCharts/Notice";
 import {BillStatistics, getSafetyDays, QueryCompanyStatistics, QueryPatentStatistics} from "../../network/output";
 import EnvironmentalTesting from "./screenCharts/environmentalTesting";
 import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
-import Camera from "../camera/camera";
+// import Camera from "../camera/camera";
 import BigScreen from "../camera/bigScreen";
 import ScreenImg from "./screenCharts/screenImg";
+import Test1 from "./test1";
 
 export default {
   name: "screen",
   components: {
+    Test1,
     ScreenImg,
     BigScreen,
-    Camera,
+    // Camera,
     FireAlarm,
     EnvironmentalTesting,
     Notice,
