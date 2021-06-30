@@ -4,7 +4,7 @@
     <el-main>
       <el-card class="box-card">
         <div slot="header" class="clearfix">
-          <span>水质数据</span>
+          <h3>水质数据</h3>
         </div>
         <div class="text item">
           <el-table :data="waterData">

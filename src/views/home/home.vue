@@ -3,32 +3,42 @@
     <el-header height="40px">
     </el-header>
     <el-main>
-      <el-row>
-        <UserInfo/>
-      </el-row>
+      <home-notice/>
+      <br>
       <el-row :gutter="20">
-        <el-col :span="12">
-          <compony-type/>
+        <el-col :span="8">
+          <home-subsidy-chart style="height: 550px"/>
         </el-col>
-        <el-col :span="12">
-          <Weather/>
+        <el-col :span="8">
+          <home-environmental-testing style="height: 550px"/>
+        </el-col>
+        <el-col :span="8">
+          <compony-type style="height: 550px"/>
         </el-col>
       </el-row>
+      <br>
+      <home-hydropower-chart/>
     </el-main>
   </el-container>
 </template>
 <script>
 
 import ComponyType from "./charts/componyType";
-import Weather from "../monitor/Weather/Weather";
-import UserInfo from "../User/UserInfo";
+import homeEnvironmentalTesting from "./charts/homeEnvironmentalTesting";
+import homeNotice from "./charts/homeNotice";
+import HomeSubsidyChart from "./charts/homeSubsidyChart";
+import HomeHydropowerChart from "./charts/homeHydropowerChart";
 
 export default {
   name: "home",
   components: {
-    Weather,
+    HomeHydropowerChart,
+    HomeSubsidyChart,
+
     ComponyType,
-    UserInfo
+    homeNotice,
+    homeEnvironmentalTesting,
+    // UserInfo
   },
   methods: {},
   mounted() {

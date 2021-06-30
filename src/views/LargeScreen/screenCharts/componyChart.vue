@@ -40,10 +40,6 @@ export default {
         })
       });
       let option = ({
-        // title: {
-        //   text: '入驻公司表'
-        // },
-        color: '#11D4E3',
         backgroundColor: '#0F373F',
         textStyle: {
           color: '#FFFFFF',
@@ -67,7 +63,13 @@ export default {
             distance: 20, // 距离图形元素的距离。当 position 为字符描述值（如 'top'、'insideRight'）时候有效。
             color: '#ffffff',
             // fontSize: 12
-          }
+          },
+          itemStyle: {
+            color: function (params) {
+              let colorList = ['#4082BA'];
+              return colorList[params.dataIndex % colorList.length];
+            }
+          },
 
         }]
       });

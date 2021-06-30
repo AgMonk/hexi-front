@@ -1,5 +1,5 @@
 <template>
-<div>
+<div style="background: #45646A">
   <compony-chart/>
   <environmental-testing/>
   <hydropower-chart/>

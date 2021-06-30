@@ -1,5 +1,5 @@
 <template>
-  <div id="authentication" style="width: 400px;height: 270px;">111</div>
+  <div id="authentication" style="width: 400px;height: 270px;"/>
 </template>
 
 <script>
@@ -19,7 +19,6 @@ export default {
             name: d[i].certificationType,
           })
         }
-        // console.log(data)
         myCharts.setOption({
           tooltip: {
             trigger: 'item'
@@ -44,6 +43,12 @@ export default {
                 color: '#ffffff'
               },
               data,
+              itemStyle: {
+                color: function (params) {
+                  let colorList = ['#2F3495', '#7DA8C5', '#A9DCE8'];
+                  return colorList[params.dataIndex % colorList.length];
+                }
+              },
               emphasis: {
                 itemStyle: {
                   shadowBlur: 10,

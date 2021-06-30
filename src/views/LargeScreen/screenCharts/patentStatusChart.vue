@@ -1,5 +1,5 @@
 <template>
-  <div id="status" style="height: 270px;"></div>
+  <div id="status" style="height: 270px;"/>
 </template>
 
 <script>
@@ -37,7 +37,7 @@ export default {
                 },
                 itemStyle: {
                   color: function (params) {
-                    let colorList = ['#c23531', '#2f4554', '#61a0a8', '#d48265', '#91c7ae', '#749f83', '#ca8622'];
+                    let colorList = ['#3F024C', '#7A2B84', '#996EAD', '#C1A5CF', '#91c7ae', '#749f83', '#ca8622'];
                     return colorList[params.dataIndex % colorList.length];
                   }
                 }

@@ -29,15 +29,16 @@ export default {
     myEcharts() {
       let myCharts = this.$echarts.init(document.getElementById("parking"));
       CarStatus({showMessage: 1}).then(res => {
-        let d = res.data
+        let d = res.data;
         let data = new Array();
         for (let i = 0; i < d.length; i++) {
           data.push({
             value: d[i].count,
             name: d[i].carTypeName,
           })
+          console.log(d[i])
         }
-        // console.log(data);
+        console.log(res.data);
         myCharts.setOption({
           tooltip: {
             trigger: 'item'
@@ -68,7 +69,13 @@ export default {
                   shadowOffsetX: 0,
                   shadowColor: 'rgba(0, 0, 0, 0.5)'
                 },
-              }
+              },
+              // itemStyle: {
+              //   color: function (params) {
+              //     let colorList = ['#BA4E27', '#F49261', '#F7B18F',  '#FCD6C1'];
+              //     return colorList[params.dataIndex % colorList.length];
+              //   }
+              // }
             }
           ]
         })
@@ -79,9 +86,9 @@ export default {
       let paging = new Object();
       paging.page = 1, paging.size = 4, paging.end = Math.floor(new Date().getTime() / 1000),
           paging.start = paging.end - 24 * 60 * 60 * 30 * 6;
-      paging.showMessage = 1
+      paging.showMessage = 1;
       BarrierLogPage(paging).then(res => {
-        // console.log(res);
+        console.log(res);
         this.inOutData = res.data.records;
       })
     },

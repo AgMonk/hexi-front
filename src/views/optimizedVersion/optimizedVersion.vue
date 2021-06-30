@@ -145,7 +145,7 @@ export default {
       console.log(res)
     })
 
-    UserInfo({params: 1}).then(res => {
+    UserInfo({showMessage: 1}).then(res => {
       let userId = res.data.id;
       userId;
       HasRoles(2).then(res => {

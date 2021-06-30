@@ -1,7 +1,10 @@
 <template>
-  <el-col :span="10">
+  <el-card class="box-card">
+    <div slot="header" class="clearfix">
+      <h3>入驻公司类型</h3>
+    </div>
     <div id="enterprise" style="width: 500px;height: 300px; background: #FFFFFF; "></div>
-  </el-col>
+  </el-card>
 </template>
 
 <script>
@@ -84,7 +87,4 @@ export default {
 </script>
 
 <style scoped>
-#enterprise {
-  border-radius: 5px;
-}
 </style>

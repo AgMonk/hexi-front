@@ -29,21 +29,6 @@ export default {
     }
   },
   methods: {
-    // getVideo() {
-    //   videojs(
-    //       "big",
-    //       {
-    //         bigPlayButton: false,
-    //         textTrackDisplay: false,
-    //         posterImage: true,
-    //         errorDisplay: false,
-    //         controlBar: true
-    //       },
-    //       function() {
-    //         this.play();
-    //       }
-    //   );
-    // },
     playTheVideo() {
       getCameraUrl("0dda9cfaa2904764a77beb31db6c4678").then(() => {
         this.myPlayer = videojs("big");
@@ -62,6 +47,7 @@ export default {
       this.myPlayer.reset();
       this.videoUrlList = res;
       this.playTheVideo();
+      console.log(res)
     })
   },
 }

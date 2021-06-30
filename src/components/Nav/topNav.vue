@@ -62,7 +62,7 @@ export default {
     }
   },
   created() {
-    UserInfo({params: 1}).then(res => {
+    UserInfo({showMessage: 1}).then(res => {
       // console.log(res);
       this.userinfo = res.data;
     })

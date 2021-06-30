@@ -19,6 +19,12 @@ export default {
           textStyle: {
             color: '#FFFFFF',
           },
+          label: {
+            show: true,
+            formatter: '{c}',
+            color: '#ffffff',
+            // fontSize: '12',
+          },
           xAxis: {
             type: 'category',
             data: year.map(i => i.year).reverse()

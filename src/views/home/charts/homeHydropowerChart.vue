@@ -1,25 +1,24 @@
 <template>
-  <el-container>
-    <el-header>
-      <h1 class="title">水电信息管理</h1>
-    </el-header>
-    <el-main>
-      <div class="main">
-        <h3 class="ranking">企业月用水用电排行</h3>
-        <div class="two">
-          <div id="left" class="chart"/>
-          <div id="right" class="chart"/>
-        </div>
+  <el-card class="box-card">
+    <div slot="header" class="clearfix">
+      <h3>企业月用水用电排行</h3>
+    </div>
+    <div class="main">
+      <div class="two">
+        <div id="left" class="chart"/>
+        <div id="right" class="chart"/>
       </div>
-    </el-main>
-  </el-container>
+    </div>
+  </el-card>
+
+
 </template>
 
 <script>
 import {BillStatistics} from "../../../network/output";
 
 export default {
-  name: "hydropowerChart",
+  name: "homeHydropowerChart",
   data() {
     return {
       mycharts: null,
@@ -39,11 +38,11 @@ export default {
       }
       this.mycharts.setOption({
         yAxis: {
-          data: data.map(i => i.name).splice(0, 5),
+          data: data.map(i => i.name).splice(0, 5).reverse(),
           show: false
         },
         series: [{
-          data: data.map(i => i.amount),
+          data: data.map(i => i.amount).reverse(),
           type: 'bar'
         }]
       })
@@ -59,9 +58,6 @@ export default {
       let option = {
         title: {
           text: title,
-          textStyle: {
-            color: "#ffffff"
-          }
         },
         yAxis: {
           type: 'category',
@@ -76,7 +72,7 @@ export default {
           type: 'bar',
           itemStyle: {
             color: function (params) {
-              let colorList = ['#7B0105', '#B50100', '#D72D16', '#D72D16', '#F78E57', '#FDBB80'];
+              let colorList = ['#FDBB80', '#F78E57', '#D72D16', '#D72D16', '#B50100', '#7B0105',];
               return colorList[params.dataIndex % colorList.length];
             }
           }
@@ -107,18 +103,6 @@ export default {
 </script>
 
 <style scoped>
-.main {
-  width: 510px;
-  height: 480px;
-  background: #0F373F;
-}
-
-.title {
-  font-size: 30px;
-  text-align: center;
-  color: #FFFFFF;
-}
-
 .two {
   display: flex;
   height: 420px;
@@ -130,7 +114,7 @@ export default {
 
 .ranking {
   text-align: center;
-  color: #FFFFFF;
+  /*color: #FFFFFF;*/
   margin: 0;
 }
 </style>

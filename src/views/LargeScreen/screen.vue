@@ -104,7 +104,7 @@
             <div class="small">
               <el-container>
                 <el-header><h1 class="typeTitle">专利状态</h1></el-header>
-                <el-main>
+                <el-main style="padding: 0; padding-left: 35px">
                   <patent-status-chart/>
                 </el-main>
               </el-container>

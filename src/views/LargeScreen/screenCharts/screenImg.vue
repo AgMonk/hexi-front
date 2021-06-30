@@ -5,7 +5,8 @@
         <card :number="companyList[8]"/>
       </div>
       <!--  8#-->
-      <div style=" position: absolute; top:180px; left: 200px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:180px; left: 200px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -13,7 +14,8 @@
         <card :number="companyList[18]"/>
       </div>
       <!--  18# 办公楼-->
-      <div style=" position: absolute; top:450px; left: 500px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:450px; left: 500px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -21,7 +23,8 @@
         <card :number="companyList[9]"/>
       </div>
       <!--  9#-->
-      <div style=" position: absolute; top:340px; left: 520px; height: 60px; width: 60px; background: #FFFFFF; "/>
+      <div
+          style=" position: absolute; top:340px; left: 520px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -29,7 +32,8 @@
         <card :number="companyList[7]"/>
       </div>
       <!--7#-->
-      <div style=" position: absolute; top:320px; left: 850px; height: 60px; width: 60px; background: #FFFFFF; "/>
+      <div
+          style=" position: absolute; top:320px; left: 850px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -37,7 +41,8 @@
         <card :number="companyList[16]"/>
       </div>
       <!--  16#-->
-      <div style=" position: absolute; top:150px; left: 870px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:150px; left: 870px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -45,7 +50,8 @@
         <card :number="companyList[12]"/>
       </div>
       <!--12#-->
-      <div style=" position: absolute; top:120px; left: 450px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:120px; left: 450px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -53,7 +59,8 @@
         <card :number="companyList[11]"/>
       </div>
       <!--11#-->
-      <div style=" position: absolute; top:80px; left: 300px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:80px; left: 300px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -61,14 +68,16 @@
         <card :number="companyList[15]"/>
       </div>
       <!--15#-->
-      <div style=" position: absolute; top:80px; left: 720px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:80px; left: 720px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
     <el-tooltip effect="light" placement="right">
       <div slot="content">
         <card :number="companyList[14]"/>
       </div>
       <!--14#-->
-      <div style=" position: absolute; top:250px; left: 700px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:250px; left: 700px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -76,7 +85,8 @@
         <card :number="companyList[13]"/>
       </div>
       <!--13#-->
-      <div style=" position: absolute; top:180px; left: 570px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:180px; left: 570px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -84,7 +94,8 @@
         <card :number="companyList[6]"/>
       </div>
       <!--6#-->
-      <div style=" position: absolute; top:250px; left: 1100px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:250px; left: 1100px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -92,7 +103,8 @@
         <card :number="companyList[5]"/>
       </div>
       <!--  5#-->
-      <div style=" position: absolute; top:220px; left: 1300px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:220px; left: 1300px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -100,7 +112,8 @@
         <card :number="companyList[4]"/>
       </div>
       <!--  4#-->
-      <div style=" position: absolute; top:330px; left: 1620px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:330px; left: 1620px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -108,7 +121,8 @@
         <card :number="companyList[1]"/>
       </div>
       <!--1#-->
-      <div style=" position: absolute; top:250px; left: 1720px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:250px; left: 1720px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -116,7 +130,8 @@
         <card :number="companyList[2]"/>
       </div>
       <!--  2#-->
-      <div style=" position: absolute; top:200px; left: 1610px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:200px; left: 1610px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -124,7 +139,8 @@
         <card :number="companyList[3]"/>
       </div>
       <!--3#-->
-      <div style=" position: absolute; top:150px; left: 1510px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:150px; left: 1510px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
 
     <el-tooltip effect="light" placement="right">
@@ -132,14 +148,16 @@
         <card :number="companyList[17]"/>
       </div>
       <!--3#a  17-->
-      <div style=" position: absolute; top:120px; left: 1420px; height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:120px; left: 1420px; height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
     <el-tooltip effect="light" placement="right">
       <div slot="content">
         <card :number="companyList[10]"/>
       </div>
       <!--  10#-->
-      <div style=" position: absolute; top:300px; left: 360px;  height: 60px; width: 60px; background: #FFFFFF;"/>
+      <div
+          style=" position: absolute; top:300px; left: 360px;  height: 60px; width: 60px; background: #FFFFFF; opacity: 0;"/>
     </el-tooltip>
     <!--    摄像头定位-->
     <!--    12-13 -->
