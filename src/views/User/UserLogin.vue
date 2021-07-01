@@ -1,14 +1,17 @@
 <template>
-  <div class="login-box">
-    <h4>用户名密码登录</h4>
-    <el-input v-model="username" placeholder="用户名"></el-input>
-    <el-input placeholder="密码" v-model="password" show-password></el-input>
-    <el-button @click="Login" type="primary">登录</el-button>
-    <router-link to="/UserReg">点此注册</router-link>
-  </div>
+  <el-container>
+    <el-header><h1 style="float: left; color: #FFFFFF">柳州天步科技创业园管理系统</h1></el-header>
+    <div class="login-box">
+      <h4>用户名密码登录</h4>
+      <el-input v-model="username" placeholder="用户名"></el-input>
+      <el-input placeholder="密码" v-model="password" show-password></el-input>
+      <el-button @click="Login" type="primary">登录</el-button>
+      <router-link to="/UserReg">点此注册</router-link>
+    </div>
+  </el-container>
 </template>
 <script>
-import { UserLogin} from "../../network/output";
+import {UserLogin} from "../../network/output";
 
 export default {
   name: "UserLogin",

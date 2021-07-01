@@ -14,7 +14,6 @@
           <span>车位道闸</span>
         </template>
         <el-menu-item index="/barrier">进出查询</el-menu-item>
-        <el-menu-item index="/carPack">场内车辆查询</el-menu-item>
       </el-submenu>
       <el-menu-item index="/camera">
         <span slot="title">视频监控</span>

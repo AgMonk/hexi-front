@@ -108,6 +108,9 @@ export default {
       this.paging.companyUuid = this.uuid;
       PaymentAdd(this.paging).then(res => {
         console.log(res);
+        if (res.code === 2000) {
+          this.visible.addVisible = false;
+        }
       })
     },
     //查询水电费用

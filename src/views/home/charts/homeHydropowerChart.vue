@@ -48,7 +48,7 @@ export default {
       })
     },
     myEcharts() {
-      BillStatistics({showMessage: 1}).then(res => {
+      BillStatistics({showMessage: 1, month: "2021-05"}).then(res => {
         this.setOption("left", res.data.topMap.水费);
         this.setOption("right", res.data.topMap.电费);
       })

@@ -1,18 +1,21 @@
 <template>
-      <div class="reg-box">
-        <!--  注册-->
-        <h4>输入用户名/密码/手机号/姓名注册</h4>
-        <el-tooltip content="中英文均可，最短6位数,注意填写账号是否已注册" placement="top" trigger="click">
-          <el-input v-model="username" placeholder="用户名"></el-input>
-        </el-tooltip>
-        <el-tooltip content="字符最短6位数，中英文均可,不允许有中文空格" placement="top">
-          <el-input placeholder="密码" v-model="password" show-password></el-input>
-        </el-tooltip>
-        <el-input v-model="phone" placeholder="电话/非必填"></el-input>
-        <el-input v-model="name" placeholder="姓名/非必填"></el-input>
-        <el-button @click="Reg" type="primary">注册</el-button>
-        <span class="reg-login">已有账号？<router-link to="/login">点此登录</router-link></span>
-      </div>
+  <el-container>
+    <el-header><h1 style="float: left; color: #FFFFFF">柳州天步科技创业园管理系统</h1></el-header>
+    <div class="reg-box">
+      <!--  注册-->
+      <h4>输入用户名/密码/手机号/姓名注册</h4>
+      <el-tooltip content="中英文均可，最短6位数,注意填写账号是否已注册" placement="top" trigger="click">
+        <el-input v-model="username" placeholder="用户名"></el-input>
+      </el-tooltip>
+      <el-tooltip content="字符最短6位数，中英文均可,不允许有中文空格" placement="top">
+        <el-input placeholder="密码" v-model="password" show-password></el-input>
+      </el-tooltip>
+      <el-input v-model="phone" placeholder="电话/非必填"></el-input>
+      <el-input v-model="name" placeholder="姓名/非必填"></el-input>
+      <el-button @click="Reg" type="primary">注册</el-button>
+      <span class="reg-login">已有账号？<router-link to="/login">点此登录</router-link></span>
+    </div>
+  </el-container>
 </template>
 <script>
 import {UserReg} from "../../network/output";
