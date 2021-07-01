@@ -1,54 +1,74 @@
 <template>
-  <div class="box">
-    <div class="column">
-      <hls-test :id="1" :src="playing[0]" style="  width: 237.55px; height: 245px;"/>
-      <hls-test :id="2" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
-      <hls-test :id="3" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
-    </div>
-    <div class="column">
-      <hls-test :id="4" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
-      <hls-test :id="5" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
-      <hls-test :id="6" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
-    </div>
+  <div class="box" v-if="show">
+        <div class="column">
+          <hls-test :id="1"  :src="playing[0]"  style="  width: 237.55px; height: 245px;"/>
+          <hls-test :id="2" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
+          <hls-test :id="3" :src="playing[2]" style="  width: 237.55px; height: 245px;"/>
+        </div>
+        <div class="column">
+          <hls-test :id="4" :src="playing[3]" style="  width: 237.55px; height: 245px;"/>
+          <hls-test :id="5" :src="playing[4]" style="  width: 237.55px; height: 245px;"/>
+          <hls-test :id="6" :src="playing[5]" style="  width: 237.55px; height: 245px;"/>
+        </div>
   </div>
 </template>
 
 <script>
 import HlsTest from "../camera/hlsTest";
+import {ArtemisCameraPage, getCameraUrl} from "../../network/output";
 
 export default {
   name: "test1",
   components: {HlsTest},
   data() {
     return {
-      src: [
-        "http://ivi.bupt.edu.cn/hls/cctv1.m3u8",
-        "http://ivi.bupt.edu.cn/hls/cctv2.m3u8",
-        "http://ivi.bupt.edu.cn/hls/cctv3.m3u8",
-        "http://ivi.bupt.edu.cn/hls/cctv4.m3u8",
-        "http://ivi.bupt.edu.cn/hls/cctv6.m3u8",
-        "http://ivi.bupt.edu.cn/hls/cctv7.m3u8",
-      ],
+      show: false,
       playing: [
-        "http://ivi.bupt.edu.cn/hls/cctv1.m3u8",
-        "http://ivi.bupt.edu.cn/hls/cctv3.m3u8",
+        // "http://192.168.0.220:83/openUrl/5aacrwk/live.m3u8"
       ],
+      cameraList: [],
     }
   },
-  methods: {},
-  mounted() {
-    setInterval(() => {
+  methods: {
+    async updatePlayingUrl(idList) {
+      let array = []
+      for (let i = 0; i < idList.length; i++) {
+        let id = idList[i]
+        await getCameraUrl({showMessage: 1, id}).then(res => {
+          array.push(res.data)
+          console.log(res.data)
+        })
+      }
+      return array
+    },
+    play() {
       let array = [];
       let index;
-      for (let i = 0; i < this.playing.length; i++) {
+      // let newPlaying = [];
+      for (let i = 0; i < 6; i++) {
         do {
-          index = Math.floor(Math.random() * this.src.length);
-        } while (array.includes(this.src[index]))
-        array.push(this.src[index])
+          index = Math.floor(Math.random() * this.cameraList.length);
+        } while (array.includes(this.cameraList[index]))
+        array.push(this.cameraList[index])
       }
-      this.playing = array
+      this.updatePlayingUrl(array).then(res => {
+        this.playing = res
       console.log(this.playing)
-    }, 1000 * 60)
+      this.show=true;
+      })
+    },
+  },
+  mounted() {
+    setInterval(
+        this.play,
+        1000 * 15)
+
+    ArtemisCameraPage({params: 1}).then(res => {
+      this.cameraList = res.data.map(i => i.indexCode);
+      this.play();
+    });
+
+
   }
 }
 </script>

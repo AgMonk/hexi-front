@@ -28,19 +28,19 @@ export default {
         this.hls.loadSource(src);
         this.hls.attachMedia(this.$refs[`video${this.id}`]);
         this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          console.log('加载成功');
+          // console.log('加载成功');
           let playPromise = this.$refs[`video${this.id}`].play();
           if (playPromise !== undefined) {
             playPromise.then(() => {
               // console.log(res)
               this.$refs[`video${this.id}`].play();
-            }).catch(err => {
-              console.log(err)
+            }).catch(() => {
+              // console.log(err)
             })
           }
         });
-        this.hls.on(Hls.Events.ERROR, (event, data) => {
-          console.log(event, data, '加载失败')
+        this.hls.on(Hls.Events.ERROR, () => {
+          // console.log(event, data, '加载失败')
         });
       }
     }
@@ -51,7 +51,7 @@ export default {
   watch: {
     'src': {
       handler: function (e) {
-        console.log(e)
+        // console.log(e)
         this.videoPause();
         this.getStream(e);
       }
