@@ -3,6 +3,7 @@
 </template>
 
 <script>
+
 let Hls = require('hls.js')
 export default {
   name: "hlsTest",
@@ -62,4 +63,7 @@ export default {
 </script>
 
 <style scoped>
+video {
+  object-fit: fill;
+}
 </style>

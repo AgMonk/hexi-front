@@ -1,14 +1,14 @@
 <template>
   <div class="box" v-if="show">
-        <div class="column">
-          <hls-test :id="1"  :src="playing[0]"  style="  width: 237.55px; height: 245px;"/>
-          <hls-test :id="2" :src="playing[1]" style="  width: 237.55px; height: 245px;"/>
-          <hls-test :id="3" :src="playing[2]" style="  width: 237.55px; height: 245px;"/>
+        <div class="column" id="top">
+          <hls-test :id="1"  :src="playing[0]"  style="  width: 237.55px; height: 200px;"/>
+          <hls-test :id="2" :src="playing[1]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test :id="3" :src="playing[2]" style="  width: 237.55px; height: 200px;"/>
         </div>
-        <div class="column">
-          <hls-test :id="4" :src="playing[3]" style="  width: 237.55px; height: 245px;"/>
-          <hls-test :id="5" :src="playing[4]" style="  width: 237.55px; height: 245px;"/>
-          <hls-test :id="6" :src="playing[5]" style="  width: 237.55px; height: 245px;"/>
+        <div class="column" id="bottom">
+          <hls-test :id="4" :src="playing[3]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test :id="5" :src="playing[4]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test :id="6" :src="playing[5]" style="  width: 237.55px; height: 200px;"/>
         </div>
   </div>
 </template>
@@ -23,9 +23,7 @@ export default {
   data() {
     return {
       show: false,
-      playing: [
-        // "http://192.168.0.220:83/openUrl/5aacrwk/live.m3u8"
-      ],
+      playing: [],
       cameraList: [],
     }
   },
@@ -61,7 +59,7 @@ export default {
   mounted() {
     setInterval(
         this.play,
-        1000 * 15)
+        1000 * 120)
 
     ArtemisCameraPage({params: 1}).then(res => {
       this.cameraList = res.data.map(i => i.indexCode);
@@ -88,5 +86,11 @@ export default {
   flex-basis: 100%;
   display: flex;
   justify-content: space-between;
+}
+#top {
+  margin-top: 25px;
+}
+#bottom {
+  margin-bottom: 25px;
 }
 </style>

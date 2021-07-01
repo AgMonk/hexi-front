@@ -1,58 +1,70 @@
-<template>
 
-  <video
-      id="big"
-      class="video-js vjs-default-skin"
-      controls
-      preload="auto"
-      muted
-      autoplay
-      width="744.66px"
-      height="572px"
-  >
-  </video>
+<template>
+  <video ref="video" autoplay muted preload="auto" width="744.66px" height="572px" style="background: #0F373F"  v-loading="loading"></video>
+
 
 </template>
 
 <script>
-import {getCameraUrl} from "../../network/output";
-import videojs from "video.js";
-import "videojs-contrib-hls";
 import {Unicom} from "../../common/utils";
 
+let Hls = require('hls.js')
 export default {
-  name: "bigScreen",
+  name: "hlsTest",
   data() {
     return {
-      videoUrlList: "http://ivi.bupt.edu.cn/hls/cctv3hd.m3u8",
-      myPlayer: undefined,
+      hls: '',
+      url: "http://192.168.0.220:83/openUrl/MTf7K5W/live.m3u8",
+      loading: true,
     }
   },
-  methods: {
-    playTheVideo() {
-      getCameraUrl("0dda9cfaa2904764a77beb31db6c4678").then(() => {
-        this.myPlayer = videojs("big");
-        this.myPlayer.src(
-            {
-              type: "application/x-mpegURL",
-              src: this.videoUrlList,
-            }
-        );
-      });
-    },
-  },
   mounted() {
-    this.playTheVideo();
+    this.getStream(this.url);
     Unicom.$on("videoIndex", res => {
-      this.myPlayer.reset();
-      this.videoUrlList = res;
-      this.playTheVideo();
-      console.log(res)
+      this.url = res;
+      this.getStream(this.url);
     })
+  },
+  methods: {
+    videoPause() {
+      if (this.hls) {
+        this.$refs.video.pause();
+        this.hls.destroy();
+        this.hls = null;
+      }
+    },
+    getStream(url) {
+        this.hls = new Hls();
+        console.log(this.url)
+        this.hls.loadSource(url);
+        this.hls.attachMedia(this.$refs.video);
+        this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
+          console.log('加载成功');
+          this.loading = false;
+          let playPromise = this.$refs.video.play();
+          if (playPromise !== undefined) {
+            playPromise.then(() => {
+              // console.log(res)
+              this.$refs.video.play();
+            }).catch(() => {
+              // console.log(err)
+            })
+          }
+        });
+        this.hls.on(Hls.Events.ERROR, () => {
+          // console.log(event, data, '加载失败')
+        });
+
+    }
+  },
+  beforeDestroy() {
+    this.videoPause();
   },
 }
 </script>
 
 <style scoped>
-
+video {
+  object-fit: fill;
+}
 </style>

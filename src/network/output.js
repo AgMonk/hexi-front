@@ -491,10 +491,10 @@ export function ArtemisCameraPage(params) {
 }
 
 //查询播放地址
-export function getCameraUrl({id, showMessage = 1}) {
+export function getCameraUrl({id, showMessage = 1,streamType}) {
     return transfer({
         url: '/ArtemisCamera/getUrl',
-        params: {id, showMessage}
+        params: {id, showMessage,streamType}
     })
 }
 
