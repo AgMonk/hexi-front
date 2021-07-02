@@ -162,22 +162,22 @@
     <!--    摄像头定位-->
     <!--    12-13 -->
     <i class="el-icon-video-camera" style="top: 160px; left:400px"
-       @click="videoUrl('http://192.168.0.220:83/openUrl/vgLdUdO/live.m3u8')"></i>
+       @click="videoUrl('51fccc874cca4a508daa3caddd5b7191')"></i>
     <!--   14-7 -->
     <i class="el-icon-video-camera" style="top: 320px; left: 680px"
-       @click="videoUrl('http://192.168.0.220:83/openUrl/fD9mBfa/live.m3u8')"></i>
+       @click="videoUrl('bc03e8008cb848acb8681669bc9c53c2')"></i>
     <!--    13-14 -->
     <i class="el-icon-video-camera" style="top: 240px; left: 540px"
-       @click="videoUrl('http://192.168.0.220:83/openUrl/DlE8vQc/live.m3u8')"></i>
+       @click="videoUrl('3070094fdf6143159c0b4133680059ef11')"></i>
     <!--    6-7 -->
     <i class="el-icon-video-camera" style="top: 240px; left: 930px"
-       @click="videoUrl('http://192.168.0.220:83/openUrl/W82SH1C/live.m3u8')"></i>
+       @click="videoUrl('122ef1a806d84a8a9cb801c3d853096114')"></i>
     <!-- 15-16 -->
     <i class="el-icon-video-camera" style="top: 120px; left: 700px"
-       @click="videoUrl('http://192.168.0.220:83/openUrl/lONET5u/live.m3u8')"></i>
+       @click="videoUrl('f4cdaa2c89be4a5aa6bace0bf5963e2912')"></i>
     <!-- 4-5 -->
     <i class="el-icon-video-camera" style="top: 210px; left: 1460px"
-       @click="videoUrl('http://192.168.0.220:83/openUrl/oGNtgGI/live.m3u8')"></i>
+       @click="videoUrl('cac3a56723b24a2babfd233c5de06dcd5')"></i>
 
     <img class="image" height="616" src="../../../assets/img/screen.png" width="1891.66"/>
   </div>
