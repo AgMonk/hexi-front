@@ -7,6 +7,7 @@
 
 <script>
 import {Unicom} from "../../common/utils";
+import {getCameraUrl} from "../../network/output";
 
 let Hls = require('hls.js')
 export default {
@@ -33,9 +34,11 @@ export default {
         this.hls = null;
       }
     },
-    getStream(url) {
+    getStream(id) {
         this.hls = new Hls();
         console.log(this.url)
+      getCameraUrl({id,showMessage:1,streamType:0}).then(res=>{
+        let url = res.data;
         this.hls.loadSource(url);
         this.hls.attachMedia(this.$refs.video);
         this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
@@ -51,6 +54,8 @@ export default {
             })
           }
         });
+      })
+
         this.hls.on(Hls.Events.ERROR, () => {
           // console.log(event, data, '加载失败')
         });
