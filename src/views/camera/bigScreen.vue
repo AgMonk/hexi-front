@@ -42,7 +42,7 @@ export default {
         this.hls.loadSource(url);
         this.hls.attachMedia(this.$refs.video);
         this.hls.on(Hls.Events.MANIFEST_PARSED, () => {
-          console.log('加载成功');
+          console.log('加载成功1');
           this.loading = false;
           let playPromise = this.$refs.video.play();
           if (playPromise !== undefined) {
