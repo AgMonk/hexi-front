@@ -161,19 +161,23 @@
     </el-tooltip>
     <!--    摄像头定位-->
     <!--    12-13 -->
-    <i class="el-icon-location" style="top: 160px; left:400px"
+    <i class="el-icon-video-camera" style="top: 160px; left:400px"
        @click="videoUrl('http://192.168.0.220:83/openUrl/vgLdUdO/live.m3u8')"></i>
     <!--   14-7 -->
-    <i class="el-icon-location" style="top: 320px; left: 680px"
-       @click="videoUrl('http://192.168.0.220:83/openUrl/fD9mBfa/live.m3u8')" ></i>
+    <i class="el-icon-video-camera" style="top: 320px; left: 680px"
+       @click="videoUrl('http://192.168.0.220:83/openUrl/fD9mBfa/live.m3u8')"></i>
     <!--    13-14 -->
-    <i class="el-icon-location" style="top: 240px; left: 540px"  @click="videoUrl('http://192.168.0.220:83/openUrl/DlE8vQc/live.m3u8')" ></i>
+    <i class="el-icon-video-camera" style="top: 240px; left: 540px"
+       @click="videoUrl('http://192.168.0.220:83/openUrl/DlE8vQc/live.m3u8')"></i>
     <!--    6-7 -->
-    <i class="el-icon-location" style="top: 240px; left: 930px" @click="videoUrl('http://192.168.0.220:83/openUrl/W82SH1C/live.m3u8')" ></i>
+    <i class="el-icon-video-camera" style="top: 240px; left: 930px"
+       @click="videoUrl('http://192.168.0.220:83/openUrl/W82SH1C/live.m3u8')"></i>
     <!-- 15-16 -->
-    <i class="el-icon-location" style="top: 120px; left: 700px" @click="videoUrl('http://192.168.0.220:83/openUrl/lONET5u/live.m3u8')" ></i>
+    <i class="el-icon-video-camera" style="top: 120px; left: 700px"
+       @click="videoUrl('http://192.168.0.220:83/openUrl/lONET5u/live.m3u8')"></i>
     <!-- 4-5 -->
-    <i class="el-icon-location" style="top: 210px; left: 1460px" @click="videoUrl('http://192.168.0.220:83/openUrl/oGNtgGI/live.m3u8')" ></i>
+    <i class="el-icon-video-camera" style="top: 210px; left: 1460px"
+       @click="videoUrl('http://192.168.0.220:83/openUrl/oGNtgGI/live.m3u8')"></i>
 
     <img class="image" height="616" src="../../../assets/img/screen.png" width="1891.66"/>
   </div>
@@ -211,7 +215,7 @@ export default {
 </script>
 
 <style scoped>
-.el-icon-location {
+.el-icon-video-camera {
   font-size: 100px;
   color: darkred;
   position: absolute;

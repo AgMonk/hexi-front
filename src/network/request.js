@@ -6,6 +6,10 @@ export function transfer(config) {
     const instance = axios.create({
         baseURL: '/api',
         timeout: 5000,
+        headers: {
+            "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+            "Cache-Control": "max-age=0",
+        },
     })
     instance.interceptors.request.use(config => {
         if (config.data) {
@@ -27,7 +31,9 @@ export function transfer(config) {
             })
         }
         if (data.code !== 2000) {
-            Vue.prototype.$message.error(data.message)
+            Vue.prototype.$message.error({
+                message: data.message
+            })
         }
         return res.data;
     }, err => {
@@ -50,7 +56,9 @@ export function cloud(config) {
                 type: 'success'
             })
         } else {
-            Vue.prototype.$message.error(data.message)
+            Vue.prototype.$message.error({
+                message: data.message
+            })
         }
         return res.data;
     }, err => {

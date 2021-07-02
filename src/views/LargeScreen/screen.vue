@@ -146,7 +146,6 @@ import Notice from "./screenCharts/Notice";
 import {BillStatistics, getSafetyDays, QueryCompanyStatistics, QueryPatentStatistics} from "../../network/output";
 import EnvironmentalTesting from "./screenCharts/environmentalTesting";
 import FireAlarm from "./screenCharts/fireAlarm/fireAlarm";
-// import Camera from "../camera/camera";
 import BigScreen from "../camera/bigScreen";
 import ScreenImg from "./screenCharts/screenImg";
 import Test1 from "./test1";
@@ -157,7 +156,6 @@ export default {
     Test1,
     ScreenImg,
     BigScreen,
-    // Camera,
     FireAlarm,
     EnvironmentalTesting,
     Notice,
