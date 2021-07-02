@@ -15,15 +15,15 @@ export default {
   data() {
     return {
       hls: '',
-      url: "http://192.168.0.220:83/openUrl/MTf7K5W/live.m3u8",
+      id: "a3882728fe9848ddb4cb653543e68f43",
       loading: true,
     }
   },
   mounted() {
-    this.getStream(this.url);
+    this.getStream(this.id);
     Unicom.$on("videoIndex", res => {
-      this.url = res;
-      this.getStream(this.url);
+      this.id = res;
+      this.getStream(this.id);
     })
   },
   methods: {
@@ -36,9 +36,10 @@ export default {
     },
     getStream(id) {
         this.hls = new Hls();
-        console.log(this.url)
-      getCameraUrl({id,showMessage:1,streamType:0}).then(res=>{
+        console.log(id)
+      getCameraUrl({id,showMessage:1}).then(res=>{
         let url = res.data;
+        console.log(res)
         this.hls.loadSource(url);
         this.hls.attachMedia(this.$refs.video);
         this.hls.on(Hls.Events.MANIFEST_PARSED, () => {

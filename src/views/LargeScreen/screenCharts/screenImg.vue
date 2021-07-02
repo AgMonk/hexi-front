@@ -162,22 +162,22 @@
     <!--    摄像头定位-->
     <!--    12-13 -->
     <i class="el-icon-video-camera" style="top: 160px; left:400px"
-       @click="videoUrl('51fccc874cca4a508daa3caddd5b7191')"></i>
+       @click="videoUrl('7d564aed51d04c3d98ba71df2d7d1e3b')"></i>
     <!--   14-7 -->
     <i class="el-icon-video-camera" style="top: 320px; left: 680px"
-       @click="videoUrl('bc03e8008cb848acb8681669bc9c53c2')"></i>
+       @click="videoUrl('e34b0b1af98e481ab3830e047144ba0c')"></i>
     <!--    13-14 -->
     <i class="el-icon-video-camera" style="top: 240px; left: 540px"
-       @click="videoUrl('3070094fdf6143159c0b4133680059ef11')"></i>
+       @click="videoUrl('42ba358cb1cc4bf3b903018d15e3eacb')"></i>
     <!--    6-7 -->
     <i class="el-icon-video-camera" style="top: 240px; left: 930px"
-       @click="videoUrl('122ef1a806d84a8a9cb801c3d853096114')"></i>
+       @click="videoUrl('95a629b06ddc4e159128f36ec30c3531')"></i>
     <!-- 15-16 -->
     <i class="el-icon-video-camera" style="top: 120px; left: 700px"
-       @click="videoUrl('f4cdaa2c89be4a5aa6bace0bf5963e2912')"></i>
+       @click="videoUrl('617fb012959643d0bfad565eab019d05')"></i>
     <!-- 4-5 -->
     <i class="el-icon-video-camera" style="top: 210px; left: 1460px"
-       @click="videoUrl('cac3a56723b24a2babfd233c5de06dcd5')"></i>
+       @click="videoUrl('0fd5c554bbd74bebbd88048f059fc259')"></i>
 
     <img class="image" height="616" src="../../../assets/img/screen.png" width="1891.66"/>
   </div>
