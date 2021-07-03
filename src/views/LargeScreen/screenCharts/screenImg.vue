@@ -161,24 +161,174 @@
     </el-tooltip>
     <!--    摄像头定位-->
     <!--    12-13 -->
-    <i class="el-icon-video-camera" style="top: 160px; left:400px"
-       @click="videoUrl('7d564aed51d04c3d98ba71df2d7d1e3b')"></i>
-    <!--   14-7 -->
-    <i class="el-icon-video-camera" style="top: 320px; left: 680px"
-       @click="videoUrl('e34b0b1af98e481ab3830e047144ba0c')"></i>
-    <!--    13-14 -->
-    <i class="el-icon-video-camera" style="top: 240px; left: 540px"
-       @click="videoUrl('42ba358cb1cc4bf3b903018d15e3eacb')"></i>
-    <!--    6-7 -->
-    <i class="el-icon-video-camera" style="top: 240px; left: 930px"
-       @click="videoUrl('95a629b06ddc4e159128f36ec30c3531')"></i>
-    <!-- 15-16 -->
-    <i class="el-icon-video-camera" style="top: 120px; left: 700px"
-       @click="videoUrl('617fb012959643d0bfad565eab019d05')"></i>
-    <!-- 4-5 -->
-    <i class="el-icon-video-camera" style="top: 210px; left: 1460px"
-       @click="videoUrl('0fd5c554bbd74bebbd88048f059fc259')"></i>
+    <!--    <i class="el-icon-video-camera" style="top: 160px; left:400px"-->
+    <!--       @click="videoUrl()"></i>-->
+    <!--    &lt;!&ndash;   14-7 &ndash;&gt;-->
+    <!--    <i class="el-icon-video-camera" style="top: 320px; left: 680px"-->
+    <!--       @click="videoUrl('e34b0b1af98e481ab3830e047144ba0c')"></i>-->
+    <!--    &lt;!&ndash;    13-14 &ndash;&gt;-->
+    <!--    <i class="el-icon-video-camera" style="top: 240px; left: 540px"-->
+    <!--       @click="videoUrl('42ba358cb1cc4bf3b903018d15e3eacb')"></i>-->
+    <!--    &lt;!&ndash;    6-7 &ndash;&gt;-->
+    <!--    <i class="el-icon-video-camera" style="top: 240px; left: 930px"-->
+    <!--       @click="videoUrl('95a629b06ddc4e159128f36ec30c3531')"></i>-->
+    <!--    &lt;!&ndash; 15-16 &ndash;&gt;-->
+    <!--    <i class="el-icon-video-camera" style="top: 120px; left: 700px"-->
+    <!--       @click="videoUrl('617fb012959643d0bfad565eab019d05')"></i>-->
+    <!--    &lt;!&ndash; 4-5 &ndash;&gt;-->
+    <!--    <i class="el-icon-video-camera" style="top: 210px; left: 1460px"-->
+    <!--       @click="videoUrl('0fd5c554bbd74bebbd88048f059fc259')"></i>-->
 
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[8]"/>
+      </div>
+      <!--  8#-->
+      <i class="el-icon-video-camera" style=" position: absolute; top:180px; left: 300px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[18]"/>
+      </div>
+      <!--  18# 办公楼-->
+
+      <i class="el-icon-video-camera" style="position: absolute; top:450px; left: 600px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[9]"/>
+      </div>
+      <!--  9#-->
+
+      <i class="el-icon-video-camera" style="position: absolute; top:400px; left: 520px;"/>
+
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[7]"/>
+      </div>
+      <!--7#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:320px; left: 950px;"/>
+
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[16]"/>
+      </div>
+      <!--  16#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:150px; left: 970px;"/>
+
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[12]"/>
+      </div>
+      <!--12#-->
+      <i class="el-icon-video-camera" style=" position: absolute; top:170px; left: 450px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[11]"/>
+      </div>
+      <!--11#-->
+      <i class="el-icon-video-camera" style=" position: absolute; top:130px; left: 320px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[15]"/>
+      </div>
+      <!--15#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:150px; left: 720px;"/>
+    </el-tooltip>
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[14]"/>
+      </div>
+      <!--14#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:220px; left: 770px"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[13]"/>
+      </div>
+      <!--13#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:150px; left: 630px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[6]"/>
+      </div>
+      <!--6#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:270px; left: 1020px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[5]"/>
+      </div>
+      <!--  5#-->
+      <i class="el-icon-video-camera" style=" position: absolute; top:190px; left: 1200px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[4]"/>
+      </div>
+      <!--  4#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:300px; left: 1510px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[1]"/>
+      </div>
+      <!--1#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:310px; left: 1720px;"/>
+
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[2]"/>
+      </div>
+      <!--  2#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:270px; left: 1610px;"/>
+
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[3]"/>
+      </div>
+      <!--3#-->
+      <i class="el-icon-video-camera" style="position: absolute; top:220px; left: 1510px; "/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[17]"/>
+      </div>
+      <!--3#a  17-->
+      <i class="el-icon-video-camera" style="position: absolute; top:170px; left: 1380px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <card :number="companyList[10]"/>
+      </div>
+      <!--  10#-->
+      <i class="el-icon-video-camera" style=" position: absolute; top:300px; left: 500px;"/>
+    </el-tooltip>
     <img class="image" height="616" src="../../../assets/img/screen.png" width="1891.66"/>
   </div>
 </template>
@@ -216,9 +366,8 @@ export default {
 
 <style scoped>
 .el-icon-video-camera {
-  font-size: 100px;
+  font-size: 40px;
   color: darkred;
-  position: absolute;
   cursor: pointer;
 }
 </style>

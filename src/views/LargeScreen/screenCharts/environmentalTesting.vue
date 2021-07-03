@@ -46,8 +46,16 @@
         <br><br>
         <el-button style="padding: 0 0 0 20px; background: #0F373F" type="text">
           <p style="color: #FFFFFF; font-weight: 600; font-size: 15px; margin: 0; text-align: left">
-            <strong style="font-size: 20px">空气质量：</strong><br><br>
+            <strong style="font-size: 20px">空气质量&天气：</strong><br><br>
 
+            <span v-if="dayTemperature[0]">今日天气： {{
+                dayTemperature[0].low + '-' +
+                dayTemperature[0].high + '°C' + '&#12288;' + dayTemperature[0].weather
+              }}；</span>
+            <span v-if="dayTemperature[1]">明日天气： {{
+                dayTemperature[1].low + '-' +
+                dayTemperature[1].high + '°C' + '&#12288;' + dayTemperature[1].weather
+              }}；</span> <br><br>
             <span>空气质量： {{ airData.aqi }} {{ airData.quality }}；</span>
             <span>空气级别：{{ airData.aqiinfo.level }}</span><br><br>
             <span>PM2.5：{{ airData.pm2_5 }}；</span>
@@ -95,16 +103,31 @@ export default {
         end: undefined
       },
       waterData: {},
-      soilList: {}
+      soilList: {},
+      daily: {},
+      hourly: {},
+      dayTemperature: []
     }
   },
   methods: {
     getWeather() {
-      let city = "柳州"
+      let city = "柳南区"
       GetWeather({city, showMessage: 1}).then(res => {
         this.airData = res.data.aqi;
         this.airData.aqiinfo = res.data.aqi.aqiinfo;
-        // console.log(this.airData)
+        this.daily = res.data.daily;
+        this.hourly = res.data.hourly;
+        this.dayTemperature = this.daily.map((temperature) => {
+          return {
+            high: temperature.day.temphigh,
+            low: temperature.night.templow,
+            weather: temperature.day.weather,
+            date: temperature.date,
+          }
+        })
+
+        console.log(this.daily);
+        console.log(this.dayTemperature);
       })
     },
     waterQualityInquiry() {

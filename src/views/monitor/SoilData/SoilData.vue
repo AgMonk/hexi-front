@@ -51,7 +51,7 @@ export default {
   methods: {
     soilDatapage() {
       SoilDatapage(this.soilData).then(res => {
-        console.log(res);
+        // console.log(res);
         this.soilList = res.data.records;
         this.total = res.data.total;
       })

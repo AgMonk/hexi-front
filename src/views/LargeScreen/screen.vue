@@ -1,10 +1,10 @@
 <template>
-  <el-container>
+  <el-container class="overflow">
     <!--  direction horizontal -->
     <el-header height="95px">
       <el-row :gutter="20">
         <el-col :span="8">
-          <div>
+          <div style="color: #0F373F">
             1
           </div>
         </el-col>
@@ -246,7 +246,11 @@ export default {
 </script>
 
 <style scoped>
-
+.overflow {
+  width: 4608px;
+  height: 1280px;
+  overflow: visible;
+}
 
 .typeTitle {
   font-size: 30px;

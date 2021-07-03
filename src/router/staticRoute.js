@@ -110,8 +110,8 @@ const staticRoute = [
     //视频监控
     {path: "/cameraIndex", component: () => import("../views/camera/cameraIndex")},
 
-    //用户权限管理
-    // {path: "/userSave", component: () => import("../views/Permission/UserSave")}
+    //临时存放
+    {path: "/temporary", component: () => import("../views/LargeScreen/temporary")}
 
 ]
 

@@ -90,12 +90,12 @@ export default {
         if (aIndex !== bIndex) {
           return aIndex - bIndex
         }
-        let regexp = /\d+/g;
-        let aNumber = regexp.exec(aName) ? regexp.exec(aName)[0] : 100;
-        let bNumber = regexp.exec(bName) ? regexp.exec(bName)[0] : 100;
-        if (aNumber !== bNumber) {
-          return aNumber - bNumber
-        }
+        // let regexp = /\d+/g;
+        // let aNumber = regexp.exec(aName) ? regexp.exec(aName)[0] : 100;
+        // let bNumber = regexp.exec(bName) ? regexp.exec(bName)[0] : 100;
+        // if (aNumber !== bNumber) {
+        //   return aNumber - bNumber
+        // }
         return aName.localeCompare(bName)
       })
       return arr
@@ -105,6 +105,8 @@ export default {
   },
   mounted() {
     this.cameraPage();
+    const ratio = window.devicePixelRatio;
+    console.log(ratio)
   },
 }
 </script>

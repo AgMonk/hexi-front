@@ -1,6 +1,6 @@
 <template>
 <div>
-  <div id="parking" style="width: 100%; height: 160px"></div>
+  <div id="parking" style="width: 100%; height: 170px"></div>
   <el-table
       :cell-style="{background:'#042E36',color:'#11D5E4',padding:'0'}"
       :data="inOutData"
@@ -32,13 +32,15 @@ export default {
         let d = res.data;
         let data = new Array();
         for (let i = 0; i < d.length; i++) {
+          let timeout = d[i].timeout ? "超时" : "未超时"
+          // console.log(d[i])
           data.push({
             value: d[i].count,
-            name: d[i].carTypeName,
+            name: timeout + d[i].carTypeName,
           })
-          console.log(d[i])
         }
-        console.log(res.data);
+        // console.log(data)
+        // console.log(res.data);
         myCharts.setOption({
           tooltip: {
             trigger: 'item'
@@ -88,7 +90,7 @@ export default {
           paging.start = paging.end - 24 * 60 * 60 * 30 * 6;
       paging.showMessage = 1;
       BarrierLogPage(paging).then(res => {
-        console.log(res);
+        // console.log(res);
         this.inOutData = res.data.records;
       })
     },

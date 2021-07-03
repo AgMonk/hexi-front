@@ -155,6 +155,12 @@ export function find(params) {
 //本模块有3种实体，名称和接口前缀为：企业Company
 //专利Patent，补贴Subsidy；接口名完全相同，仅在分页查询时的可选过滤条件有所不同
 
+
+//导入模板
+export function downloadTemplate() {
+    return transfer({})
+}
+
 //添加企业
 export function AddModule(data) {
     return transfer({
@@ -163,6 +169,7 @@ export function AddModule(data) {
         url: '/Company/add',
     })
 }
+
 //修改企业
 export function updateCompony(data) {
     return transfer({
@@ -380,9 +387,9 @@ export function BarrierPage({page, size, start, end, condition}) {
 }
 
 //查询车辆分布
-export function CarStatus(day) {
+export function CarStatus(params) {
     return transfer({
-        params: day,
+        params,
         url: '/BarrierLog/getCarStatus'
     })
 }
