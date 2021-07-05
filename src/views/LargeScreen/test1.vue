@@ -25,6 +25,10 @@ export default {
       show: false,
       playing: [],
       cameraList: [],
+      indexCodes: [],
+      //轮播摄像头切换编号
+      cameraIndex: 0
+
     }
   },
   methods: {
@@ -34,36 +38,56 @@ export default {
         let id = idList[i]
         await getCameraUrl({showMessage: 1, id}).then(res => {
           array.push(res.data)
-          console.log(res.data)
         })
       }
       return array
     },
     play() {
-      let array = [];
+      // let array = [];
+      // let index;
+      // // let newPlaying = [];
+      // for (let i = 0; i < 6; i++) {
+      //   do {
+      //     index = Math.floor(Math.random() * this.cameraList.length);
+      //   } while (array.includes(this.cameraList[index]))
+      //   array.push(this.cameraList[index])
+      // }
+      // this.updatePlayingUrl(array).then(res => {
+      // this.playing = res
+      // console.log(this.playing)
+      // this.show=true;
+      // })
+
       let index;
-      // let newPlaying = [];
-      for (let i = 0; i < 6; i++) {
-        do {
-          index = Math.floor(Math.random() * this.cameraList.length);
-        } while (array.includes(this.cameraList[index]))
-        array.push(this.cameraList[index])
-      }
-      this.updatePlayingUrl(array).then(res => {
-        this.playing = res
-      console.log(this.playing)
-      this.show=true;
+      do {
+        index = Math.floor(Math.random() * this.cameraList.length);
+      } while (this.indexCodes.includes(this.cameraList[index]))
+      this.indexCodes[this.cameraIndex] = this.cameraList[index]
+      this.cameraIndex++
+      this.cameraIndex = this.cameraIndex % 6
+      getCameraUrl({id: this.cameraList[index]}).then(res => {
+        this.playing[this.cameraIndex] = res.data
+        console.log(this.playing[this.cameraIndex])
       })
     },
+
   },
   mounted() {
     setInterval(
         this.play,
-        1000 * 120)
-
+        1000 * 30)
     ArtemisCameraPage({params: 1}).then(res => {
-      this.cameraList = res.data.map(i => i.indexCode);
-      this.play();
+      let arr = []
+      for (let i = 0; i < res.data.length; i++) {
+        arr.push(res.data[i])
+      }
+      this.cameraList = arr.filter(i => !i.name.includes("梯")).map(i => i.indexCode)
+
+      console.log(this.cameraList)
+      for (let i = 0; i < 6; i++) {
+        this.play();
+      }
+
     });
 
 

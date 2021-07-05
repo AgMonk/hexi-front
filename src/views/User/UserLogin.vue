@@ -92,5 +92,4 @@ a {
   color: #409EFF;
 }
 
-/*<img src="../../assets/img/login.png" height="1257" width="1890"/>*/
 </style>

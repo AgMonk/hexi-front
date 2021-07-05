@@ -8,7 +8,7 @@
         <el-collapse-item v-for="(group, i) in cameraNameList" :key="i" :name="group.regionName"
                           :title="group.regionName">
           <el-button v-for="(camera, i) in group.cameras" :key="i" style="text-align: left" type="text"
-                     @click="playList(camera.indexCode)">
+                     @click="play(camera.indexCode)">
             {{ camera.name }}
           </el-button>
 
@@ -40,13 +40,10 @@ export default {
     }
   },
   methods: {
-    playList(name) {
-      console.log(name)
-    },
     play(id) {
       getCameraUrl({id, streamType: 0}).then(res => {
-        console.log(res)
         this.playing = res.data;
+        console.log(this.playing)
       })
     },
     cameraPage() {
@@ -57,7 +54,6 @@ export default {
         // for (let i = 0; i < this.cameraNameList.length; i++) {
         //    console.log(this.cameraNameList[i])
         //  }
-
         // console.log(this.groupByRegionName(data))
         for (let i = 0; i < data.length; i++) {
           this.indexCode.push({
@@ -65,7 +61,7 @@ export default {
             id: data[i].indexCode,
           })
         }
-        // console.log(this.indexCode)
+        console.log(this.indexCode)
       })
     },
     //摄像头分组

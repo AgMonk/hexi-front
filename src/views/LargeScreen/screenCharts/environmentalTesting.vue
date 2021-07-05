@@ -56,11 +56,17 @@
                 dayTemperature[1].low + '-' +
                 dayTemperature[1].high + '°C' + '&#12288;' + dayTemperature[1].weather
               }}；</span> <br><br>
+            <span v-if="nowWeather[0]">实时天气：
+              {{ nowWeather[0].time }}： {{ nowWeather[0].temp + '°C' }}；
+              {{ nowWeather[1].time }}： {{ nowWeather[1].temp + '°C' }}；
+              {{ nowWeather[2].time }}： {{ nowWeather[2].temp + '°C' }}；
+            </span><br><br>
+
             <span>空气质量： {{ airData.aqi }} {{ airData.quality }}；</span>
-            <span>空气级别：{{ airData.aqiinfo.level }}</span><br><br>
+            <span>空气级别：{{ airData.aqiinfo.level }}；</span>
             <span>PM2.5：{{ airData.pm2_5 }}；</span>
             <span>PM10： {{ airData.pm10 }}；</span>
-            二氧化硫： {{ airData.so2 }}
+            <!--            二氧化硫： {{ airData.so2 }}-->
           </p>
         </el-button>
       </div>
@@ -104,9 +110,11 @@ export default {
       },
       waterData: {},
       soilList: {},
-      daily: {},
+      daily: [],
       hourly: {},
-      dayTemperature: []
+      dayTemperature: [],
+
+      nowWeather: []
     }
   },
   methods: {
@@ -117,6 +125,17 @@ export default {
         this.airData.aqiinfo = res.data.aqi.aqiinfo;
         this.daily = res.data.daily;
         this.hourly = res.data.hourly;
+        let hour = new Date().getHours() + ":00";
+        let index = 0;
+        for (let i = 0; i < this.hourly.length; i++) {
+          if (this.hourly[i].time === hour) {
+            index = i
+            break
+          }
+        }
+        this.nowWeather = this.hourly.splice(index, 3)
+        console.log(this.nowWeather)
+
         this.dayTemperature = this.daily.map((temperature) => {
           return {
             high: temperature.day.temphigh,
@@ -125,9 +144,6 @@ export default {
             date: temperature.date,
           }
         })
-
-        console.log(this.daily);
-        console.log(this.dayTemperature);
       })
     },
     waterQualityInquiry() {
