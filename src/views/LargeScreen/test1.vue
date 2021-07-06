@@ -70,7 +70,7 @@ export default {
       })
     },
     artemisCameraPage() {
-      ArtemisCameraPage({params: 1}).then(res => {
+      ArtemisCameraPage({showMessage: 1}).then(res => {
         let arr = []
         for (let i = 0; i < res.data.length; i++) {
           arr.push(res.data[i])

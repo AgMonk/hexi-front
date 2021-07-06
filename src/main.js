@@ -8,6 +8,7 @@ import 'element-ui/lib/theme-chalk/index.css';
 import * as echarts from 'echarts';
 
 import 'video.js/dist/video-js.css'
+import './common/dateUtils'
 
 Vue.prototype.$echarts = echarts
 Vue.use(ElementUI);

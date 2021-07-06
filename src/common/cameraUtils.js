@@ -11,7 +11,7 @@ export const groupByRegionName = (array) => {
     Object.keys(data).forEach(regionName => {
         arr.push({regionName, cameras: data[regionName]})
     })
-    console.log(arr)
+    // console.log(arr)
     arr.sort((a, b) => {
         let aName = a.regionName;
         let bName = b.regionName;

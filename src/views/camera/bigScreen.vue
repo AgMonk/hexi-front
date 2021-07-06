@@ -21,6 +21,7 @@ export default {
     Unicom.$on("videoIndex", res => {
       this.id = res;
       this.getStream(this.id);
+
     })
   },
   methods: {
@@ -33,7 +34,6 @@ export default {
     },
     getStream(id) {
         this.hls = new Hls();
-        console.log(id)
       getCameraUrl({id,showMessage:1}).then(res=>{
         let url = res.data;
         console.log(res)

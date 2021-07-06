@@ -286,6 +286,16 @@ export function QuerySubsidyStatistics(params) {
     })
 }
 
+
+//下载数据导入用模板
+//下载公司模板
+export function Template() {
+    return transfer({
+        url: '/Company/downloadTemplate'
+    })
+}
+
+
 //道闸模块
 export function BarrierLogPage(data) {
     return transfer({
@@ -504,7 +514,6 @@ export function getCameraUrl({id, showMessage = 1,streamType}) {
         params: {id, showMessage,streamType}
     })
 }
-
 
 //版本优化
 //获取当前版本

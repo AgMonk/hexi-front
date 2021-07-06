@@ -160,9 +160,10 @@
           style=" position: absolute; top:305px; left: 360px;  opacity: 0; height: 60px; width: 60px; background: #FFFFFF; "/>
     </el-tooltip>
 
+<!--    //摄像头-->
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[8]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[8]"/>
       </div>
       <!--  8#-->
       <svg-camera style=" position: absolute; top:280px; left: 240px;"/>
@@ -170,16 +171,22 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[18]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[20]"/>
       </div>
       <!--  18# 办公楼-->
-
       <svg-camera style="position: absolute; top:450px; left: 600px;"/>
     </el-tooltip>
+    <!--    <el-tooltip effect="light" placement="right">-->
+    <!--      <div slot="content">-->
+    <!--        <BuildingCameraIndex :buildingIndex="buildingIndex[21]"/>-->
+    <!--      </div>-->
+    <!--      &lt;!&ndash;  18# 办公楼电梯&ndash;&gt;-->
+    <!--      <svg-camera style="position: absolute; top:430px; left: 570px;"/>-->
+    <!--    </el-tooltip>-->
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[9]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[9]"/>
       </div>
       <!--  9#-->
       <svg-camera style="position: absolute; top:400px; left: 520px;"/>
@@ -188,7 +195,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[7]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[7]"/>
       </div>
       <!--7#-->
       <svg-camera style="position: absolute; top:390px; left: 770px;"/>
@@ -196,7 +203,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[16]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[16]"/>
       </div>
       <!--  16#-->
       <svg-camera style="position: absolute; top:250px; left: 890px;"/>
@@ -205,7 +212,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[12]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[12]"/>
       </div>
       <!--12#-->
       <svg-camera style=" position: absolute; top:180px; left: 430px;"/>
@@ -213,7 +220,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[11]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[11]"/>
       </div>
       <!--11#-->
       <svg-camera style=" position: absolute; top:120px; left: 300px;"/>
@@ -221,14 +228,16 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[15]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[15]"/>
+
       </div>
       <!--15#-->
       <svg-camera style="position: absolute; top:140px; left: 690px;"/>
     </el-tooltip>
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[14]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[14]"/>
+
       </div>
       <!--14#-->
       <svg-camera style="position: absolute; top:320px; left: 680px"/>
@@ -236,7 +245,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[13]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[13]"/>
       </div>
       <!--13#-->
       <svg-camera style="position: absolute; top:250px; left: 550px;"/>
@@ -244,7 +253,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[6]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[6]"/>
       </div>
       <!--6#-->
       <svg-camera style="position: absolute; top:310px; left: 1020px;"/>
@@ -252,7 +261,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[5]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[5]"/>
       </div>
       <!--  5#-->
       <svg-camera style=" position: absolute; top:190px; left: 1200px;"/>
@@ -260,7 +269,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[4]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[4]"/>
       </div>
       <!--  4#-->
       <svg-camera style="position: absolute; top:300px; left: 1510px;"/>
@@ -268,7 +277,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[1]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[0]"/>
       </div>
       <!--1#-->
       <svg-camera style="position: absolute; top:300px; left: 1725px;"/>
@@ -277,7 +286,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[2]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[1]"/>
       </div>
       <!--  2#-->
       <svg-camera style="position: absolute; top:255px; left: 1610px;"/>
@@ -286,7 +295,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <card :number="companyList[3]"/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[2]"/>
       </div>
       <!--3#-->
       <svg-camera style="position: absolute; top:210px; left: 1490px; "/>
@@ -294,7 +303,7 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <BuildingCameraIndex/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[3]"/>
       </div>
       <!--3#a  17-->
       <svg-camera style="position: absolute; top:170px; left: 1380px;"/>
@@ -302,11 +311,37 @@
 
     <el-tooltip effect="light" placement="right">
       <div slot="content">
-        <BuildingCameraIndex/>
+        <BuildingCameraIndex :buildingIndex="buildingIndex[10]"/>
       </div>
       <!--  10#-->
       <svg-camera style=" position: absolute; top:420px; left: 360px;"/>
     </el-tooltip>
+
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <BuildingCameraIndex :buildingIndex="buildingIndex[17]"/>
+      </div>
+      <!--  1号岗#-->
+      <svg-camera style=" position: absolute; top:500px; left: 380px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <BuildingCameraIndex :buildingIndex="buildingIndex[18]"/>
+      </div>
+      <!--  2号岗#-->
+      <svg-camera style=" position: absolute; top:460px; left: 1840px;"/>
+    </el-tooltip>
+
+    <el-tooltip effect="light" placement="right">
+      <div slot="content">
+        <BuildingCameraIndex :buildingIndex="buildingIndex[19]"/>
+      </div>
+      <!--  3号岗#-->
+      <svg-camera style=" position: absolute; top:440px; left: 1000px;"/>
+    </el-tooltip>
+
     <img class="image" height="616" src="../../../assets/img/screen.jpg" width="1891.66"/>
   </div>
 </template>
@@ -314,7 +349,6 @@
 <script>
 import Card from "../../../components/card";
 import {ArtemisCameraPage, QueryCompanyStatistics} from "../../../network/output";
-import {Unicom} from "../../../common/utils";
 import SvgCamera from "../../../components/svgCamera";
 import BuildingCameraIndex from "../../../components/BuildingCameraIndex";
 import {groupByRegionName} from "../../../common/cameraUtils";
@@ -324,7 +358,8 @@ export default {
   components: {BuildingCameraIndex, SvgCamera, Card},
   data() {
     return {
-      companyList: []
+      companyList: [],
+      buildingIndex: []
     }
   },
   methods: {
@@ -333,14 +368,12 @@ export default {
         this.companyList = res.data.listGroupByBuildingIndex
       })
     },
-    videoUrl(id) {
-      Unicom.$emit('videoIndex', id)
-    },
+
     cameraBuildingIndex() {
       ArtemisCameraPage({showMessage: 1}).then(res => {
+        this.buildingIndex = this.groupByRegionName(res.data)
+        console.log(this.buildingIndex)
 
-        // let data = res.data;
-        this.groupByRegionName(res.data)
       })
     },
     //摄像头楼栋分组

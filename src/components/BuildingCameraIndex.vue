@@ -1,18 +1,38 @@
 <template>
   <el-card class="box-card">
-    <div slot="header" class="clearfix">
-      <span>卡片名称</span>
+    <div slot="header" class="clearfix" style="font-size: 17px; font-weight: 600">
+      <span>{{ index.regionName }}摄像头列表</span>
     </div>
-    <div v-for="o in 4" :key="o" class="text item">
-      {{ '列表内容 ' + o }}
+    <div v-for="(cameraList, i) in index.cameras" :key="i" class="text item">
+      <el-button type="text" @click="sendOutIndexCode(cameraList.indexCode)">{{ cameraList.name }}</el-button>
     </div>
   </el-card>
 
 </template>
 
 <script>
+import {Unicom} from "../common/utils";
+
 export default {
-  name: "BuildingCameraIndex"
+  name: "BuildingCameraIndex",
+  data() {
+    return {
+      index: []
+    }
+  },
+  methods: {
+    sendOutIndexCode(code) {
+      Unicom.$emit('videoIndex', code)
+    }
+  },
+  watch: {
+    "buildingIndex": {
+      handler(e) {
+        this.index = e
+      }
+    }
+  },
+  props: ["buildingIndex"]
 }
 </script>
 

@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import {UserInfo, UserLogout} from "../../network/output";
+import {UserLogout} from "../../network/output";
 import EditPassword from "../../views/EditUser/EditPassword";
 
 export default {
@@ -62,10 +62,10 @@ export default {
     }
   },
   created() {
-    UserInfo({showMessage: 1}).then(res => {
-      // console.log(res);
-      this.userinfo = res.data;
-    })
+    // UserInfo({showMessage: 1}).then(res => {
+    //   // console.log(res);
+    //   this.userinfo = res.data;
+    // })
   }
 }
 </script>
