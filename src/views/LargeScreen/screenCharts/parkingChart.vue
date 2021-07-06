@@ -81,7 +81,9 @@ export default {
             }
           ]
         })
-      });
+      }).catch(() => {
+        this.myEcharts()
+      })
 
     },
     barrierLogPage() {
@@ -90,8 +92,9 @@ export default {
           paging.start = paging.end - 24 * 60 * 60 * 30 * 6;
       paging.showMessage = 1;
       BarrierLogPage(paging).then(res => {
-        // console.log(res);
         this.inOutData = res.data.records;
+      }).catch(() => {
+        this.barrierLogPage();
       })
     },
 

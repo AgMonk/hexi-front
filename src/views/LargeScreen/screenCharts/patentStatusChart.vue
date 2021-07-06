@@ -43,7 +43,9 @@ export default {
                 }
               }]
             })
-      });
+      }).catch(() => {
+        this.myEcharts();
+      })
     },
 
   },

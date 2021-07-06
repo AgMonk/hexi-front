@@ -1,5 +1,5 @@
 <template>
-<div v-show="$route.meta.Nav !== false">
+<div v-if="$route.meta.Nav !== false">
   <el-menu
       :default-active="$route.path" router
       class="el-menu"
@@ -18,8 +18,9 @@
         <hr>
         <el-button style="margin: 0;padding: 0" type="text" @click="visible = true">修改密码</el-button>
       </div>
-      <el-button style="float: right; height: 60px; width: 68px; margin-right: 50px; color: black" type="text">
-        <i class="el-icon-caret-bottom"/></el-button>
+      <el-button v-if="userinfo" style="float: right; height: 60px; width: 68px; margin-right: 50px; color: black"
+                 type="text">
+        {{ userinfo.name }}<i class="el-icon-caret-bottom"/></el-button>
     </el-tooltip>
   </el-menu>
   <el-dialog

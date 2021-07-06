@@ -39,11 +39,9 @@ export default {
     notice() {
       AnnouncementPage(this.paging).then(res => {
         this.data = res.data.records.splice(0, 2);
-        // for(let i=0; i<2; i++) {
-        //   // console.log(res.data.records[i])
-        //   this.data = res.data.records[i]
-        // }
-        // console.log(this.data);
+
+      }).catch(() => {
+        this.notice()
       })
     }
   },

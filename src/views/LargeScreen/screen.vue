@@ -174,7 +174,6 @@ export default {
     }
   },
   methods: {
-
     currentTime() {
       setInterval(this.formatDate, 500);
     },
@@ -192,43 +191,64 @@ export default {
       let second = date.getSeconds(); // 秒
       second = second < 10 ? "0" + second : second; // 如果只有一位，则前面补零
       this.nowDate = `${year}/${month}/${day} ${hour}:${minute}:${second} ${weekArr[week]}`;
-    }
+    },
 
+    sfetyDays() {
+      //安全生产天数
+      getSafetyDays({showMessage: 1}).then(res => {
+        // console.log(res)
+        this.safetyProduction = res.data;
+      }).catch(() => {
+        this.sfetyDays()
+      })
+    },
+    companyQuery() {
+      //查询公司总数
+      QueryCompanyStatistics({showMessage: 1}).then(res => {
+        this.companyTotal = res.data.totalCount;
+      }).catch(() => {
+        this.companyQuery()
+      })
+    },
+    patentQuery() {
+      //查询专利申请数
+      QueryPatentStatistics({showMessage: 1}).then(res => {
+        this.patentTotal = res.data.totalCount;
+        let now = res.data.countGroupByYear[1].count;
+        let last = res.data.countGroupByYear[2].count;
+        this.electricGrowthRate = Math.floor((now - last) / last * 100) + "%";
+      }).catch(() => {
+        this.patentQuery()
+      })
+    },
+    billQuery() {
+      //水电查询
+      BillStatistics({showMessage: 1}).then(res => {
+        this.electricTotal = res.data.amountGroupByTypeMonth[0].amount;
+        // console.log(res);
+      }).catch(() => {
+        this.billQuery()
+      })
+    },
+    companyGrowthRate() {
+      //入驻企业增长率
+      QueryCompanyStatistics({showMessage: 1}).then(res => {
+        let now = res.data.countGroupByYear[1].count;
+        let last = res.data.countGroupByYear[2].count;
+        this.growthRate = Math.floor((now - last) / last * 100) + "%";
+        // console.log(this.growthRate);
+      }).catch(() => {
+        this.companyGrowthRate()
+      })
+    }
   },
   mounted() {
-
-    this.currentTime();
-    //安全生产天数
-
-    getSafetyDays({showMessage: 1}).then(res => {
-      // console.log(res)
-      this.safetyProduction = res.data;
-    })
-    //查询公司总数
-    QueryCompanyStatistics({showMessage: 1}).then(res => {
-      this.companyTotal = res.data.totalCount;
-    })
-    //查询专利申请数
-    QueryPatentStatistics({showMessage: 1}).then(res => {
-      this.patentTotal = res.data.totalCount;
-      let now = res.data.countGroupByYear[1].count;
-      let last = res.data.countGroupByYear[2].count;
-      this.electricGrowthRate = Math.floor((now - last) / last * 100) + "%";
-    });
-    //水电查询
-    BillStatistics({showMessage: 1}).then(res => {
-      this.electricTotal = res.data.amountGroupByTypeMonth[0].amount;
-      // console.log(res);
-    })
-    //入驻企业增长率
-    QueryCompanyStatistics({showMessage: 1}).then(res => {
-      let now = res.data.countGroupByYear[1].count;
-      let last = res.data.countGroupByYear[2].count;
-      this.growthRate = Math.floor((now - last) / last * 100) + "%";
-      // console.log(this.growthRate);
-    })
-
-
+    this.currentTime()
+    this.sfetyDays()
+    this.companyQuery()
+    this.patentQuery()
+    this.billQuery()
+    this.companyGrowthRate()
   },
   beforeCreate() {
     document.querySelector('body').setAttribute('style', 'background:#45646A')

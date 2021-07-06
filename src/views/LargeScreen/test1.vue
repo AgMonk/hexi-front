@@ -67,30 +67,27 @@ export default {
       this.cameraIndex = this.cameraIndex % 6
       getCameraUrl({id: this.cameraList[index]}).then(res => {
         this.playing[this.cameraIndex] = res.data
-        console.log(this.playing[this.cameraIndex])
       })
     },
+    artemisCameraPage() {
+      ArtemisCameraPage({params: 1}).then(res => {
+        let arr = []
+        for (let i = 0; i < res.data.length; i++) {
+          arr.push(res.data[i])
+        }
+        this.cameraList = arr.filter(i => !i.name.includes("梯")).map(i => i.indexCode)
+        for (let i = 0; i < 6; i++) {
+          this.play();
+        }
+      }).catch(() => {
+        this.artemisCameraPage()
+      })
+    }
 
   },
   mounted() {
-    setInterval(
-        this.play,
-        1000 * 30)
-    ArtemisCameraPage({params: 1}).then(res => {
-      let arr = []
-      for (let i = 0; i < res.data.length; i++) {
-        arr.push(res.data[i])
-      }
-      this.cameraList = arr.filter(i => !i.name.includes("梯")).map(i => i.indexCode)
-
-      console.log(this.cameraList)
-      for (let i = 0; i < 6; i++) {
-        this.play();
-      }
-
-    });
-
-
+    setInterval(this.play, 1000 * 30)
+    this.artemisCameraPage()
   }
 }
 </script>

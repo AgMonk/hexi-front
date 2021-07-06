@@ -10,8 +10,6 @@ export default {
   methods: {
     myCharts() {
       let chart = this.$echarts.init(document.getElementById("parkingChart"));
-
-
       CarStatus({showMessage: 1}).then(res => {
         console.log(res.data)
         let carsList = res.data;
@@ -62,6 +60,8 @@ export default {
             }
           ]
         })
+      }).catch(() => {
+        this.myCharts()
       })
     }
   },

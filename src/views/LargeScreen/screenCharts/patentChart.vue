@@ -38,9 +38,10 @@ export default {
             type: 'line'
           }]
         })
-      });
+      }).catch(() => {
+        this.myEcharts()
+      })
       myCharts.setOption({});
-
     },
   },
   mounted() {

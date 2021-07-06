@@ -35,9 +35,11 @@ export default {
           series: [{
             name: '入驻公司',
             // data: data.map(item => item.count).splice(0, 12),
-            data: [2,3,3,2,2,4,]
+            data: [2, 3, 3, 2, 2, 4,]
           }]
         })
+      }).catch(() => {
+        this.myEcharts()
       });
       let option = ({
         backgroundColor: '#0F373F',

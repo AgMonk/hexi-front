@@ -52,7 +52,7 @@ export default {
       BillStatistics({showMessage: 1, month: "2021-05"}).then(res => {
         this.setOption("left", res.data.topMap.水费);
         this.setOption("right", res.data.topMap.电费);
-      })
+      }).catch(() => [this.myEcharts()])
     },
     init(id, title) {
       this.myCharts = this.$echarts.init(document.getElementById(id));

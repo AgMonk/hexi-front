@@ -65,6 +65,8 @@ export default {
       getStatus({showMessage: 1}).then(res => {
         this.status = res.data;
         // console.log(this.status)
+      }).catch(() => {
+        this.GetStatus()
       })
     },
   },

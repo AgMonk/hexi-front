@@ -1,8 +1,5 @@
-
 <template>
   <video ref="video" autoplay muted preload="auto" width="744.66px" height="572px" style="background: #0F373F"  v-loading="loading"></video>
-
-
 </template>
 
 <script>
