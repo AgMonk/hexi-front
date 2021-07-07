@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header>
-      <el-button type="goon" @click="visible = true;">添加企业</el-button>
+<!--      <el-button type="goon" @click="visible = true;">添加企业</el-button>-->
       <el-dialog
           title="添加企业"
           :visible.sync="visible"
@@ -19,25 +19,26 @@
       <el-table v-loading="componyLoading" :data="componyData">
         <el-table-column label="企业名称" prop="name"></el-table-column>
         <el-table-column prop="address" label="企业地址"></el-table-column>
+        <el-table-column label="企业所在楼栋" prop="buildingIndex"></el-table-column>
         <el-table-column prop="phone" label="联系电话"></el-table-column>
         <el-table-column prop="certificationType" label="认证类型"></el-table-column>
         <el-table-column prop="type" label="企业类型"></el-table-column>
 
-        <el-table-column label="专利&补贴">
-          <template slot-scope="scope">
-            <el-button type="goon" @click="compony = scope.row.uuid; toChild() ">查询</el-button>
-          </template>
-        </el-table-column>
-        <el-table-column>
-          <template slot-scope="scope">
-            <el-button type="edit" @click=" updateCompony = scope.row; updateVisible = true;">修改</el-button>
-          </template>
-        </el-table-column>
-        <el-table-column>
-          <template slot-scope="scope">
-            <el-button type="delete" @click="del(scope.row.uuid)">删除</el-button>
-          </template>
-        </el-table-column>
+        <!--        <el-table-column label="专利&补贴">-->
+        <!--          <template slot-scope="scope">-->
+        <!--            <el-button type="goon" @click="compony = scope.row.uuid; toChild() ">查询</el-button>-->
+        <!--          </template>-->
+        <!--        </el-table-column>-->
+        <!--        <el-table-column>-->
+        <!--          <template slot-scope="scope">-->
+        <!--            <el-button type="edit" @click=" updateCompony = scope.row; updateVisible = true;">修改</el-button>-->
+        <!--          </template>-->
+        <!--        </el-table-column>-->
+        <!--        <el-table-column>-->
+        <!--          <template slot-scope="scope">-->
+        <!--            <el-button type="delete" @click="del(scope.row.uuid)">删除</el-button>-->
+        <!--          </template>-->
+        <!--        </el-table-column>-->
       </el-table>
     </el-main>
     <el-footer>
@@ -46,7 +47,7 @@
           layout="prev, pager, next,jumper"
           :current-page.sync="paging.page"
           :page-size.sync="paging.size"
-          :total="1000"
+          :total="total"
           @current-change="QueryCompany"
       >
       </el-pagination>
@@ -67,9 +68,10 @@ export default {
   },
   data() {
     return {
+      total: 0,
       paging: {
         page: 1,
-        size: 10,
+        size: 20,
       },
       componyData: [],
       componyLoading: true,
@@ -89,6 +91,7 @@ export default {
       QueryCompanyPage(this.paging).then(res => {
         let d = res.data;
         this.componyData = d.records;
+        this.total = d.total
         this.componyLoading = false
         console.log(res)
       })

@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
 
-      <el-button><a href="api/Subsidy/downloadTemplate">补贴导入模板</a></el-button>
+      <el-button><a href="api/Subsidy/downloadTemplate">下载模板</a></el-button>
       <el-button><a href="api/Subsidy/export">导出补贴数据</a></el-button>
       <el-button type="text">
         <el-upload
@@ -43,9 +43,21 @@ export default {
   methods: {
     handleAvatarSuccess(res) {
       this.complete = res.data.success
-      console.log(res)
-      console.log(this.complete)
+      console.log(res.data.failures)
       this.failures = res.data.failures
+
+
+      if (res.code === 2000) {
+        this.$message({
+          message: res.message,
+          type: 'success'
+        });
+      }
+      if (res.code !== 2000) {
+        this.$message.error({
+          message: res.message
+        })
+      }
     }
   }
 }

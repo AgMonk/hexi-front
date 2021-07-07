@@ -14,7 +14,7 @@
         </el-col>
         <el-col :span="12">
           <div style="text-align: right">
-            <el-button plain type="success" @click="toChild">查询专利&补贴</el-button>
+            <el-button plain type="success" @click="toChild">查询企业&专利&补贴</el-button>
             <el-button plain type="success" @click="visible.visible = true">添加企业</el-button>
             <el-button v-if="componyData" plain type="primary" @click="editCompony">修改企业</el-button>
             <el-button v-if="componyData" plain type="danger" @click="dele">删除企业</el-button>
@@ -96,7 +96,7 @@ export default {
       selection: {},
       companyPage: {
         page: 1,
-        size: 5,
+        size: 20,
         condition: {
           name: "",
         },

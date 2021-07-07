@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
 
-      <el-button><a href="api/Patent/downloadTemplate">专利导入模板</a></el-button>
+      <el-button><a href="api/Patent/downloadTemplate">下载模板</a></el-button>
       <el-button><a href="api/Patent/export">导出专利数据</a></el-button>
       <el-button type="text">
         <el-upload
@@ -51,13 +51,12 @@ export default {
         this.$message({
           message: res.message,
           type: 'success'
-        })
+        });
       }
       if (res.code !== 2000) {
         this.$message.error({
           message: res.message
         })
-
       }
 
     }

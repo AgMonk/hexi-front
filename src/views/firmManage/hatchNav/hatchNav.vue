@@ -1,7 +1,16 @@
 <template>
-  <el-menu-item index="/newCompony">
-    <span slot="title">企业管理</span>
-  </el-menu-item>
+  <el-submenu index="2">
+    <template slot="title">
+      <span>企业管理</span>
+    </template>
+    <el-menu-item index="/newCompony">
+      <span slot="title">企业管理</span>
+    </el-menu-item>
+    <el-menu-item index="/temporary">
+      <span slot="title">企业导入</span>
+    </el-menu-item>
+  </el-submenu>
+
 </template>
 
 <script>

@@ -2,7 +2,7 @@
   <el-container>
     <el-header>
 
-      <el-button><a href="api/Company/downloadTemplate">公司导入模板</a></el-button>
+      <el-button><a href="api/Company/downloadTemplate">下载模板</a></el-button>
       <el-button><a href="api/Company/export">导出公司数据</a></el-button>
       <el-button type="text">
         <el-upload
@@ -48,6 +48,17 @@ export default {
       console.log(res)
       console.log(this.complete);
       this.failures = res.data.failures
+      if (res.code === 2000) {
+        this.$message({
+          message: res.message,
+          type: 'success'
+        });
+      }
+      if (res.code !== 2000) {
+        this.$message.error({
+          message: res.message
+        })
+      }
     }
   }
 }

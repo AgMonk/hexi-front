@@ -155,6 +155,9 @@
         </el-main>
       </el-container>
     </el-tab-pane>
+    <el-tab-pane label="公司" name="">
+      <hatch-compony/>
+    </el-tab-pane>
   </el-tabs>
 </template>
 <script>
@@ -169,10 +172,11 @@ import {
   UpdateSubsidy
 } from "../../../network/output";
 import {copyObj} from "../../../common/utils";
+import HatchCompony from "./hatchCompony";
 
 export default {
   name: "compony",
-  components: {},
+  components: {HatchCompony},
   data() {
     return {
       visible: {
@@ -185,7 +189,7 @@ export default {
       patentData: undefined,
       paging: {
         page: 1,
-        size: 5,
+        size: 20,
         condition: {
           companyUuid: undefined,
         },
