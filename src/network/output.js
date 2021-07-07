@@ -286,12 +286,27 @@ export function QuerySubsidyStatistics(params) {
     })
 }
 
-
-//下载数据导入用模板
-//下载公司模板
-export function Template() {
+//导入公司数据
+export function companyImport(params) {
     return transfer({
-        url: '/Company/downloadTemplate'
+        url: '/Company/import',
+        params
+    })
+}
+
+//导入补贴数据
+export function subsidyImport(params) {
+    return transfer({
+        url: '/Subsidy/import',
+        params
+    })
+}
+
+//导入专利数据
+export function patentImport(params) {
+    return transfer({
+        url: '/Patent/import',
+        params
     })
 }
 

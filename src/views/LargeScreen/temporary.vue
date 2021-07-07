@@ -1,15 +1,16 @@
 <template>
   <div>
-    <parking-car/>
+    <datas-tabs/>
   </div>
 </template>
 
 <script>
-import ParkingCar from "./screenCharts/parkingCar";
+
+import DatasTabs from "../firmManage/datasImportAndExport/datasTabs";
 
 export default {
   name: "temporary",
-  components: {ParkingCar}
+  components: {DatasTabs}
 }
 </script>
 
