@@ -58,6 +58,9 @@
         <el-table-column label="联系电话" prop="phone"></el-table-column>
         <el-table-column label="企业类型" prop="type"></el-table-column>
         <el-table-column label="认证类型" prop="certificationType"></el-table-column>
+        <el-table-column label="专利数量" prop="countPatent"></el-table-column>
+        <el-table-column label="补贴数量" prop="countSubsidy"></el-table-column>
+        <el-table-column label="创建时间" prop="timestamp.timeString"></el-table-column>
         <el-table-column type="selection"></el-table-column>
       </el-table>
       <el-pagination

@@ -13,9 +13,10 @@ const router = new VueRouter({
 
 router.afterEach((to) => {
     UserStatus({showMessage: 1}).then(res => {
-        if (to.path === "/UserReg") {
+        if (to.path === "/UserReg" || to.path === "/board") {
             return;
-        } else if (res.code !== 2000) {
+        }
+        if (res.code !== 2000) {
             router.push("/login").catch(err => {
                 console.log('输出报错', err)
             });

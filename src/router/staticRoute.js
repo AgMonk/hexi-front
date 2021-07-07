@@ -111,7 +111,10 @@ const staticRoute = [
     {path: "/cameraIndex", component: () => import("../views/camera/cameraIndex")},
 
     //临时存放
-    {path: "/temporary", component: () => import("../views/LargeScreen/temporary")}
+    {path: "/temporary", component: () => import("../views/LargeScreen/temporary")},
+
+    //游客留言板
+    {path: "/board", meta: {Nav: false}, component: () => import("../views/messageBoard/board")}
 
 ]
 

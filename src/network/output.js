@@ -523,12 +523,57 @@ export function ArtemisCameraPage(params) {
 }
 
 //查询播放地址
-export function getCameraUrl({id, showMessage = 1,streamType}) {
+export function getCameraUrl({id, showMessage = 1, streamType}) {
     return transfer({
         url: '/ArtemisCamera/getUrl',
-        params: {id, showMessage,streamType}
+        params: {id, showMessage, streamType}
     })
 }
+
+//留言板
+//添加留言
+export function addBoardMessage(data) {
+    return transfer({
+        url: '/BoardMessage/add',
+        method: 'post',
+        data
+    })
+}
+
+// 删除留言
+export function delBoardMessage(params) {
+    return transfer({
+        url: '/BoardMessage/del',
+        params
+    })
+}
+
+// 查询分页（管理员使用）
+export function boardMessagePage(data) {
+    return transfer({
+        url: '/BoardMessage/add',
+        method: 'post',
+        data
+    })
+}
+
+// 查询分页(游客使用)
+export function getBoardMessage(data) {
+    return transfer({
+        url: '/BoardMessage/get',
+        method: 'post',
+        data
+    })
+}
+
+// 修改可见性
+export function BoardMessageVisible(params) {
+    return transfer({
+        url: '/BoardMessage/changeVisibility',
+        params
+    })
+}
+
 
 //版本优化
 //获取当前版本

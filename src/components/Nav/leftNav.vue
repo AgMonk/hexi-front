@@ -27,6 +27,19 @@
       <el-menu-item index="/announcement">
         <span slot="title">公告</span>
       </el-menu-item>
+
+      <el-submenu index="99">
+        <template slot="title">
+          <span>留言板管理</span>
+        </template>
+        <el-menu-item index="/board">
+          <span slot="title">游客留言板</span>
+        </el-menu-item>
+        <!--        <el-menu-item index="/temporary">-->
+        <!--          <span slot="title">企业导入</span>-->
+        <!--        </el-menu-item>-->
+      </el-submenu>
+
       <el-menu-item index="/optimizedVersion">
         <span slot="title">版本控制</span>
       </el-menu-item>
