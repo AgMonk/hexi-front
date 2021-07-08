@@ -1,14 +1,14 @@
 <template>
   <div class="box" v-if="show">
         <div class="column" id="top">
-          <hls-test :id="1"  :src="playing[0]"  style="  width: 237.55px; height: 200px;"/>
-          <hls-test :id="2" :src="playing[1]" style="  width: 237.55px; height: 200px;"/>
-          <hls-test :id="3" :src="playing[2]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test @change-url="changeUrl" :id="1"  :src="playing[0]"  style="  width: 237.55px; height: 200px;"/>
+          <hls-test @change-url="changeUrl" :id="2" :src="playing[1]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test @change-url="changeUrl" :id="3" :src="playing[2]" style="  width: 237.55px; height: 200px;"/>
         </div>
         <div class="column" id="bottom">
-          <hls-test :id="4" :src="playing[3]" style="  width: 237.55px; height: 200px;"/>
-          <hls-test :id="5" :src="playing[4]" style="  width: 237.55px; height: 200px;"/>
-          <hls-test :id="6" :src="playing[5]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test @change-url="changeUrl" :id="4" :src="playing[3]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test @change-url="changeUrl" :id="5" :src="playing[4]" style="  width: 237.55px; height: 200px;"/>
+          <hls-test @change-url="changeUrl" :id="6" :src="playing[5]" style="  width: 237.55px; height: 200px;"/>
         </div>
   </div>
 </template>
@@ -16,6 +16,7 @@
 <script>
 import HlsTest from "../camera/hlsTest";
 import {ArtemisCameraPage, getCameraUrl} from "../../network/output";
+import {copyObj} from "../../common/utils";
 
 export default {
   name: "test1",
@@ -43,20 +44,6 @@ export default {
       return array
     },
     play() {
-      // let array = [];
-      // let index;
-      // // let newPlaying = [];
-      // for (let i = 0; i < 6; i++) {
-      //   do {
-      //     index = Math.floor(Math.random() * this.cameraList.length);
-      //   } while (array.includes(this.cameraList[index]))
-      //   array.push(this.cameraList[index])
-      // }
-      // this.updatePlayingUrl(array).then(res => {
-      // this.playing = res
-      // console.log(this.playing)
-      // this.show=true;
-      // })
 
       let index;
       do {
@@ -65,8 +52,28 @@ export default {
       this.indexCodes[this.cameraIndex] = this.cameraList[index]
       this.cameraIndex++
       this.cameraIndex = this.cameraIndex % 6
+      let i = this.cameraIndex
+      console.log(i)
       getCameraUrl({id: this.cameraList[index]}).then(res => {
-        this.playing[this.cameraIndex] = res.data
+      // console.log(i)
+        this.playing[i] = res.data
+        this.playing = copyObj(this.playing)
+        if(this.playing.length === 6) {
+          this.show = true
+        // console.log(this.playing)
+        }
+      })
+    },
+    changeUrl(id) {
+      console.log(id+ "连续错误切换")
+      let index;
+      do {
+        index = Math.floor(Math.random() * this.cameraList.length);
+      } while (this.indexCodes.includes(this.cameraList[index]))
+      this.indexCodes[id] = this.cameraList[index]
+      getCameraUrl({id: this.cameraList[index]}).then(res => {
+        this.playing[id] = res.data
+        this.playing = copyObj(this.playing)
       })
     },
     artemisCameraPage() {

@@ -3,7 +3,7 @@
     <div class="fiveFather">
       <div class="five">
         <video
-            id="index1"
+            id="index0"
             autoplay
             class="video-js vjs-default-skin"
             controls
@@ -17,7 +17,7 @@
       </div>
       <div class="five">
         <video
-            id="index0"
+            id="index1"
             autoplay
             class="video-js vjs-default-skin"
             controls
@@ -102,7 +102,7 @@ export default {
   data() {
     return {
       indexList: [
-        "7d7e627f5f78429795b64a09fb9c4024",
+        "1f39b69c36ac476a95e7df8b45aa84ee",
         "631f1ae020b74c89b2980e4b068d6b4f",
         "636f41a3f699483e89d4dfc59c9933b2",
         "68c20b3fa4e3410cbd07fd5227474f35",
@@ -113,7 +113,6 @@ export default {
   },
   methods: {
     getVideo(index) {
-      console.log(index)
       videojs(
           index,
           {
@@ -136,7 +135,7 @@ export default {
     }
     for (let i = 0; i < this.indexList.length; i++) {
       let index = this.indexList[i];
-      getCameraUrl(index).then(res => {
+      getCameraUrl({id: index}).then(res => {
         let myPlayer = videojs("index" + i);
         myPlayer.src([
           {
@@ -147,6 +146,28 @@ export default {
         myPlayer.play();
       })
     }
+
+
+    let player = document.getElementById('index0')
+
+    console.log(player)
+
+//     setInterval(() => {
+//       // 获取当前播放时间
+//
+//       let curr = player.currentTime
+//
+// // 直播流缓存的最新帧
+//
+//       let buffer =  player.buffered.end(0)
+//
+// // 计算延迟
+//
+//       let delayTime = buffer - curr
+//       console.log(delayTime)
+//     }, 2000)
+
+
   },
 }
 </script>

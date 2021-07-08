@@ -1,5 +1,5 @@
 <template>
-<div>
+<div v-if="$route.meta.Nav !== false">
   <el-menu
       :default-active="$route.path" router
       class="el-menu"
@@ -7,9 +7,9 @@
       background-color="#FFFFFF">
     <el-menu-item index=""><span style="font-size: 20px; font-weight: 1000">柳州天步科技创业园智慧园区</span></el-menu-item>
     <el-menu-item index="/home">首页</el-menu-item>
-    <!--    <el-menu-item index="/test">管理</el-menu-item>-->
-    <!--    <el-menu-item index="/checkOut">测试</el-menu-item>-->
-    <!--    <el-menu-item index="/temporary">临时存放</el-menu-item>-->
+        <el-menu-item index="/test">管理</el-menu-item>
+        <el-menu-item index="/checkOut">测试</el-menu-item>
+        <el-menu-item index="/temporary">临时存放</el-menu-item>
 
     <el-tooltip class="item" effect="light" placement="bottom">
       <div slot="content">

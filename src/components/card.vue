@@ -4,8 +4,8 @@
       <span>所在公司</span>
       <span style="float: right">所在公司数： {{ length }}</span>
     </div>
-    <div v-for="i in companyList" :key="i" class="text item">
-      {{ i }}
+    <div v-for="(name, index ) in companyList" :key="index" class="text item">
+      {{ name }}
     </div>
   </el-card>
 
@@ -32,6 +32,7 @@ export default {
       handler(a) {
         this.companyList = copyObj(a);
         this.length = a.length;
+        console.log(this.companyList)
       }
     }
   },

@@ -71,10 +71,10 @@ export default {
         start: undefined,
         end: undefined
       },
-      writeArticle: {
-        title: "测试",
-        content: undefined
-      },
+      // writeArticle: {
+      //   title: "测试",
+      //   content: undefined
+      // },
       article: undefined,
       total: undefined,
       addVisible: false,

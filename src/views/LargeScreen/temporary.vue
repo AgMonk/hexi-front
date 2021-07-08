@@ -1,16 +1,16 @@
 <template>
   <div>
-    <datas-tabs/>
+   <camera />
   </div>
 </template>
 
 <script>
 
-import DatasTabs from "../firmManage/datasImportAndExport/datasTabs";
+import camera from "../../assets/deposit/camera";
 
 export default {
   name: "temporary",
-  components: {DatasTabs}
+  components: {camera}
 }
 </script>
 
