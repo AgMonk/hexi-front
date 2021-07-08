@@ -551,7 +551,7 @@ export function delBoardMessage(params) {
 // 查询分页（管理员使用）
 export function boardMessagePage(data) {
     return transfer({
-        url: '/BoardMessage/add',
+        url: '/BoardMessage/page',
         method: 'post',
         data
     })

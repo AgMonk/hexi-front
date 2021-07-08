@@ -1,5 +1,5 @@
 <template>
-  <div v-if="$route.meta.Nav !== false">
+  <div>
     <el-menu
         :default-active="$route.path"
         class="el-menu-vertical"
@@ -35,9 +35,9 @@
         <el-menu-item index="/board">
           <span slot="title">游客留言板</span>
         </el-menu-item>
-        <!--        <el-menu-item index="/temporary">-->
-        <!--          <span slot="title">企业导入</span>-->
-        <!--        </el-menu-item>-->
+        <el-menu-item index="/boardManagement">
+          <span slot="title">留言管理</span>
+        </el-menu-item>
       </el-submenu>
 
       <el-menu-item index="/optimizedVersion">

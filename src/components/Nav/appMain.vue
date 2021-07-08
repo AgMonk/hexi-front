@@ -1,12 +1,12 @@
 <template>
   <div>
     <el-container v-if="$route.path!=='/screen'">
-      <el-header style="padding: 0">
+      <el-header v-if="$route.meta.Nav !== false" style="padding: 0">
         <top-nav/>
       </el-header>
       <el-main style="padding: 0">
         <el-container>
-          <el-aside>
+          <el-aside v-if="$route.meta.Nav !== false">
             <left-nav/>
           </el-aside>
           <el-main>

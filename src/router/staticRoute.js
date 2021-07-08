@@ -114,7 +114,10 @@ const staticRoute = [
     {path: "/temporary", component: () => import("../views/LargeScreen/temporary")},
 
     //游客留言板
-    {path: "/board", meta: {Nav: false}, component: () => import("../views/messageBoard/board")}
+    {path: "/board", meta: {Nav: false}, component: () => import("../views/messageBoard/board")},
+
+    //留言板管理
+    {path: "/boardManagement", component: () => import("../views/messageBoard/boardManagement")}
 
 ]
 

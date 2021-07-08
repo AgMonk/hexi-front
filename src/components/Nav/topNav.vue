@@ -1,5 +1,5 @@
 <template>
-<div v-if="$route.meta.Nav !== false">
+<div>
   <el-menu
       :default-active="$route.path" router
       class="el-menu"

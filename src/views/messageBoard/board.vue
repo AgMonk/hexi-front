@@ -1,9 +1,9 @@
 <template>
-  <el-container>
+  <el-container style="position:relative; left: 20%">
     <el-header>
       <h2>柳州天步科技智慧园留言板</h2>
     </el-header>
-    <el-main style="width: 1200px;">
+    <el-main style="width: 60%;">
       <el-card>
         <h3>精选留言</h3>
         <div v-for="i in 4" :key="i">
@@ -25,16 +25,17 @@
         </el-row>
         <el-form label-width="50px">
           <el-form-item label="标题">
-            <el-input clearable placeholder="请输入标题"></el-input>
+            <el-input v-model="AddBoardMessage.subject" clearable placeholder="请输入标题"></el-input>
           </el-form-item>
           <el-form-item label="内容">
-            <el-input :rows="7" clearable placeholder="请输入内容" type="textarea"></el-input>
+            <el-input v-model="AddBoardMessage.content" :rows="7" clearable placeholder="请输入内容"
+                      type="textarea"></el-input>
           </el-form-item>
           <el-form-item label="昵称">
-            <el-input clearable placeholder="请输入昵称"></el-input>
+            <el-input v-model="AddBoardMessage.author" clearable placeholder="请输入昵称"></el-input>
           </el-form-item>
           <el-form-item>
-            <el-button style="text-align: right" type="primary">发表留言</el-button>
+            <el-button style="text-align: right" type="primary" @click="visitorAddBoardMessage(); ">发表留言</el-button>
           </el-form-item>
         </el-form>
       </el-card>
@@ -66,7 +67,9 @@ export default {
     visitorAddBoardMessage() {
       addBoardMessage(this.AddBoardMessage).then(res => {
         console.log(res)
+        this.AddBoardMessage = {}
       })
+
     }
 
   },
