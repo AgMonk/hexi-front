@@ -113,6 +113,9 @@ const staticRoute = [
     //临时存放
     {path: "/temporary", component: () => import("../views/LargeScreen/temporary")},
 
+    //导入导出
+    {path: "/datasTabs", component: () => import("../views/firmManage/datasImportAndExport/datasTabs")},
+
     //游客留言板
     {path: "/board", meta: {Nav: false}, component: () => import("../views/messageBoard/board")},
 

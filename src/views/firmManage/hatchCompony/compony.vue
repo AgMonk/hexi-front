@@ -27,7 +27,7 @@
               width="30%">
             <el-form label-width="100px">
               <el-form-item label="补贴说明">
-                <el-input v-model="selectSubsidy.name"/>
+                <el-input v-model="selectSubsidy.name" :rows="2" type="textarea"/>
               </el-form-item>
               <el-form-item label="补贴金额">
                 <el-input v-model="selectSubsidy.price"/>
@@ -52,10 +52,10 @@
                     @select="select"
                     @select-all="selectAll"
                     @selection-change="selects">
-            <el-table-column type="selection"></el-table-column>
             <el-table-column label="补贴" prop="name"></el-table-column>
             <el-table-column label="补贴金额" prop="price"></el-table-column>
             <el-table-column label="时间" prop="timestamp.timeString"></el-table-column>
+            <el-table-column type="selection"></el-table-column>
           </el-table>
           <el-pagination
               :current-page.sync="paging.page"
@@ -121,7 +121,7 @@
                 <el-input v-model="selectPatent.type"/>
               </el-form-item>
               <el-form-item label="专利内容">
-                <el-input v-model="selectPatent.description"/>
+                <el-input v-model="selectPatent.description" :rows="2" type="textarea"/>
               </el-form-item>
               <el-form-item style="text-align: right">
                 <el-button type="primary" @click="patentDialog">修改</el-button>
@@ -136,12 +136,12 @@
           </div>
         </el-header>
         <el-main>
-          <el-table :data="patentData" @selection-change="patentChange">>
-            <el-table-column type="selection"></el-table-column>
+          <el-table :data="patentData" @selection-change="patentChange">
             <el-table-column label="专利名称" prop="name"></el-table-column>
             <el-table-column label="专利状态" prop="status"></el-table-column>
             <el-table-column label="专利类型	" prop="type"></el-table-column>
             <el-table-column label="专利内容" prop="description"></el-table-column>
+            <el-table-column type="selection"></el-table-column>
           </el-table>
           <el-pagination
               :current-page.sync="paging.page"

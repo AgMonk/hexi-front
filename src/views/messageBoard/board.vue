@@ -6,16 +6,25 @@
     <el-main style="width: 60%;">
       <el-card>
         <h3>精选留言</h3>
-        <div v-for="i in 4" :key="i">
+        <div v-for="(article, index) in content" :key="index">
           <hr>
-          <h4 style="text-align: center">标题</h4>
+          <h4 style="text-align: center">{{ article.subject }}</h4>
           <span>
-          Android实时投屏软件，此应用程序提供USB(或通过TCP/IP)连接的Android设备的显示和控制。它不需要任何root访问
-          Android实时投屏软件，此应用程序提供USB(或通过TCP/IP)连接的Android设备的显示和控制。它不需要任何root访问
+          {{ article.content }}
         </span><br>
-          <p style="text-align: right">作者名</p>
+          <p style="text-align: right">作者：{{ article.author }} <br> 发布时间：{{ article.timestamp.timeString }}</p>
 
         </div>
+
+        <el-pagination
+            :current-page.sync="params.page"
+            :page-size.sync="params.size"
+            :total="total"
+            background
+            layout="prev, pager, next,jumper"
+            @current-change="visitorBoardMessage()"
+        >
+        </el-pagination>
       </el-card>
       <br>
       <el-card>
@@ -55,13 +64,21 @@ export default {
         content: "",
         author: "",
         subject: ""
-      }
+      },
+      params: {
+        page: 1,
+        size: 5
+      },
+      total: 0,
+      content: {}
     }
   },
   methods: {
     visitorBoardMessage() {
-      getBoardMessage({page: 1, size: 10}).then(res => {
+      getBoardMessage(this.params).then(res => {
         console.log(res)
+        this.content = res.data.records
+        this.total = res.data.total
       })
     },
     visitorAddBoardMessage() {

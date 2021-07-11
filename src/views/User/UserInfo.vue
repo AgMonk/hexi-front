@@ -79,7 +79,7 @@ export default {
     UserInfo({params: 1}).then(res => {
       this.timeStrings = res.data.createdAt.timeString;
       this.userList = res.data;
-      console.log(res)
+      // console.log(res)
     })
   }
 }

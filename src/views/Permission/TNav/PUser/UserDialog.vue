@@ -1,13 +1,18 @@
 <template>
   <el-container direction="vertical">
     <el-header height="20px">
-      <el-select v-model="add" placeholder="添加新角色" @change="save">
-        <el-option v-for="item in rolePool"
-                   :value="item.id"
-                   :key="item.id"
-                   :label="item.nickname"
-        />
-      </el-select>
+      <el-form label-width="70px">
+        <el-form-item label="添加角色">
+          <el-select v-model="add" placeholder="给该账号添加新的角色权限" style="width: 250px" @change="save">
+            <el-option v-for="item in rolePool"
+                       :key="item.id"
+                       :label="item.nickname"
+                       :value="item.id"
+            />
+          </el-select>
+        </el-form-item>
+      </el-form>
+
     </el-header>
     <el-main>
       <el-table :data="userRoles">

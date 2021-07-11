@@ -27,7 +27,7 @@
               </el-form-item>
               <br>
               <span style="float: right">
-                <el-button plain type="primary" @click="changeVisibility(props.row.uuid)">展示</el-button>
+                <el-button plain type="primary" @click="changeVisibility(props.row.uuid)">修改显示状态</el-button>
                 <el-button plain type="danger" @click="deleteBoardMessage(props.row.uuid)">删除</el-button>
               </span>
             </el-form>
@@ -67,13 +67,19 @@ export default {
           visible: 0
         }
       },
-      content: []
+      content: [],
+      total: 0
     }
   },
   methods: {
     deleteBoardMessage(uuid) {
       delBoardMessage({id: uuid}).then(res => {
         console.log(res)
+        if (res.code === 2000 && this.params.condition.visible !== 1) {
+          this.boardMessageQuery()
+        } else {
+          this.boardMessageQuery(1)
+        }
       })
     },
     boardMessageQuery(visible) {
@@ -91,6 +97,11 @@ export default {
     changeVisibility(uuid) {
       BoardMessageVisible({id: uuid}).then(res => {
         console.log(res)
+        if (res.code === 2000 && this.params.condition.visible !== 1) {
+          this.boardMessageQuery()
+        } else {
+          this.boardMessageQuery(1)
+        }
       })
     }
   },

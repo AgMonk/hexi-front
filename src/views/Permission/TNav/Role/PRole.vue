@@ -2,7 +2,13 @@
 
   <el-card class="box-card">
     <div slot="header" class="clearfix">
-      <h3>查询角色列表</h3>
+      <el-row>
+        <el-col :span="12"><h3>查询角色列表</h3></el-col>
+        <el-col :span="12">
+          <el-button style="float: right" type="primary" @click="dialogVisible.add = true; roleFromData  = {} ">新增角色
+          </el-button>
+        </el-col>
+      </el-row>
     </div>
     <div class="text item">
       <el-table :data="userLists">
@@ -43,7 +49,6 @@
         @current-change="queryRole">
     </el-pagination>
 
-    <!--    <el-button @click="dialogVisible.add = true; roleFromData  = {} ">添加角色</el-button>-->
     <el-dialog title="添加角色" :visible.sync="dialogVisible.add" width="40%">
       <role-from :data="roleFromData" @success="dialogVisible.add = false; queryRole()"/>
     </el-dialog>

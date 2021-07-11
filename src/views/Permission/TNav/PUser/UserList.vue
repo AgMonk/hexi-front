@@ -30,7 +30,7 @@
         @current-change="findAll">
     </el-pagination>
 
-    <el-dialog :visible.sync="visible.userRole">
+    <el-dialog :visible.sync="visible.userRole" title="添加角色">
       <user-dialog :id="userId"/>
     </el-dialog>
   </el-card>

@@ -89,13 +89,21 @@ export default {
       }).catch(() => {
         this.artemisCameraPage()
       })
+    },
+    //设置定时器，销毁定时器
+    interval() {
+      const timer = setInterval(this.play, 1000 * 2)
+      this.$once('hook:beforeDestroy', () => {
+        clearInterval(timer);
+      })
     }
 
   },
   mounted() {
-    setInterval(this.play, 1000 * 30)
+    this.interval()
     this.artemisCameraPage()
-  }
+  },
+
 }
 </script>
 

@@ -1,18 +1,24 @@
 <template>
-    <el-form >
-      <el-form-item label="ID" v-show="hidden"><el-input  v-model="param.id"/></el-form-item>
-      <el-form-item label="中文名称:"><el-input v-model="param.nickname" clearable/></el-form-item>
-      <el-form-item label="英文名称:"><el-input v-model="param.name" clearable/></el-form-item>
-      <el-form-item label="权限">
-        <el-table :data="permissions" ref="multipleTable" @selection-change="param.permissions = $event">
-          <el-table-column type="selection" width="55"/>
-          <el-table-column label="备注" prop="remark"/>
-          <el-table-column label="权限字符串">
-            <template slot-scope="scope">
-              {{ scope.row.namespace }}:{{ scope.row.action }}:{{ scope.row.target }}
-            </template>
-          </el-table-column>
-        </el-table>
+  <el-form>
+    <el-form-item v-show="hidden" label="ID">
+      <el-input v-model="param.id"/>
+    </el-form-item>
+    <el-form-item label="中文名称:">
+      <el-input v-model="param.nickname" clearable placeholder="创建的角色的名称"/>
+    </el-form-item>
+    <el-form-item label="英文名称:">
+      <el-input v-model="param.name" clearable placeholder="创建的角色的名称"/>
+    </el-form-item>
+    <el-form-item label="权限">
+      <el-table :data="permissions" ref="multipleTable" @selection-change="param.permissions = $event">
+        <el-table-column type="selection" width="55"/>
+        <el-table-column label="备注" prop="remark"/>
+        <!--          <el-table-column label="权限字符串">-->
+        <!--            <template slot-scope="scope">-->
+        <!--              {{ scope.row.namespace }}:{{ scope.row.action }}:{{ scope.row.target }}-->
+        <!--            </template>-->
+        <!--          </el-table-column>-->
+      </el-table>
       </el-form-item>
     <el-form-item style="text-align: right">
     <el-button @click="empty">清空</el-button>
@@ -50,6 +56,7 @@ export default {
       let permId = this.param.permissions.map(p=>p.id);
       FindAll({params: 1}).then(res => {
         this.permissions = res.data;
+        console.log(res)
         setTimeout(() => {
           this.permissions.forEach(perm => {
             if (permId.includes(perm.id)) {
