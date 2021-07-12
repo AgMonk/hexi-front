@@ -52,7 +52,7 @@ export default {
     clickTr(row,) {
       console.log(row.uuid)
       this.$router.push({
-        path: '/hatch/compony',
+        path: '/companyPage',
         query: {
           id: row.uuid,
         }

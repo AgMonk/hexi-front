@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import staticRoute from './staticRoute'
 import {UserStatus} from "../network/output";
+import {copyObj} from "../common/utils";
 
 Vue.use(VueRouter)
 
@@ -17,10 +18,12 @@ router.afterEach((to) => {
             return;
         }
         if (res.code !== 2000) {
-
-            router.push("/login").catch(err => {
-                console.log('输出报错', err)
-            });
+            let url = copyObj(window.location.href)
+            console.log(url)
+            console.log(window.history.pushState)
+            // router.push("/login ? r=" + window.location.href).catch(err => {
+            //     console.log('输出报错', err) window.history &&
+            // });
         }
 
         if (res.code === 2000) {

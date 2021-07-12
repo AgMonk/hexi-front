@@ -1,28 +1,11 @@
 <template>
-  <el-tabs>
-    <el-tab-pane label="补贴" name="">
+  <div>
+    <el-row>
+      <company-information :uuid="$route.query.id"/>
+    </el-row>
+    <el-row>
       <el-container>
         <el-header>
-          <el-row>
-            <el-col :span="12">
-              <el-form :inline="true">
-                <el-form-item label="搜索补贴">
-                  <el-input v-model="subsidyQuery.condition.name" placeholder="输入补贴名称"/>
-                </el-form-item>
-                <el-form-item>
-                  <el-button type="primary" @click="lookupSubsidy()">搜索</el-button>
-                </el-form-item>
-              </el-form>
-            </el-col>
-            <el-col :span="12">
-              <div style="text-align: right">
-                <el-button v-if="$route.query.id" plain type="success" @click="visible.updateVisible = true">添加补贴
-                </el-button>
-                <el-button plain type="primary" @click="visible.visible = true">修改补贴</el-button>
-                <el-button plain type="danger" @click="delSubsidy()">删除补贴</el-button>
-              </div>
-            </el-col>
-          </el-row>
           <!--          添加补贴弹窗-->
           <el-dialog
               :visible.sync="visible.updateVisible"
@@ -59,6 +42,19 @@
               </el-form-item>
             </el-form>
           </el-dialog>
+          <el-row>
+            <el-col :span="12">
+              <h3>补贴列表</h3>
+            </el-col>
+            <el-col :span="12">
+              <div style="text-align: right">
+                <el-button v-if="$route.query.id" plain type="success" @click="visible.updateVisible = true">添加补贴
+                </el-button>
+                <el-button plain type="primary" @click="visible.visible = true">修改补贴</el-button>
+                <el-button plain type="danger" @click="delSubsidy()">删除补贴</el-button>
+              </div>
+            </el-col>
+          </el-row>
 
         </el-header>
         <el-main>
@@ -83,15 +79,13 @@
           </el-pagination>
         </el-main>
       </el-container>
-    </el-tab-pane>
-
-    <el-tab-pane label="专利" name="">
+    </el-row>
+    <el-row>
       <el-container>
         <el-header>
           <!--          添加专利弹窗-->
           <el-dialog :visible.sync="visible.addSubsidyVisible" title="添加专利"
                      width="30%">
-
             <add-patent-dialog :uuid="$route.query.id" @success="visible.addSubsidyVisible = false; queryPatent()"/>
           </el-dialog>
           <!--          修改专利弹窗-->
@@ -100,17 +94,13 @@
 
             <modify-patent-component :selectPatent="selectPatent"
                                      @success="visible.editSubsidyVisible = false; queryPatent()"/>
+
           </el-dialog>
+
+
           <el-row>
             <el-col :span="12">
-              <el-form :inline="true">
-                <el-form-item label="搜索专利">
-                  <el-input v-model="patentQuery.condition.name" placeholder="输入专利名称"/>
-                </el-form-item>
-                <el-form-item>
-                  <el-button type="primary" @click="lookupPatent">搜索</el-button>
-                </el-form-item>
-              </el-form>
+              <h3>专利列表</h3>
             </el-col>
             <el-col :span="12">
               <div style="text-align: right">
@@ -119,16 +109,15 @@
                 <el-button plain type="primary" @click="visible.editSubsidyVisible = true;">修改专利</el-button>
                 <el-button plain type="danger" @click="delePatent">删除专利</el-button>
               </div>
-
             </el-col>
           </el-row>
+
 
         </el-header>
         <el-main>
           <el-table :data="patentData" @select="select1"
                     @selection-change="patentChange"
-                    @select-all="selectAll1"
-          >
+                    @select-all="selectAll1">
             <el-table-column label="专利名称" prop="name"></el-table-column>
             <el-table-column label="专利状态" prop="status"></el-table-column>
             <el-table-column label="专利类型	" prop="type"></el-table-column>
@@ -147,8 +136,8 @@
           </el-pagination>
         </el-main>
       </el-container>
-    </el-tab-pane>
-  </el-tabs>
+    </el-row>
+  </div>
 </template>
 <script>
 import {
@@ -158,28 +147,17 @@ import {
   QueryPatentPage,
   QuerySubsidyPage,
   UpdateSubsidy
-} from "../../../network/output";
-import {copyObj} from "../../../common/utils";
-import AddPatentDialog from "../../../components/patentComponent/addPatentDialog";
-import ModifyPatentComponent from "../../../components/patentComponent/modifyPatentComponent";
+} from "../../../../../network/output";
+import {copyObj} from "../../../../../common/utils";
+import CompanyInformation from "./companyInformation";
+import AddPatentDialog from "../../../../../components/patentComponent/addPatentDialog";
+import ModifyPatentComponent from "../../../../../components/patentComponent/modifyPatentComponent";
 
 export default {
-  name: "compony",
-  components: {ModifyPatentComponent, AddPatentDialog},
+  name: "componyPage",
+  components: {ModifyPatentComponent, AddPatentDialog, CompanyInformation},
   data() {
     return {
-      //查询专利
-      patentQuery: {
-        condition: {
-          name: ''
-        }
-      },
-      //查询补贴
-      subsidyQuery: {
-        condition: {
-          name: ''
-        }
-      },
       visible: {
         updateVisible: false,
         visible: false,
@@ -202,6 +180,7 @@ export default {
       },
       selectPatent: {},
       selectSubsidy: {},
+
     }
   },
   mounted() {
@@ -209,24 +188,7 @@ export default {
     this.querySubsidy();
   },
   methods: {
-    //查询专利
-    lookupPatent() {
-      QueryPatentPage(this.patentQuery).then(res => {
-        console.log(res)
-        let d = res.data;
-        this.patentData = d.records;
-        this.patentTotal = res.data.total;
-      })
-    },
-    //查寻补贴
-    lookupSubsidy() {
-      QuerySubsidyPage(this.subsidyQuery).then(res => {
-        console.log(res)
-        let d = res.data;
-        this.subsidyData = d.records;
-        this.subsidyTotal = res.data.total
-      })
-    },
+
 
     //选择补贴
     selects(e) {
@@ -248,7 +210,6 @@ export default {
     //删除补贴
     delSubsidy() {
       deleteSubsidy(this.selectSubsidy.uuid).then(res => {
-        console.log(res)
         if (res.code === 2000) {
           this.querySubsidy();
         }
@@ -257,7 +218,6 @@ export default {
     //修改补贴
     addsubsidy() {
       UpdateSubsidy(this.selectSubsidy).then(res => {
-        console.log(res)
         if (res.code === 2000) {
           this.querySubsidy();
           this.visible.visible = false;
@@ -271,7 +231,6 @@ export default {
         let d = res.data;
         this.patentData = d.records;
         this.patentTotal = res.data.total;
-        console.log(res)
       })
     },
     //查询跳转公司补贴
@@ -281,12 +240,10 @@ export default {
         let d = res.data;
         this.subsidyData = d.records;
         this.subsidyTotal = res.data.total;
-        console.log(this.subsidyData)
       })
     },
     addSubsidy() {
       AddSubsidy(this.subsidy).then(res => {
-        console.log(res)
         if (res.code === 2000) {
           this.subsidy.price = undefined,
               this.subsidy.name = undefined,
@@ -306,6 +263,7 @@ export default {
         selection.length = 1
       }
     },
+
     select1(selection) {
       if (selection.length > 1) {
         let del_row = selection.shift()

@@ -84,7 +84,7 @@ export default {
           show: false
         },
         series: [{
-          data: data.map(i => i.amount),
+          data: data.map(i => i.amount).splice(0, 5).reverse(),
           type: 'bar'
         }]
       })
@@ -120,7 +120,7 @@ export default {
           type: 'bar',
           itemStyle: {
             color: function (params) {
-              let colorList = ['#7B0105', '#B50100', '#D72D16', '#D72D16', '#F78E57', '#FDBB80'];
+              let colorList = ['#F78E57', '#D72D16', '#B50100', '#7B0105', '#870105', '#870105',];
               return colorList[params.dataIndex % colorList.length];
             }
           }

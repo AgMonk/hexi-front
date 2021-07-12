@@ -42,7 +42,7 @@ export default {
   },
   methods: {},
   mounted() {
-
+    console.log(window.location.href);
   }
 }
 

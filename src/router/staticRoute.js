@@ -120,8 +120,14 @@ const staticRoute = [
     {path: "/board", meta: {Nav: false}, component: () => import("../views/messageBoard/board")},
 
     //留言板管理
-    {path: "/boardManagement", component: () => import("../views/messageBoard/boardManagement")}
+    {path: "/boardManagement", component: () => import("../views/messageBoard/boardManagement")},
 
+    //公司数据首页
+    {
+        path: "/companyPage",
+        name: 'companyPage',
+        component: () => import("../views/firmManage/hatchCompony/newcomponents/compony/componyPage")
+    }
 ]
 
 export default staticRoute;

@@ -14,7 +14,7 @@
         </el-col>
         <el-col :span="12">
           <div style="text-align: right">
-            <el-button plain type="success" @click="toChild">查询企业&专利&补贴</el-button>
+            <el-button plain type="success" @click="toChild">查询专利&补贴</el-button>
             <el-button plain type="success" @click="visible.visible = true">添加企业</el-button>
             <el-button v-if="componyData" plain type="primary" @click="editCompony">修改企业</el-button>
             <el-button v-if="componyData" plain type="danger" @click="dele">删除企业</el-button>
@@ -51,6 +51,7 @@
           @select="select"
           @select-all="selectAll"
           @selection-change="choice"
+          @row-click="clickTr"
       >
         <el-table-column label="企业名称" prop="name"></el-table-column>
         <el-table-column label="企业地址" prop="address"></el-table-column>
@@ -109,6 +110,17 @@ export default {
     }
   },
   methods: {
+
+    clickTr(row,) {
+      console.log(row.uuid)
+      this.$router.push({
+        path: '/companyPage',
+        query: {
+          id: row.uuid,
+        }
+      })
+    },
+
     componyPage() {
       QueryCompanyPage(this.companyPage).then(res => {
         console.log(res.data.records);
