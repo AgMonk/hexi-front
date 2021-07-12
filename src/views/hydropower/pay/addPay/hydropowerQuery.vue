@@ -8,7 +8,7 @@
       </span>
     </div>
     <div class="text item">
-      <el-table :data="hydropowerPage" @selection-change="select">
+      <el-table :data="hydropowerPage" @select="select" @selection-change="selection" @select-all="selectAll">
         <el-table-column label="缴费类型" prop="type"></el-table-column>
         <el-table-column label="金额" prop="amount"></el-table-column>
         <el-table-column label="时间" prop="timestamp.timeString"></el-table-column>
@@ -78,6 +78,18 @@ export default {
     this.receive();
   },
   methods: {
+    select(selection) {
+      if (selection.length > 1) {
+        let del_row = selection.shift()
+        this.$refs.multipleTable.toggleRowSelection(del_row, false)
+      }
+    },
+    selectAll(selection) {
+      if (selection.length > 1) {
+        selection.length = 1
+      }
+    },
+
     paymentUpdate() {
       PaymentUpdate(this.updateData).then(res => {
         console.log(res);
@@ -97,7 +109,7 @@ export default {
         this.total = res.data.total;
       })
     },
-    select(val) {
+    selection(val) {
       this.updateData.amount = val[0] ? val[0].amount : undefined;
       this.updateData.type = val[0] ? val[0].type : undefined;
       this.updateData.uuid = val[0] ? val[0].uuid : undefined;

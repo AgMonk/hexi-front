@@ -7,7 +7,7 @@
       <span slot="title">企业管理</span>
     </el-menu-item>
     <el-menu-item index="/datasTabs">
-      <span slot="title">企业导入</span>
+      <span slot="title">数据管理</span>
     </el-menu-item>
   </el-submenu>
 

@@ -7,9 +7,11 @@
           @select="select"
           @select-all="selectAll"
           @selection-change="$emit('selection-change', $event)"
+          @row-click="click(111) "
       >
         <el-table-column type="selection"></el-table-column>
-        <table-component/>
+        <el-table-column label="企业名称" prop="name"></el-table-column>
+        <el-table-column label="企业类型" prop="type"></el-table-column>
       </el-table>
       <el-pagination
           :current-page.sync="paging.page"
@@ -25,12 +27,11 @@
 
 <script>
 import {QueryCompanyPage} from "../../../../network/output";
-import tableComponent from "./tableComponent";
 
 export default {
   name: "company-table",
   components: {
-    tableComponent
+
   },
   data() {
     return {
@@ -49,8 +50,10 @@ export default {
   },
   methods: {
 
-    click() {
-      console.log(this.smallDATA)
+    click(e) {
+      console.log(e)
+      this.$router.push({path: '/home'})
+
     },
     getData(page) {
       this.paging.page = page;

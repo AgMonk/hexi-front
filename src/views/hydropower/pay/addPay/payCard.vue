@@ -8,7 +8,7 @@
       </span>
     </div>
     <div class="text item">
-      <el-table :data="companyPage" @selection-change="selection">
+      <el-table :data="companyPage" @select="select" @selection-change="selection" @select-all="selectAll">
         <el-table-column label="企业名称" prop="name"></el-table-column>
         <el-table-column label="企业地址" prop="address"></el-table-column>
         <el-table-column
@@ -82,6 +82,18 @@ export default {
   },
 
   methods: {
+    select(selection) {
+      if (selection.length > 1) {
+        let del_row = selection.shift()
+        this.$refs.multipleTable.toggleRowSelection(del_row, false)
+      }
+    },
+    selectAll(selection) {
+      if (selection.length > 1) {
+        selection.length = 1
+      }
+    },
+
     //接收父组件传参
     update() {
       Unicom.$on('data', (res) => {

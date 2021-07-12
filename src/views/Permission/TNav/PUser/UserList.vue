@@ -20,6 +20,12 @@
             <el-button type="primary" @click=" visible.userRole = true; userId = prop.row.id">添加角色</el-button>
           </template>
         </el-table-column>
+        <el-table-column @click="edit()">
+          <template slot-scope="prop">
+            <el-button v-if="prop.row.available" type="danger" @click="editAvailable(prop.row.id)">停用账号</el-button>
+            <el-button v-if="!prop.row.available" type="danger" @click="editAvailable(prop.row.id)">启用账号</el-button>
+          </template>
+        </el-table-column>
       </el-table>
     </div>
     <el-pagination
@@ -37,7 +43,7 @@
 </template>
 
 <script>
-import {UserDel, UserPage} from "../../../../network/output";
+import {GetUserAvailable, UserDel, UserPage} from "../../../../network/output";
 
 import UserDialog from "@/views/Permission/TNav/PUser/UserDialog";
 
@@ -65,7 +71,28 @@ export default {
 
   },
   methods: {
-    findAll(){
+    //修改可用状态
+    editAvailable(id) {
+      this.$confirm('是否修改该用户可用状态?', '提示', {
+        confirmButtonText: '确定',
+        cancelButtonText: '取消',
+        type: 'warning'
+      }).then(() => {
+        GetUserAvailable(id).then(res => {
+          if (res.code === 2000) {
+            this.findAll()
+          }
+        })
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: '已取消修改'
+        })
+      })
+
+    },
+
+    findAll() {
       UserPage(this.param).then(res => {
         // this.userLists = res.data;
         let d = res.data;

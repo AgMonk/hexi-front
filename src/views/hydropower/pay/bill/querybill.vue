@@ -9,7 +9,7 @@
       </span>
     </div>
     <div class="text item">
-      <el-table :data="list" @selection-change="change">
+      <el-table :data="list" @select="select" @selection-change="change" @select-all="selectAll">
         <el-table-column label="备注" prop="remark"></el-table-column>
         <el-table-column label="月份" prop="month"></el-table-column>
         <el-table-column label="用量" prop="amount"></el-table-column>
@@ -108,6 +108,18 @@ export default {
     this.queryBill();
   },
   methods: {
+    select(selection) {
+      if (selection.length > 1) {
+        let del_row = selection.shift()
+        this.$refs.multipleTable.toggleRowSelection(del_row, false)
+      }
+    },
+    selectAll(selection) {
+      if (selection.length > 1) {
+        selection.length = 1
+      }
+    },
+
     change(val) {
       this.uuid = val[0] ? val[0].uuid : undefined;
       this.editBill.remark = val[0] ? val[0].remark : undefined;

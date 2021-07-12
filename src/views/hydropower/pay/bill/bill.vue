@@ -22,7 +22,7 @@
             </span>
             </div>
             <div class="text item">
-              <el-table :data="componyData" @selection-change="change">
+              <el-table :data="componyData" @select="select" @selection-change="change" @select-all="selectAll">
                 <el-table-column label="企业名称" prop="name"></el-table-column>
                 <el-table-column label="企业地址" prop="address"></el-table-column>
                 <el-table-column
@@ -128,6 +128,19 @@ export default {
     this.componyPage();
   },
   methods: {
+
+    select(selection) {
+      if (selection.length > 1) {
+        let del_row = selection.shift()
+        this.$refs.multipleTable.toggleRowSelection(del_row, false)
+      }
+    },
+    selectAll(selection) {
+      if (selection.length > 1) {
+        selection.length = 1
+      }
+    },
+
     //添加账单
     addBill() {
       AddBill(this.add).then(res => {
