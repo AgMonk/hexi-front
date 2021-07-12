@@ -17,8 +17,6 @@
 
 export default {
   name: "hatchNav",
-  components: {
-  }
 }
 </script>
 
