@@ -138,7 +138,7 @@ export default {
     choice(e) {
       this.choose = e[0] ? e[0].uuid : undefined
       console.log(e)
-      this.selection = e[0];
+      this.selection = e[0]
     },
     toChild() {
       this.$router.push({

@@ -62,7 +62,7 @@ export default {
     getcompanyJson() {
       this.param.version = this.version;
       getJson(this.param).then(res => {
-        this.companyList = res.data;
+        this.companyList = res.data
         console.log(this.companyList)
       });
     },
