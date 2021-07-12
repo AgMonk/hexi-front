@@ -64,6 +64,8 @@ export default {
       getJson(this.param).then(res => {
         this.patentList = res.data;
         // console.log(res)
+      }).catch(() => {
+        this.getPatentJson()
       })
     },
     setPatentJson() {

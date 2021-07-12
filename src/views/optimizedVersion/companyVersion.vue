@@ -64,7 +64,9 @@ export default {
       getJson(this.param).then(res => {
         this.companyList = res.data
         console.log(this.companyList)
-      });
+      }).catch(() => {
+        this.getcompanyJson()
+      })
     },
     setCompanyJson() {
       setJson(this.param, this.companyList).then(() => {

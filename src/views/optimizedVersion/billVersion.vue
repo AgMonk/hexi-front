@@ -47,6 +47,8 @@ export default {
       getJson(this.param,).then(res => {
         this.billList = res.data;
         // console.log(this.param.version)
+      }).catch(() => {
+        this.GetJson()
       })
     },
     //修改数据

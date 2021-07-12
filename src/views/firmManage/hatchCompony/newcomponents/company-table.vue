@@ -7,11 +7,11 @@
           @select="select"
           @select-all="selectAll"
           @selection-change="$emit('selection-change', $event)"
-          @row-click="click(111) "
+          @row-click="clickTr"
       >
-        <el-table-column type="selection"></el-table-column>
         <el-table-column label="企业名称" prop="name"></el-table-column>
         <el-table-column label="企业类型" prop="type"></el-table-column>
+        <el-table-column type="selection"></el-table-column>
       </el-table>
       <el-pagination
           :current-page.sync="paging.page"
@@ -49,12 +49,16 @@ export default {
     }
   },
   methods: {
-
-    click(e) {
-      console.log(e)
-      this.$router.push({path: '/home'})
-
+    clickTr(row,) {
+      console.log(row.uuid)
+      this.$router.push({
+        path: '/hatch/compony',
+        query: {
+          id: row.uuid,
+        }
+      })
     },
+
     getData(page) {
       this.paging.page = page;
       // console.log(page)

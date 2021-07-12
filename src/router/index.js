@@ -17,6 +17,7 @@ router.afterEach((to) => {
             return;
         }
         if (res.code !== 2000) {
+
             router.push("/login").catch(err => {
                 console.log('输出报错', err)
             });

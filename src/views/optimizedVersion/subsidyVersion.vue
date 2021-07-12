@@ -51,6 +51,8 @@ export default {
       getJson(this.param).then(res => {
         this.subdisyList = res.data;
         // console.log(this.subdisyList)
+      }).catch(() => {
+        this.getSubsidyJson()
       })
     },
     setSubsidyJson() {
