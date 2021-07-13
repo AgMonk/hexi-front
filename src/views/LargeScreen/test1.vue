@@ -92,7 +92,7 @@ export default {
     },
     //设置定时器，销毁定时器
     interval() {
-      const timer = setInterval(this.play, 1000 * 2)
+      const timer = setInterval(this.play, 1000 * 30)
       this.$once('hook:beforeDestroy', () => {
         clearInterval(timer);
       })
