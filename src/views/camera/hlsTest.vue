@@ -42,14 +42,14 @@ export default {
             })
           }
         });
-        this.hls.on(Hls.Events.ERROR, () => {
-          console.log( '加载失败'+this.id)
-          let time = new Date().getTime() / 1000
-          if (time - this.errors < 3) {
-            this.$emit("change-url", this.id - 1)
-          }
-          this.errors = time
-        });
+        // this.hls.on(Hls.Events.ERROR, () => {
+        //   console.log( '加载失败'+this.id)
+        //   let time = new Date().getTime() / 1000
+        //   if (time - this.errors < 3) {
+        //     this.$emit("change-url", this.id - 1)
+        //   }
+        //   this.errors = time
+        // });
       }
     }
   },
