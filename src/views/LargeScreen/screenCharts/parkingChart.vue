@@ -32,7 +32,7 @@ export default {
         let d = res.data;
         let data = new Array();
         for (let i = 0; i < d.length; i++) {
-          let timeout = d[i].timeout ? "超时" : "未超时"
+          let timeout = d[i].timeout ? "长期" : "未超时"
           // console.log(d[i])
           data.push({
             value: d[i].count,

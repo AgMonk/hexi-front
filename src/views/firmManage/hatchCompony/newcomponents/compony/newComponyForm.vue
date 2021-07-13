@@ -51,7 +51,6 @@ export default {
       handler: function (e) {
         this.edit = e ? copyObj(e) : [];
       }
-
     }
   },
   mounted() {

@@ -4,9 +4,10 @@
     <el-main>
       <div class="main">
         <div v-for="(text, i) in data" :key="i" style="height: 220px;">
-          <h3 style="text-align: center; color: #FFFFFF; margin-top: 0; padding-top: 10px">{{ text.title }}</h3>
-          <p style="color: #FFFFFF; padding-left: 20px">{{ text.content }}</p>
-          <p style="color: #FFFFFF; padding-right: 20px; text-align: right">
+          <h2 style="text-align: center; color: #FFFFFF; margin-top: 0; padding-top: 10px;font-size: 28px ">
+            {{ text.title }}</h2>
+          <p style="color: #FFFFFF; padding-left: 20px; font-size: 24px">{{ text.content }}</p>
+          <p style="color: #FFFFFF; padding-right: 20px; text-align: right; font-size: 22px">
             {{ text.author }}
             <br>
             {{ text.lastEdit.timeString }}

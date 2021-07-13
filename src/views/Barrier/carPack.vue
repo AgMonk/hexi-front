@@ -32,7 +32,7 @@ export default {
       CarStatus(this.day).then(res => {
         this.packData = res.data;
         for (let i = 0; i < this.packData.length; i++) {
-          this.packData[i].time = this.packData[i].timeout ? '超时' : '未超时'
+          this.packData[i].time = this.packData[i].timeout ? '长期' : '未超时'
         }
       })
     }
