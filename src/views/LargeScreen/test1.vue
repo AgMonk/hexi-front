@@ -1,15 +1,15 @@
 <template>
   <div class="box" v-if="show">
-        <div class="column" id="top">
-          <hls-test @change-url="changeUrl" :id="1"  :src="playing[0]"  style="  width: 237.55px; height: 200px;"/>
-          <hls-test @change-url="changeUrl" :id="2" :src="playing[1]" style="  width: 237.55px; height: 200px;"/>
-          <hls-test @change-url="changeUrl" :id="3" :src="playing[2]" style="  width: 237.55px; height: 200px;"/>
-        </div>
-        <div class="column" id="bottom">
-          <hls-test @change-url="changeUrl" :id="4" :src="playing[3]" style="  width: 237.55px; height: 200px;"/>
-          <hls-test @change-url="changeUrl" :id="5" :src="playing[4]" style="  width: 237.55px; height: 200px;"/>
-          <hls-test @change-url="changeUrl" :id="6" :src="playing[5]" style="  width: 237.55px; height: 200px;"/>
-        </div>
+    <div class="column" id="top">
+      <hls-test @change-url="changeUrl" :id="1" :src="playing[0]" style="  width: 237.55px; height: 200px;"/>
+      <hls-test @change-url="changeUrl" :id="2" :src="playing[1]" style="  width: 237.55px; height: 200px;"/>
+      <hls-test @change-url="changeUrl" :id="3" :src="playing[2]" style="  width: 237.55px; height: 200px;"/>
+    </div>
+    <div class="column" id="bottom">
+      <hls-test @change-url="changeUrl" :id="4" :src="playing[3]" style="  width: 237.55px; height: 200px;"/>
+      <hls-test @change-url="changeUrl" :id="5" :src="playing[4]" style="  width: 237.55px; height: 200px;"/>
+      <hls-test @change-url="changeUrl" :id="6" :src="playing[5]" style="  width: 237.55px; height: 200px;"/>
+    </div>
   </div>
 </template>
 
@@ -43,29 +43,42 @@ export default {
       }
       return array
     },
-    play() {
-
+    /**
+     * 更新当前播放的摄像头id数组，更换一个指定下标为新的摄像头id，并保证不重复
+     * @param i 数组下标
+     * @returns {*} 新摄像头id
+     */
+    updateRandomIndexCode(i) {
       let index;
+      let item;
       do {
-        index = Math.floor(Math.random() * this.cameraList.length);
-      } while (this.indexCodes.includes(this.cameraList[index]))
-      this.indexCodes[this.cameraIndex] = this.cameraList[index]
+        index = Math.floor(Math.random() * this.cameraList.length)
+        item = this.cameraList[index];
+      } while (this.indexCodes.includes(item))
+      this.indexCodes[i] = item;
+      return item;
+    },
+    //更新需要更换地址的摄像头下标
+    updateCameraIndex() {
       this.cameraIndex++
       this.cameraIndex = this.cameraIndex % 6
-      let i = this.cameraIndex
-      console.log(i)
-      getCameraUrl({id: this.cameraList[index]}).then(res => {
-      // console.log(i)
-        this.playing[i] = res.data
-        this.playing = copyObj(this.playing)
-        if(this.playing.length === 6) {
-          this.show = true
-        // console.log(this.playing)
-        }
+    },
+    //获取摄像头播放地址，并替换到播放地址数组的指定下标
+    getCameraUrl: (id, index) => getCameraUrl({id}).then(res => {
+      this.playing[index] = res.data;
+      this.playing = copyObj(this.playing)
+      if (this.playing.length === 6) {
+        this.show = true
+      }
+    }),
+    play() {
+      let id = this.updateRandomIndexCode(this.cameraIndex);
+      this.getCameraUrl(id, this.cameraIndex).then(() => {
+        this.updateCameraIndex()
       })
     },
     changeUrl(id) {
-      console.log(id+ "连续错误切换")
+      console.log(id + "连续错误切换")
       let index;
       do {
         index = Math.floor(Math.random() * this.cameraList.length);
@@ -123,9 +136,11 @@ export default {
   display: flex;
   justify-content: space-between;
 }
+
 #top {
   margin-top: 25px;
 }
+
 #bottom {
   margin-bottom: 25px;
 }
